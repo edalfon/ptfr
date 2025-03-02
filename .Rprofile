@@ -1,4 +1,3 @@
-source("renv/activate.R")
 options(conflicts.policy = "strict")
 if (file.exists("~/.Rprofile")) source("~/.Rprofile")
 
