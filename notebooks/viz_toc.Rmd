@@ -1,0 +1,105 @@
+---
+title: "Cadenas de valor"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+always_allow_html: yes
+---
+
+<style>
+
+body {
+  padding-top:0px
+}
+
+</style>
+
+```{r include=FALSE}
+knitr::opts_chunk$set(
+  echo = ech <- FALSE, warning = ech, message = ech, error = ech,
+  include = TRUE, cache.comments = TRUE, cache = FALSE, fig.height = 5,
+  fig.width = 7
+)
+library(visNetwork)
+```
+
+```{r include=FALSE}
+targets::tar_load(toc)
+targets::tar_load(toc_ptf)
+targets::tar_load(toc_pcn)
+targets::tar_load(toc_ceaf)
+targets::tar_load(toc_jcc)
+```
+
+PTF {data-orientation=rows}
+=====================================     
+Column {.tabset .tabset-fade}
+-------------------------------------
+
+### **PTF** - Pacífico Task Force
+
+```{r}
+toc_ptf
+```
+
+
+PCN {data-orientation=rows}
+=====================================     
+Column {.tabset .tabset-fade}
+-------------------------------------
+
+### **PCN** - Proceso de Comunidades Negras
+
+```{r}
+toc_pcn
+```
+
+
+### Asociación de mujeres concheras Raíces del Manglar
+
+```{r}
+toc
+```
+
+### Acapa
+
+```{r}
+toc
+```
+
+### Asociación GAADE Las Sirenas
+
+```{r}
+toc
+```
+
+### Asociación de gestores del pacífico Asogesampa
+
+```{r}
+toc
+```
+
+
+CEAF {data-orientation=rows}
+=====================================     
+Column {.tabset .tabset-fade}
+-------------------------------------
+
+### **CEAF** - Centro de Estudios Afrodiaspóricos
+
+```{r}
+toc_ceaf
+```
+
+
+JCC {data-orientation=rows}
+=====================================     
+Column {.tabset .tabset-fade}
+-------------------------------------
+
+### **JCC** - Jóvenes Creadores del Chocó
+
+```{r}
+toc_jcc
+```
