@@ -40,3 +40,35 @@ plan_theory_of_change <- function() {
     NULL
   )
 }
+
+# Pregunta 2:
+# ¿Cómo ha impactado el programa en el fortalecimiento de capacidades del equipo humano de las organizaciones?
+
+# Evidencias cuantitativas:
+# Número de capacitaciones ofrecidas y porcentaje de participación.
+# Cantidad de horas de formación recibidas por persona.
+# Cambio en la percepción de competencias antes y después del programa (medido en encuestas).
+# Número de nuevas habilidades adquiridas por los equipos según autoevaluación.
+# Categorías cualitativas:
+# Tipos de conocimientos y habilidades adquiridos.
+# Utilidad percibida de la formación en el trabajo diario.
+# Limitaciones en la aplicación de lo aprendido.
+# Demandas adicionales de formación no cubiertas por el programa.
+# Si quieres más preguntas o ajustar las existentes, dime cómo seguimos.
+
+# Pregunta 2:
+# ¿Cómo ha impactado el acceso a recursos tecnológicos en la ejecución de los proyectos?
+
+# Evidencias cuantitativas:
+# Número de tareas o procesos optimizados gracias a la tecnología.
+# Porcentaje de organizaciones que reportan mejoras en eficiencia debido a recursos tecnológicos.
+# Cantidad de capacitaciones realizadas sobre el uso de tecnología.
+# Nivel de adopción de nuevas herramientas digitales antes y después del programa.
+# Categorías cualitativas:
+# Principales usos de la tecnología dentro del programa.
+# Beneficios percibidos en términos de comunicación, gestión y monitoreo.
+# Barreras para la adopción tecnológica (falta de formación, costos, resistencia al cambio).
+# Necesidades tecnológicas no cubiertas por el programa.
+# Dime si quieres más detalles o ajustar algo.
+
+#
