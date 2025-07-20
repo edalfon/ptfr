@@ -1,0 +1,61 @@
+/* Add icon to the bottom-left, beside the RevealJS menu button */
+.custom-left-icon {
+  position: fixed;
+  bottom: 1rem;
+  left: 3.5rem;
+  /* offset to the right of the default menu button (~3rem) */
+  width: 1024px;
+  height: 44px;
+  background-image: url('ptf_logo.png');
+  /* adjust path as needed */
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 1000;
+}
+
+/* styles.css */
+
+/* Remove default Reveal.js padding from slide sections */
+.reveal .slides section {
+  padding: 0 !important;
+  /* Use !important to override default styles */
+}
+
+/* Ensure the section takes full height */
+.reveal .slides section {
+  height: 100%;
+}
+
+
+/* Target the container Quarto puts around the code chunk output */
+/* This is often a div with class 'cell-output' or similar */
+/* You might need to inspect the generated HTML to find the exact class/structure */
+.reveal .slides section .cell-output {
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0 !important;
+  /* Remove default margins */
+  display: flex;
+  /* Use flexbox to help content fill */
+  flex-direction: column;
+  justify-content: center;
+  /* Center content if needed, or use stretch */
+  align-items: center;
+  /* Center content if needed, or use stretch */
+}
+
+/* Target the actual widget container (often a div inside cell-output or iframe) */
+/* Inspect your generated HTML to confirm the correct selector */
+.reveal .slides section .cell-output>div,
+.reveal .slides section .cell-output iframe {
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0 !important;
+}
+
+/* If your widget is inside an iframe and you want it to take full iframe space */
+iframe body {
+  margin: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+}

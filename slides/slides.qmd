@@ -1,0 +1,1535 @@
+---
+format:
+  pptx:
+    reference-doc: format.pptx
+---
+
+
+# Comienza
+
+## Evaluar el impacto de un proyecto {auto-animate=true auto-animate-easing="ease-in-out"}
+
+:::: {.columns}
+
+::: {.column width="100%" data-id="box1"}
+```{r}
+x = c(0.5, 2.5)
+y = c(1, 2)
+
+ggplot() +
+  geom_rect(
+    aes(xmin = 1.5, xmax = Inf, ymin = -Inf, ymax = Inf),
+    fill = "skyblue",
+    alpha = 0.3
+  ) +
+  geom_line(
+    data = data.frame(x=x, y=y), 
+    aes(x = x, y = y), alpha = 0.7, linetype = "solid"
+  ) +
+  emojifont::geom_emoji(
+    'bust_in_silhouette',
+    x = x,
+    y = y,
+    size = 10,
+    hjust = c(1, 0),
+    color = "black"
+  ) +
+  geom_segment(
+    aes(x = 0, xend = 3, y = 0, yend = 0),
+    arrow = arrow(length = unit(0.3, "cm"), type = "closed"),
+
+    color = "steelblue"
+  ) +
+  geom_segment(
+    aes(x = 0, xend = 0, y = 0, yend = 3),
+    arrow = arrow(length = unit(0.3, "cm"), type = "closed"),
+
+    color = "steelblue"
+  ) +
+  geom_vline(xintercept = 1.5, linetype = "dotted") +
+  scale_y_continuous(name = "Resultado", expand = expansion(0.01)) +
+  scale_x_continuous(name = "Tiempo", expand = expansion(0.01)) +
+  theme_minimal()
+```
+:::
+
+::: {.column width="50%" data-id="box3"}
+:::
+
+::: {.column width="50%" data-id="box2"}
+:::
+
+
+::::
+
+## Evaluar el impacto de un proyecto {auto-animate=true auto-animate-easing="ease-in-out"}
+
+
+:::: {.columns}
+
+::: {.column width="50%" data-id="box1"}
+```{r}
+x = c(0.5, 2.5)
+y = c(1, 2)
+
+ggplot() +
+  geom_rect(
+    aes(xmin = 1.5, xmax = Inf, ymin = -Inf, ymax = Inf),
+    fill = "skyblue",
+    alpha = 0.3
+  ) +
+  geom_line(
+    data = data.frame(x=x, y=y), 
+    aes(x = x, y = y), alpha = 0.7, linetype = "solid"
+  ) +
+  emojifont::geom_emoji(
+    'bust_in_silhouette',
+    x = x,
+    y = y,
+    size = 10,
+    hjust = c(1, 0),
+    color = "black"
+  ) +
+  geom_segment(
+    aes(x = 0, xend = 3, y = 0, yend = 0),
+    arrow = arrow(length = unit(0.3, "cm"), type = "closed"),
+
+    color = "steelblue"
+  ) +
+  geom_segment(
+    aes(x = 0, xend = 0, y = 0, yend = 3),
+    arrow = arrow(length = unit(0.3, "cm"), type = "closed"),
+
+    color = "steelblue"
+  ) +
+  geom_vline(xintercept = 1.5, linetype = "dotted") +
+  scale_y_continuous(name = "Resultado", expand = expansion(0.01)) +
+  scale_x_continuous(name = "Tiempo", expand = expansion(0.01)) +
+  theme_minimal()
+```
+:::
+
+::: {.column width="0%" data-id="box3"}
+:::
+
+::: {.column width="50%" data-id="box2"}
+```{r}
+x = c(0.5, 2.5)
+y = c(1, 1.2)
+
+ggplot() +
+  geom_line(
+    data = data.frame(x=x, y=y), 
+    aes(x = x, y = y), alpha = 0.7, linetype = "dashed"
+  ) +
+  emojifont::geom_emoji(
+    'bust_in_silhouette',
+    x = x,
+    y = y,
+    size = 10,
+    hjust = c(1, 0),
+    color = "black"
+  ) +
+  geom_segment(
+    aes(x = 0, xend = 3, y = 0, yend = 0),
+    arrow = arrow(length = unit(0.3, "cm"), type = "closed"),
+    color = "steelblue"
+  ) +
+  geom_segment(
+    aes(x = 0, xend = 0, y = 0, yend = 3),
+    arrow = arrow(length = unit(0.3, "cm"), type = "closed"),
+    color = "steelblue"
+  ) +
+  scale_y_continuous(name = "Resultado", expand = expansion(0.01)) +
+  scale_x_continuous(name = "Tiempo", expand = expansion(0.01)) +
+  theme_minimal()
+```
+:::
+
+
+::::
+
+
+
+## Evaluar el impacto de un proyecto {auto-animate=true auto-animate-easing="ease-in-out"}
+
+
+:::: {.columns}
+
+::: {.column width="0%" data-id="box1"}
+:::
+
+
+::: {.column width="100%" data-id="box3"}
+```{r}
+x = c(0.5, 2.5, 2.5)
+y = c(1, 2, 1.2)
+
+ggplot() +
+  geom_rect(
+    aes(xmin = 1.5, xmax = Inf, ymin = -Inf, ymax = Inf),
+    fill = "skyblue",
+    alpha = 0.3
+  ) +
+  geom_line(
+    data = data.frame(x=c(0.5, 2.5), y=c(1, 2)), 
+    aes(x = x, y = y), alpha = 0.7, linetype = "solid"
+  ) +
+  geom_line(
+    data = data.frame(x=c(0.5, 2.5), y=c(1, 1.2)), 
+    aes(x = x, y = y), alpha = 0.7, linetype = "dashed"
+  ) +
+  emojifont::geom_emoji(
+    'bust_in_silhouette',
+    x = x,
+    y = y,
+    size = 10,
+    hjust = c(1, 0, 0),
+    color = "black"
+  ) +
+  geom_segment(
+    aes(x = 0, xend = 3, y = 0, yend = 0),
+    arrow = arrow(length = unit(0.3, "cm"), type = "closed"),
+    color = "steelblue"
+  ) +
+  geom_segment(
+    aes(x = 0, xend = 0, y = 0, yend = 3),
+    arrow = arrow(length = unit(0.3, "cm"), type = "closed"),
+    color = "steelblue"
+  ) +
+  geom_vline(xintercept = 1.5, linetype = "dotted") +
+  scale_y_continuous(name = "Resultado", expand = expansion(0.01)) +
+  scale_x_continuous(name = "Tiempo", expand = expansion(0.01)) +
+  theme_minimal()
+```
+:::
+
+::: {.column width="0%" data-id="box2"}
+:::
+
+::::
+
+## Evaluar el impacto de un proyecto {auto-animate=true auto-animate-easing="ease-in-out"}
+```{r}
+set.seed(9)
+x = c(runif(50, 0.3, 0.65), runif(25, 2.3, 2.6), runif(25, 2.3, 2.6))
+y = c(runif(50, 0.75, 1.25), runif(25, 1.55, 2.25), runif(25, 0.95, 1.75))
+ecolors = c(sample(c("red", "blue"), 50, TRUE, c(0.5, 0.5)), 
+          sample(c("red", "blue"), 25, TRUE, c(0.12, 0.88)), 
+          sample(c("red", "blue"), 25, TRUE, c(0.88, 0.12))
+)
+
+ggplot() +
+  geom_rect(
+    aes(xmin = 1.5, xmax = Inf, ymin = -Inf, ymax = Inf),
+    fill = "skyblue",
+    alpha = 0.3
+  ) +
+  emojifont::geom_emoji(
+    'bust_in_silhouette',
+    x = x,
+    y = y,
+    size = 5,
+    #hjust = c(1, 0, 0),
+    color = "black",
+    alpha = 0.7
+  ) +
+  geom_segment(
+    aes(x = 0, xend = 3, y = 0, yend = 0),
+    arrow = arrow(length = unit(0.3, "cm"), type = "closed"),
+    color = "steelblue"
+  ) +
+  geom_segment(
+    aes(x = 0, xend = 0, y = 0, yend = 3),
+    arrow = arrow(length = unit(0.3, "cm"), type = "closed"),
+    color = "steelblue"
+  ) +
+  geom_vline(xintercept = 1.5, linetype = "dotted") +
+  scale_y_continuous(name = "Resultado", expand = expansion(0.01)) +
+  scale_x_continuous(name = "Tiempo", expand = expansion(0.01)) +
+  theme_minimal()
+```
+
+
+## Evaluar el impacto de un proyecto {auto-animate=true auto-animate-easing="ease-in-out"}
+```{r}
+set.seed(9)
+x = c(runif(50, 0.3, 0.65), runif(25, 2.3, 2.6), runif(25, 2.3, 2.6))
+y = c(runif(50, 0.75, 1.25), runif(25, 1.55, 2.25), runif(25, 0.95, 1.75))
+ecolors = c(sample(c("red", "blue"), 50, TRUE, c(0.5, 0.5)), 
+          sample(c("red", "blue"), 25, TRUE, c(0.12, 0.88)), 
+          sample(c("red", "blue"), 25, TRUE, c(0.88, 0.12))
+)
+
+ggplot() +
+  geom_rect(
+    aes(xmin = 1.5, xmax = Inf, ymin = -Inf, ymax = Inf),
+    fill = "skyblue",
+    alpha = 0.3
+  ) +
+  emojifont::geom_emoji(
+    'bust_in_silhouette',
+    x = x,
+    y = y,
+    size = 5,
+    #hjust = c(1, 0, 0),
+    color = ecolors,
+    alpha = 0.7
+  ) +
+  geom_segment(
+    aes(x = 0, xend = 3, y = 0, yend = 0),
+    arrow = arrow(length = unit(0.3, "cm"), type = "closed"),
+    color = "steelblue"
+  ) +
+  geom_segment(
+    aes(x = 0, xend = 0, y = 0, yend = 3),
+    arrow = arrow(length = unit(0.3, "cm"), type = "closed"),
+    color = "steelblue"
+  ) +
+  geom_vline(xintercept = 1.5, linetype = "dotted") +
+  scale_y_continuous(name = "Resultado", expand = expansion(0.01)) +
+  scale_x_continuous(name = "Tiempo", expand = expansion(0.01)) +
+  theme_minimal()
+```
+
+## Evaluar el impacto de un proyecto {auto-animate=true auto-animate-easing="ease-in-out"}
+```{r}
+set.seed(9)
+x = c(runif(50, 0.3, 0.65), runif(25, 2.3, 2.6), runif(25, 2.3, 2.6))
+y = c(runif(50, 0.75, 1.25), runif(25, 1.55, 2.25), runif(25, 0.95, 1.75))
+ecolors = c(sample(c("red", "blue"), 50, TRUE, c(0.5, 0.5)), 
+          sample(c("red", "blue"), 25, TRUE, c(0.12, 0.88)), 
+          sample(c("red", "blue"), 25, TRUE, c(0.88, 0.12))
+)
+
+
+ggplot() +
+  geom_rect(
+    aes(xmin = 1.5, xmax = Inf, ymin = -Inf, ymax = Inf),
+    fill = "skyblue",
+    alpha = 0.3
+  ) +
+  geom_line(
+    data = data.frame(x=c(0.5, 2.5), y=c(1, 2)), 
+    aes(x = x, y = y), alpha = 0.7, linetype = "solid", color="blue",
+  ) +
+  geom_line(
+    data = data.frame(x=c(0.5, 2.5), y=c(1, 1.2)), 
+    aes(x = x, y = y), alpha = 0.7, linetype = "solid", color="red"
+  ) +
+  emojifont::geom_emoji(
+    'bust_in_silhouette',
+    x = x,
+    y = y,
+    size = 5,
+    #hjust = c(1, 0, 0),
+    color = ecolors,
+    alpha = 0.7
+  ) +
+  geom_segment(
+    aes(x = 0, xend = 3, y = 0, yend = 0),
+    arrow = arrow(length = unit(0.3, "cm"), type = "closed"),
+    color = "steelblue"
+  ) +
+  geom_segment(
+    aes(x = 0, xend = 0, y = 0, yend = 3),
+    arrow = arrow(length = unit(0.3, "cm"), type = "closed"),
+    color = "steelblue"
+  ) +
+  geom_vline(xintercept = 1.5, linetype = "dotted") +
+  scale_y_continuous(name = "Resultado", expand = expansion(0.01)) +
+  scale_x_continuous(name = "Tiempo", expand = expansion(0.01)) +
+  theme_minimal()
+```
+
+
+## Evaluar el impacto de un proyecto {auto-animate=true auto-animate-easing="ease-in-out"}
+:::: {.columns}
+
+::: {.column width="50%" data-id="box1"}
+```{r}
+set.seed(9)
+x = c(runif(50, 0.3, 0.65), runif(25, 2.3, 2.6), runif(25, 2.3, 2.6))
+y = c(runif(50, 0.75, 1.25), runif(25, 1.55, 2.25), runif(25, 0.95, 1.75))
+ecolors = c(sample(c("red", "blue"), 50, TRUE, c(0.5, 0.5)), 
+          sample(c("red", "blue"), 25, TRUE, c(0.12, 0.88)), 
+          sample(c("red", "blue"), 25, TRUE, c(0.88, 0.12))
+)
+
+
+ggplot() +
+  geom_rect(
+    aes(xmin = 1.5, xmax = Inf, ymin = -Inf, ymax = Inf),
+    fill = "skyblue",
+    alpha = 0.3
+  ) +
+  geom_line(
+    data = data.frame(x=c(0.5, 2.5), y=c(1, 2)), 
+    aes(x = x, y = y), alpha = 0.7, linetype = "solid", color="blue",
+  ) +
+  geom_line(
+    data = data.frame(x=c(0.5, 2.5), y=c(1, 1.2)), 
+    aes(x = x, y = y), alpha = 0.7, linetype = "solid", color="red"
+  ) +
+  emojifont::geom_emoji(
+    'bust_in_silhouette',
+    x = x,
+    y = y,
+    size = 5,
+    #hjust = c(1, 0, 0),
+    color = ecolors,
+    alpha = 0.7
+  ) +
+  geom_segment(
+    aes(x = 0, xend = 3, y = 0, yend = 0),
+    arrow = arrow(length = unit(0.3, "cm"), type = "closed"),
+    color = "steelblue"
+  ) +
+  geom_segment(
+    aes(x = 0, xend = 0, y = 0, yend = 3),
+    arrow = arrow(length = unit(0.3, "cm"), type = "closed"),
+    color = "steelblue"
+  ) +
+  geom_vline(xintercept = 1.5, linetype = "dotted") +
+  scale_y_continuous(name = "Resultado", expand = expansion(0.01)) +
+  scale_x_continuous(name = "Tiempo", expand = expansion(0.01)) +
+  theme_minimal()
+```
+:::
+
+::: {.column width="50%" data-id="box2"}
+Para que esto funcione: 
+
+- Ignorabilidad, 
+- Comparabilidad, 
+- Independencia condicional,
+- Solapamiento
+- Unidad de Tratamiento Estable
+:::
+
+::::
+
+
+## Diseño de evaluación de impacto cuantitativo en los beneficiarios
+
+- Evaluación basada en diseño **quasi-experimental**.
+- Objetivo: Estimar el efecto **causal de los proyectos en sus beneficiarios directos e indirectos**.
+- No hay línea de base, selección no aleatoria
+-  → Construcción de **grupos de comparación**.
+  - ¿Qué habría pasado con los beneficiarios sin la intervención?
+  - Se aproxima utilizando **grupos de control**.
+  - Se buscan comparables **no afectados** por la intervención.
+
+
+## Grupos de comparación
+:::: {.columns}
+
+::: {.column .r-fit-text width="100%"}
+Se definen **tres grupos**:
+
+- **Tratamiento ($T$):** 
+  + Beneficiarios *directos* del proyecto.
+- **Control Cercano ($C_C$):** 
+  + Población cercana, posible exposición indirecta. 
+  + NO beneficiarios directos, pero posiblemente beneficiarios indirectos.
+- **Control Lejano ($C_L$):** 
+  + Población no expuesta a los proyectos. 
+  + Comparable/similares (e.g. no expuesta a otros proyectos significativos, que beneficiarios no reciben).
+:::
+::::
+
+## Población relevante
+
+```{r}
+set.seed(7)
+library(leaflet)
+library(fontawesome)
+
+ltmap <- leaflet(height="700px") |> 
+  addTiles()  |>   # Add OpenStreetMap tiles 
+  setView(lng = -77.77, lat = 2.71, zoom = 14)  |> 
+  addAwesomeMarkers(
+    lng = runif(15, -77.80, -77.78),
+    lat = runif(15, 2.728, 2.734),
+    icon = awesomeIcons(
+      icon = 'user',
+      library = 'fa',
+      markerColor = 'white',
+      squareMarker=TRUE,
+      iconColor = 'black',
+      spin=FALSE
+    ),
+    options=markerOptions(opacity=0.5)
+  ) |> 
+  addAwesomeMarkers(
+    lng = runif(7, -77.80, -77.78),
+    lat = runif(7, 2.728, 2.734),
+    icon = awesomeIcons(
+      icon = 'user',
+      library = 'fa',
+      markerColor = 'white',
+      squareMarker=TRUE,
+      iconColor = 'black',
+      spin=FALSE
+    ),
+    options=markerOptions(opacity=0.9)
+  ) |> 
+  addAwesomeMarkers(
+    lng = runif(7, -77.80, -77.78),
+    lat = runif(7, 2.728, 2.734),
+    icon = awesomeIcons(
+      icon = 'user',
+      library = 'fa',
+      markerColor = 'white',
+      squareMarker=TRUE,
+      iconColor = 'black',
+      spin=FALSE
+    ),
+    options=markerOptions(opacity=0.7)
+  ) |> 
+  addAwesomeMarkers(
+    lng = runif(15, -77.78, -77.77),
+    lat = runif(15, 2.68, 2.69),
+    icon = awesomeIcons(
+      icon = 'user',
+      library = 'fa',
+      markerColor = 'white',
+      squareMarker=TRUE,
+      iconColor = 'black',
+      spin=FALSE
+    ),
+    options=markerOptions(opacity=0.7)
+  ) |> 
+  addAwesomeMarkers(
+    lng = runif(7, -77.78, -77.77),
+    lat = runif(7, 2.68, 2.69),
+    icon = awesomeIcons(
+      icon = 'user',
+      library = 'fa',
+      markerColor = 'white',
+      squareMarker=TRUE,
+      iconColor = 'black',
+      spin=FALSE
+    ),
+    options=markerOptions(opacity=0.99)
+  ) |> 
+  addAwesomeMarkers(
+    lng = runif(15, -77.772, -77.768),
+    lat = runif(15, 2.714, 2.724),
+    icon = awesomeIcons(
+      icon = 'user',
+      library = 'fa',
+      markerColor = 'white',
+      squareMarker=TRUE,
+      iconColor = 'black',
+      spin=FALSE
+    ),
+    options=markerOptions(opacity=0.7)
+  ) |> 
+  identity()
+
+
+ltmap
+```
+
+
+## Tratamiento
+
+```{r}
+set.seed(7)
+library(leaflet)
+library(fontawesome)
+
+ltmap <- leaflet(height="700px") |> 
+  addTiles()  |>   # Add OpenStreetMap tiles 
+  setView(lng = -77.77, lat = 2.71, zoom = 14)  |> 
+  addAwesomeMarkers(
+    lng = runif(15, -77.80, -77.78),
+    lat = runif(15, 2.728, 2.734),
+    icon = awesomeIcons(
+      icon = 'user',
+      library = 'fa',
+      markerColor = 'white',
+      squareMarker=TRUE,
+      iconColor = 'black',
+      spin=FALSE
+    ),
+    options=markerOptions(opacity=0.5)
+  ) |> 
+  addAwesomeMarkers(
+    lng = runif(7, -77.80, -77.78),
+    lat = runif(7, 2.728, 2.734),
+    icon = awesomeIcons(
+      icon = 'user',
+      library = 'fa',
+      markerColor = 'white',
+      squareMarker=TRUE,
+      iconColor = 'skyblue',
+      spin=FALSE
+    ),
+    options=markerOptions(opacity=0.9)
+  ) |> 
+  addAwesomeMarkers(
+    lng = runif(7, -77.80, -77.78),
+    lat = runif(7, 2.728, 2.734),
+    icon = awesomeIcons(
+      icon = 'user',
+      library = 'fa',
+      markerColor = 'white',
+      squareMarker=TRUE,
+      iconColor = 'black',
+      spin=FALSE
+    ),
+    options=markerOptions(opacity=0.7)
+  ) |> 
+  addAwesomeMarkers(
+    lng = runif(15, -77.78, -77.77),
+    lat = runif(15, 2.68, 2.69),
+    icon = awesomeIcons(
+      icon = 'user',
+      library = 'fa',
+      markerColor = 'white',
+      squareMarker=TRUE,
+      iconColor = 'black',
+      spin=FALSE
+    ),
+    options=markerOptions(opacity=0.7)
+  ) |> 
+  addAwesomeMarkers(
+    lng = runif(7, -77.78, -77.77),
+    lat = runif(7, 2.68, 2.69),
+    icon = awesomeIcons(
+      icon = 'user',
+      library = 'fa',
+      markerColor = 'white',
+      squareMarker=TRUE,
+      iconColor = 'black',
+      spin=FALSE
+    ),
+    options=markerOptions(opacity=0.99)
+  ) |> 
+  addAwesomeMarkers(
+    lng = runif(15, -77.772, -77.768),
+    lat = runif(15, 2.714, 2.724),
+    icon = awesomeIcons(
+      icon = 'user',
+      library = 'fa',
+      markerColor = 'white',
+      squareMarker=TRUE,
+      iconColor = 'black',
+      spin=FALSE
+    ),
+    options=markerOptions(opacity=0.7)
+  ) |> 
+  identity()
+
+
+ltmap
+```
+
+
+
+## Control Cercano
+
+```{r}
+set.seed(7)
+library(leaflet)
+library(fontawesome)
+
+ltmap <- leaflet(height="700px") |> 
+  addTiles()  |>   # Add OpenStreetMap tiles 
+  setView(lng = -77.77, lat = 2.71, zoom = 14)  |> 
+  addAwesomeMarkers(
+    lng = runif(15, -77.80, -77.78),
+    lat = runif(15, 2.728, 2.734),
+    icon = awesomeIcons(
+      icon = 'user',
+      library = 'fa',
+      markerColor = 'white',
+      squareMarker=TRUE,
+      iconColor = 'black',
+      spin=FALSE
+    ),
+    options=markerOptions(opacity=0.5)
+  ) |> 
+  addAwesomeMarkers(
+    lng = runif(7, -77.80, -77.78),
+    lat = runif(7, 2.728, 2.734),
+    icon = awesomeIcons(
+      icon = 'user',
+      library = 'fa',
+      markerColor = 'white',
+      squareMarker=TRUE,
+      iconColor = 'skyblue',
+      spin=FALSE
+    ),
+    options=markerOptions(opacity=0.9)
+  ) |> 
+  addAwesomeMarkers(
+    lng = runif(7, -77.80, -77.78),
+    lat = runif(7, 2.728, 2.734),
+    icon = awesomeIcons(
+      icon = 'user',
+      library = 'fa',
+      markerColor = 'white',
+      squareMarker=TRUE,
+      iconColor = 'orange',
+      spin=FALSE
+    ),
+    options=markerOptions(opacity=0.7)
+  ) |> 
+  addAwesomeMarkers(
+    lng = runif(15, -77.78, -77.77),
+    lat = runif(15, 2.68, 2.69),
+    icon = awesomeIcons(
+      icon = 'user',
+      library = 'fa',
+      markerColor = 'white',
+      squareMarker=TRUE,
+      iconColor = 'black',
+      spin=FALSE
+    ),
+    options=markerOptions(opacity=0.7)
+  ) |> 
+  addAwesomeMarkers(
+    lng = runif(7, -77.78, -77.77),
+    lat = runif(7, 2.68, 2.69),
+    icon = awesomeIcons(
+      icon = 'user',
+      library = 'fa',
+      markerColor = 'white',
+      squareMarker=TRUE,
+      iconColor = 'black',
+      spin=FALSE
+    ),
+    options=markerOptions(opacity=0.99)
+  ) |> 
+  addAwesomeMarkers(
+    lng = runif(15, -77.772, -77.768),
+    lat = runif(15, 2.714, 2.724),
+    icon = awesomeIcons(
+      icon = 'user',
+      library = 'fa',
+      markerColor = 'white',
+      squareMarker=TRUE,
+      iconColor = 'black',
+      spin=FALSE
+    ),
+    options=markerOptions(opacity=0.7)
+  ) |> 
+  identity()
+
+
+ltmap
+```
+
+
+##  Control lejano
+
+```{r}
+set.seed(7)
+library(leaflet)
+library(fontawesome)
+
+ltmap <- leaflet(height="700px") |> 
+  addTiles()  |>   # Add OpenStreetMap tiles 
+  setView(lng = -77.77, lat = 2.71, zoom = 14)  |> 
+  addAwesomeMarkers(
+    lng = runif(15, -77.80, -77.78),
+    lat = runif(15, 2.728, 2.734),
+    icon = awesomeIcons(
+      icon = 'user',
+      library = 'fa',
+      markerColor = 'white',
+      squareMarker=TRUE,
+      iconColor = 'black',
+      spin=FALSE
+    ),
+    options=markerOptions(opacity=0.5)
+  ) |> 
+  addAwesomeMarkers(
+    lng = runif(7, -77.80, -77.78),
+    lat = runif(7, 2.728, 2.734),
+    icon = awesomeIcons(
+      icon = 'user',
+      library = 'fa',
+      markerColor = 'white',
+      squareMarker=TRUE,
+      iconColor = 'skyblue',
+      spin=FALSE
+    ),
+    options=markerOptions(opacity=0.9)
+  ) |> 
+  addAwesomeMarkers(
+    lng = runif(7, -77.80, -77.78),
+    lat = runif(7, 2.728, 2.734),
+    icon = awesomeIcons(
+      icon = 'user',
+      library = 'fa',
+      markerColor = 'white',
+      squareMarker=TRUE,
+      iconColor = 'orange',
+      spin=FALSE
+    ),
+    options=markerOptions(opacity=0.7)
+  ) |> 
+  addAwesomeMarkers(
+    lng = runif(15, -77.78, -77.77),
+    lat = runif(15, 2.68, 2.69),
+    icon = awesomeIcons(
+      icon = 'user',
+      library = 'fa',
+      markerColor = 'white',
+      squareMarker=TRUE,
+      iconColor = 'black',
+      spin=FALSE
+    ),
+    options=markerOptions(opacity=0.7)
+  ) |> 
+  addAwesomeMarkers(
+    lng = runif(7, -77.78, -77.77),
+    lat = runif(7, 2.68, 2.69),
+    icon = awesomeIcons(
+      icon = 'user',
+      library = 'fa',
+      markerColor = 'white',
+      squareMarker=TRUE,
+      iconColor = '#DAA520',
+      spin=FALSE
+    ),
+    options=markerOptions(opacity=0.99)
+  ) |> 
+  addAwesomeMarkers(
+    lng = runif(15, -77.772, -77.768),
+    lat = runif(15, 2.714, 2.724),
+    icon = awesomeIcons(
+      icon = 'user',
+      library = 'fa',
+      markerColor = 'white',
+      squareMarker=TRUE,
+      iconColor = 'black',
+      spin=FALSE
+    ),
+    options=markerOptions(opacity=0.7)
+  ) |> 
+  identity()
+  
+
+
+ltmap
+```
+
+
+## Objetivos de Comparación
+
+-Grupos de Tratamiento ($T$), Control Cercano ($C_C$), Control Lejano ($C_L$) 
+
+- Estimar el impacto **directo** en beneficiarios → $T$ vs. $C_L$
+- Estimar posibles **efectos indirectos** → $C_c$ vs. $C_L$
+
+
+## Validez del Contrafactual
+
+- Selección juiciosa de grupos comparables.
+- Verificación de no exposición del grupo de control lejano.
+- Selección del lugar basado en información de campo 1 y consultas con personas en campo
+- Preguntas de verificación en cuestionarios
+- Documentar el proceso de selección de beneficiarios (campo 1)
+- Uso de preguntas retrospectivas para reconstruir la situación previa.
+- Aplicación de métodos como diferencias-en-diferencias
+
+## Estrategia de campo para conformación de grupos de comparación
+
+:::: {.columns}
+
+::: {.column .r-fit-text width="50%"}
+**Tratamiento**
+
+- Listados de beneficiarios consolidados, a partir de información de las organizaciones beneficiarias
+- Selección aleatoria por parte de VCA
+- Contacto y ubicación de los beneficiarios seleccionados, con el apoyo de organizaciones beneficiarias
+- Verificación situación de seguridad
+- Visita y entrevista en el lugar de residencia por parte del equipo de VCA / Convoca a los seleccionados en un lugar central.
+:::
+
+::: {.column .r-fit-text width="50%"}
+**Control cercano**
+
+- Consolidando listado de personas para control cercano (similares características, en el área de influencia del proyecto), con el apoyo de las organizaciones beneficiarias
+- Selección aleatoria por parte de VCA
+- Contacto y ubicación de los beneficiarios seleccionados, con el apoyo de organizaciones beneficiarias
+- Verificación situación de seguridad
+- Visita y entrevista en el lugar de residencia por parte del equipo de VCA / Convoca a los seleccionados en un lugar central.
+
+
+- Alternativa: operativo vía delimitación geográfica, si no se logran consolidar listados.
+:::
+
+::::
+
+
+## Estrategia de campo para conformación de grupos de comparación
+
+:::: {.columns}
+
+::: {.column .r-fit-text width="50%"}
+**Tratamiento**
+
+- Listados de beneficiarios consolidados, a partir de información de las organizaciones beneficiarias
+- Selección aleatoria por parte de VCA
+- Contacto y ubicación de los beneficiarios seleccionados, con el apoyo de organizaciones beneficiarias
+- Verificación situación de seguridad
+- Visita y entrevista en el lugar de residencia por parte del equipo de VCA / Convoca a los seleccionados en un lugar central.
+:::
+
+::: {.column .r-fit-text width="50%"}
+
+**Control lejano**
+
+- Consolidando listado de personas para control cercano (similares características, en área no afectada por el proyecto), con el apoyo de las organizaciones beneficiarias
+- Selección aleatoria por parte de VCA
+- Contacto y ubicación de los beneficiarios seleccionados, con el apoyo de organizaciones beneficiarias
+- Verificación situación de seguridad
+- Visita y entrevista en el lugar de residencia por parte del equipo de VCA / Convoca a los seleccionados en un lugar central.
+
+::: {.r-fit-text}
+- Alternativa: operativo vía delimitación geográfica, si no se logran  consolidar listados, identificando área leajana apropiada (similares características, no influenciada por el proyecto), con el apoyo de organizaciones beneficiarias
+:::
+
+:::
+
+::::
+
+
+
+# Indicadores de interés
+
+## Indicadores de caracterización {.smaller}
+
+:::: {.columns}
+
+::: {.column .r-fit-text width="50%"}
+**Socio-demográficos**
+
+- Edad
+- Género
+- Reconocimiento étnico
+- Discapacidades
+- Afectación por conflicto armado
+
+**Socioeconómicos**
+
+- Fuente de ingreso principal
+- otros ingresos, incentivos
+- Seguridad social
+- Educación
+:::
+
+::: {.column .r-fit-text width="50%"}
+**Participación comunitaria**
+
+- Membresía en organizaciones
+- Tipo de participación (líder, miembro)
+- Frecuencia de participación
+- Otros programas, proyectos
+:::
+
+::::
+
+## Indicadores de impacto
+
+:::: {.columns}
+
+::: {.column .r-fit-text width="50%"}
+**Azoteas y cultivos de pancoger**
+
+- Autoconsumo
+- Soberanía Alimentaria
+- Ingresos
+- Gasto en alimentos
+- Intercambio/trueque
+- Conocimientos sobre siembra, manejo de cultivos, plagas, prácticas ancestrales
+
+**Basuras y residuos sólidos**
+
+- Reciclaje y separación de residuos
+- Aprovechamiento de residuos
+- Conocimiento de manejo de residuos, conciencia ambiental
+:::
+
+::: {.column .r-fit-text width="50%"}
+**Reforestación y recuperación de terreno**
+
+- Conocimientos sobre el cuidado adecuado del territorio
+- Adopción de prácticas responsables 
+
+**Interseccional y DEI**
+
+- Conocimientos sobre roles familiares, rol de la mujer
+- Empoderamiento y participación de la mujer
+- Participación y cohesión social
+- Intercambio de saberes
+
+
+**Cultural**
+
+- Adopción de saberes ancestrales
+- Lectura
+
+:::
+
+::::
+
+# Tamaño de muestra y cálculos de poder estadístico
+
+## ¿Qué es el Cálculo de Poder en una Evaluación de Impacto? 
+- El **cálculo de poder estadístico** determina el tamaño mínimo de muestra necesario para detectar un efecto de una intervención con una probabilidad dada.
+
+- Se utiliza para **garantizar que el diseño del estudio pueda identificar un efecto real** si este existe, evitando errores tipo II (falsos negativos).
+
+## Elementos Clave del Cálculo de Poder {.smaller}
+- **Indicador(es) de interés (trazador):** variable en la que se espera impacto.
+- **Tamaño del efecto esperado**: magnitud del impacto que se espera detectar.
+- **Nivel de significancia (α)**: probabilidad de error tipo I (usualmente 0.05).
+- **Poder estadístico (1 - β)**: probabilidad de detectar un efecto si realmente existe (usualmente 0.80).
+- **Diseño del estudio:** número de grupos, emparejamiento, estratificación, etc.
+- **Datos de referencia del resultado de interés:** Media, desviación estándar, etc..
+
+
+## Fórmulas Analíticas vs. Simulaciones {.smaller}
+
+Enfoque 1: Fórmulas Analíticas
+
+- Basadas en supuestos estadísticos clásicos (normalidad, varianzas homogéneas).
+- Útiles para **diseños simples** (e.g., comparación de medias entre dos grupos independientes).
+
+Enfoque 2: Simulaciones
+
+- Apropiado para **diseños complejos** (clustering, heterogeneidad, spillovers).
+- Consiste en:
+  1. Simular datos bajo distintos supuestos.
+  2. Aplicar el modelo de análisis.
+  3. Repetir múltiples veces.
+  4. Estimar la proporción de veces que se detecta el efecto (poder).
+- Permite incorporar, e.g., asignación no aleatoria, variables de confusión, efectos indirectos
+
+
+## Comparación Rápida {.smaller}
+| Característica       | Fórmulas Analíticas            | Simulaciones                       |
+|----------------------|--------------------------------|------------------------------------|
+| Facilidad de uso     | Alta                           | Media a baja                       |
+| Flexibilidad         | Baja                           | Alta                               |
+| Supuestos necesarios | Más estrictos                  | Más relajados                      |
+| Transparencia        | Alta (fórmulas cerradas)       | Depende del código y escenarios   |
+| Requiere programación| No necesariamente              | Sí                                 |
+
+::: aside
+Referencias
+
+- Duflo, E., Glennerster, R., & Kremer, M. (2007). *Using Randomization in Development Economics Research: A Toolkit*. In T. P. Schultz & J. Strauss (Eds.), *Handbook of Development Economics* (Vol. 4).
+- Gertler, P. J., Martinez, S., Premand, P., Rawlings, L. B., & Vermeersch, C. M. J. (2011). *Impact Evaluation in Practice*. World Bank.
+- McConnell, B. A., & Vera-Hernández, M. (2015). *Going Beyond Simple Program Evaluations: Simulation-Based Methods for Impact Evaluation*. IFS Working Paper W15/20.
+- Gelman, A., & Hill, J. (2007). *Data Analysis Using Regression and Multilevel/Hierarchical Models*. Cambridge University Press.
+:::
+
+
+
+
+## Para cada proyecto => cálculo de poder
+::: {.r-fit-text}
+- **Seleccionar indicador(es) trazador(es)**
+  - Ejemplo: % de hogares que reportan experiencia de autoconsumo
+  - Este será el resultado de interés
+
+- **Usar información externa para simular**
+  - Media, desviación estándar, tasa esperada
+  - Ejemplo: 70% cumplimiento, 10% desviación
+
+- **Definir escenario con efecto mínimo detectable**
+  - Por ejemplo: queremos detectar un aumento de +10pp
+
+- **Simular múltiples conjutos de datos (e.g., 1000) bajo ese escenario**
+  - Calcular en cuántos se detecta un efecto significativo
+  - 👉 El porcentaje de detección es el **poder estadístico**
+:::
+
+
+## Raíces del Manglar
+
+![](Raices_TOC.png)
+
+
+## Raíces del Manglar
+
+:::: {.columns}
+
+::: {.column .r-fit-text width="50%"}
+**Indicador**
+
+- % de personas que reciclan residuos sólidos
+
+**Datos de referencia**
+
+- % de hogares que clasifican basuras 
+- Fuente: [Encuesta de Calidad de Vida (ECV) 2023, DANE](https://www.dane.gov.co/index.php/estadisticas-por-tema/salud/calidad-de-vida-ecv/encuesta-nacional-de-calidad-de-vida-ecv-2023)
+:::
+
+::: {.column .r-fit-text width="50%"}
+**Nariño**
+
+| Área | % | L Inf. | L Sup. | CVE |
+|------|-----|---------|---------|-----|
+| Total | 51.2 | 49.0 | 53.5 | 2.2 |
+| Cabecera | 49.1 | 45.4 | 52.9 | 3.9 |
+| Centros poblados y rural disperso | 52.9 | 50.3 | 55.5 | 2.5 |
+
+```{r}
+plot_binomial(45, 0.527)
+```
+:::
+
+::::
+
+## Raíces del Manglar: Manejo de residuos
+```{r}
+tar_read(raices_power_plot) # |> plotly::ggplotly()
+```
+
+
+## Raíces del Manglar
+
+:::: {.columns}
+
+::: {.column .r-fit-text width="50%"}
+**Indicador**
+
+- Accidente de trabajo
+- Accidente de trabajo incapacitante
+
+**Datos de referencia**
+
+- % de personas que tuvieron accidente de trabajo
+- % de personas que perieron días de trabajo por accidente laboral
+- Fuente: Encuesta Nacional de Condiciones de Seguridad y Salud en el Trabajo (2015)
+:::
+
+::: {.column .r-fit-text width="50%"}
+
+**Trabajadores general**
+3.81%
+
+**Sector de servicios comunitarios, sociales y personales**
+4.1%
+
+**Sector construcción**
+6.4%
+
+
+```{r}
+plot_binomial(45, 0.041)
+```
+:::
+
+::::
+
+## Raíces del Manglar: Accidente
+```{r}
+tar_read(raices_power_plot_accidente) # |> plotly::ggplotly()
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## ACAPA
+
+![](ACAPA_TOC.png)
+
+## ACAPA
+
+:::: {.columns}
+
+::: {.column .r-fit-text width="50%"}
+**Indicador**
+
+- % de hogares que reportan experiencia de autoconsumo
+
+**Datos de referencia**
+
+- % de hogares que reportan experiencia de autoconsumo
+- Fuente: Encuesta Nacional de Situación Nutricional, 2015
+- Encuesta Nacional de Presupuestos de los Hogares (ENPH), evaluaciones ReSA, ECV
+:::
+
+::: {.column .r-fit-text width="50%"}
+
+
+| Zona | % |
+|------|-----|
+| Total | 15,9 |
+| Cabecera | 7.4 |
+| Resto | 63.7 |
+
+| Población | % |
+|------|-----|
+| "Afrodescendiente" | 16,9 |
+| Indígena | 50,2 |
+
+```{r}
+plot_binomial(50, 0.169)
+```
+:::
+
+::::
+
+## ACAPA
+```{r}
+tar_read(acapa_power_plot) # |> plotly::ggplotly()
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Sirenas
+
+![](Sirenas_TOC.png)
+
+## Sirenas
+
+:::: {.columns}
+
+::: {.column .r-fit-text width="50%"}
+**Indicador**
+
+- % de hogares que reportan experiencia de autoconsumo
+
+**Datos de referencia**
+
+- % de hogares que reportan experiencia de autoconsumo
+- Fuente: Encuesta Nacional de Situación Nutricional, 2015
+- Encuesta Nacional de Presupuestos de los Hogares (ENPH), evaluaciones ReSA, ECV
+:::
+
+::: {.column .r-fit-text width="50%"}
+
+
+| Zona | % |
+|------|-----|
+| Total | 15,9 |
+| Cabecera | 7.4 |
+| Resto | 63.7 |
+
+| Población | % |
+|------|-----|
+| "Afrodescendiente" | 16,9 |
+| Indígena | 50,2 |
+
+```{r}
+plot_binomial(50, 0.169)
+```
+:::
+
+::::
+
+## Sirenas
+```{r}
+tar_read(sirenas_power_plot) # |> plotly::ggplotly()
+```
+
+
+
+
+
+
+
+
+
+
+
+## Puerto Saija
+
+![](puerto_saija_TOC.png)
+
+## Puerto Saija
+
+:::: {.columns}
+
+::: {.column .r-fit-text width="50%"}
+**Indicador**
+
+- % de personas que reciclan residuos sólidos
+
+**Datos de referencia**
+
+- % de hogares que clasifican basuras 
+- Fuente: [Encuesta de Calidad de Vida (ECV) 2023, DANE](https://www.dane.gov.co/index.php/estadisticas-por-tema/salud/calidad-de-vida-ecv/encuesta-nacional-de-calidad-de-vida-ecv-2023)
+:::
+
+::: {.column .r-fit-text width="50%"}
+**Cauca**
+
+| Área | % | L Inf. | L Sup. | CVE |
+|------|-----|---------|---------|-----|
+| Total | 68.7 | 66.5 | 70.9 | 1.6 |
+| Cabecera | 59.4 | 56.1 | 62.6 | 2.8 |
+| Centros poblados y rural disperso | 73.9 | 71.5 | 76.2 | 1.6 |
+
+```{r}
+plot_binomial(45, 0.739)
+```
+:::
+
+::::
+
+## Puerto Saija
+```{r}
+tar_read(puertosaija_power_plot) # |> plotly::ggplotly()
+```
+
+
+
+
+
+
+## Sivirú
+
+![](siviru_TOC.png)
+
+## Sivirú
+
+:::: {.columns}
+
+::: {.column .r-fit-text width="50%"}
+**Indicador**
+
+- % de hogares que reportan experiencia de autoconsumo
+
+**Datos de referencia**
+
+- % de hogares que reportan experiencia de autoconsumo
+- Fuente: Encuesta Nacional de Situación Nutricional, 2015
+- Encuesta Nacional de Presupuestos de los Hogares (ENPH), evaluaciones ReSA, ECV
+:::
+
+::: {.column .r-fit-text width="50%"}
+
+
+| Zona | % |
+|------|-----|
+| Total | 15,9 |
+| Cabecera | 7.4 |
+| Resto | 63.7 |
+
+| Población | % |
+|------|-----|
+| "Afrodescendiente" | 16,9 |
+| Indígena | 50,2 |
+
+```{r}
+plot_binomial(50, 0.159)
+```
+:::
+
+::::
+
+## Sivirú
+```{r}
+tar_read(siviru_power_plot) # |> plotly::ggplotly()
+```
+
+
+
+
+
+## San Andrés de Usuragá
+
+![](usuraga_TOC.png)
+
+## San Andrés de Usuragá
+
+:::: {.columns}
+
+::: {.column .r-fit-text width="50%"}
+**Indicador**
+
+- Producción (esperada)
+- Ingresos
+
+**Datos de referencia**
+
+- Encuesta nacional agropecuaria (ENA), DANE
+:::
+
+::: {.column .r-fit-text width="50%"}
+
+
+| Nacional | % |
+|------|-----|
+| Producción Plátano (toneladas) | 2.185.005 |
+| Área cosechada (Hectáreas) | 250.575 |
+| Toneladas por Hectárea | 8.72 |
+
+| Chocó | % |
+|------|-----|
+| Producción Plátano (toneladas) | 22.450 |
+| Área cosechada (Hectáreas) | 2.135 |
+| Toneladas por Hectárea | 10.51 |
+
+```{r}
+plot_binomial(50, 0.159)
+```
+:::
+
+::::
+
+## San Andrés de Usuragá
+```{r}
+tar_read(usuraga_power_plot) # |> plotly::ggplotly()
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Proyectos a visitar esta semana
+
+Análisis preliminares
+
+
+
+
+## Asogesampa
+
+![](Asogesampa_TOC.png)
+
+## Asogesampa
+
+:::: {.columns}
+
+::: {.column .r-fit-text width="50%"}
+**Indicador**
+
+- % de personas que reciclan residuos sólidos
+
+**Datos de referencia**
+
+- % de hogares que clasifican basuras 
+- Fuente: [Encuesta de Calidad de Vida (ECV) 2023, DANE](https://www.dane.gov.co/index.php/estadisticas-por-tema/salud/calidad-de-vida-ecv/encuesta-nacional-de-calidad-de-vida-ecv-2023)
+:::
+
+::: {.column .r-fit-text width="50%"}
+**Valle del Cauca**
+
+| Área | % | L Inf. | L Sup. | CVE |
+|------|-----|---------|---------|-----|
+| Total | 59.0 | 55.9 | 62.0 | 2.7 |
+| Cabecera | 59.9 | 56.6 | 63.3 | 2.8 |
+| Centros poblados y rural disperso | 53.1 | 49.3 | 56.9 | 3.7 |
+
+```{r}
+plot_binomial(45, 0.527)
+```
+:::
+
+
+::::
+
+## Asogesampa
+```{r}
+tar_read(asogesampa_power_plot) # |> plotly::ggplotly()
+```
+
+
+
+
+
+
+## Mariposas de Amor
+
+![](Mariposas_TOC.png)
+
+## Mariposas de Amor
+
+:::: {.columns}
+
+::: {.column .r-fit-text width="50%"}
+**Indicador**
+
+- libros leídos al año por personas de 5 años y más
+
+**Datos de referencia**
+
+- de libros leídos al año por personas de 5 años y más
+- Fuente: Encuesta nacional de lectura (ENLEC)
+:::
+
+::: {.column .r-fit-text width="50%"}
+
+
+| Zona | % |
+|------|-----|
+| Total | 5,1 |
+| Cabeceras municipales | 5,4 |
+| Centros poblados y rural disperso | 4,2 |
+
+
+```{r}
+plot_binomial(50, 0.051)
+```
+:::
+
+::::
+
+## Mariposas de Amor
+```{r}
+tar_read(mariposas_power_plot) # |> plotly::ggplotly()
+```
+
+
+
+
+# old {.hidden}
+
+
+
+- Delimitación geográfica del área de influencia del proyecto, con el apoyo de organizaciones beneficiarias
+- Mapeo del área de influencia por parte del equipo de VCA
+- Reconocimiento de la zona por parte del equipo de VCA
+- Visita y entrevista en el lugar de residencia por parte del equipo de VCA, utilizando método de barrido / muestra definida
