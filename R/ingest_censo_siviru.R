@@ -88,7 +88,7 @@ select_control_cercano_siviru <- function(
       identity(),
     method = "nearest",
     replace = FALSE,
-    ratio = 2,
+    ratio = 8,
     exact = "site"
     #caliper = 0.2
   ) |>
@@ -129,7 +129,7 @@ select_control_lejano_siviru <- function(
       identity(),
     method = "nearest",
     replace = FALSE,
-    ratio = 2
+    ratio = 8
   ) |>
     MatchIt::match.data()
 

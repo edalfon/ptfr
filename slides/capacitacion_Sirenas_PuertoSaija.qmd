@@ -15,6 +15,7 @@ format:
 ## Objetivo de la capacitación
 
 - Comprender el propósito de la encuesta
+- Conocer la aplicación para el diligenciamiento del cuestionario
 - Conocer el cuestionario y el manual del encuestador
 - Desarrollar habilidades prácticas para aplicar entrevistas
 - Garantizar el cumplimiento ético, técnico y operativo del trabajo en campo
@@ -41,27 +42,44 @@ format:
 
 ## Los proyectos
 ::: {.r-fit-text}
-- Jóvenes Creadores del Chocó (JCH), organización administradora
-- Proyecto del Consejo Comunitario de San Andrés de Usaragá
-- Título del Proyecto: "Fortalecimiento de la cadena productiva del plátano como alternativa para la generación de ingresos, construcción de paz y bienestar en el consejo comunitario de San Andrés de Usaragá municipio de Bajo Baudó – Chocó".
-- Proyecto del Consejo Comunitario de Sivirú
-- Título del Proyecto: "Establecimiento de azoteas, para la generación de ingresos, construcción de paz y bienestar el Consejo comunitario de Sivirú, Bajo Baudó Chocó".
+
+Guapi - Sirenas
+
+- Proyecto "De la azotea a la soberanía alimentaria: Estrategia productiva de las mujeres negras rurales de Quiroga de Guapi, Cauca":
+  - Organización Administradora (OA): Proceso de Comunidades Negras (PCN).
+  - Organización Beneficiaria (OB): Asociación GAADE LAS SIRENAS.
+
+Timbiquí - Puerto Saíja - Sirenas
+
+- Proyecto "A mí me toca, edificar el medio ambiente":
+  - Organización Administradora (OA): Centro de Estudios Afrodiaspóricos (CEAF).
+  - Organización Beneficiaria (OB): Institución Educativa Etnoeducativo Puerto Saija.
 :::
 
-## Fortalecimiento de la cadena productiva del plátano como alternativa para la generación de ingresos, construcción de paz y bienestar en el consejo comunitario de San Andrés de Usaragá municipio de Bajo Baudó – Chocó
+
+
+## De la azotea a la soberanía alimentaria
 ::: {.r-fit-text}
-- Establecimiento de 10 hectáreas de Plátano Hartón para 10 familias beneficiarias directas, ubicadas en Usaragá, Pampón y Puerto Viveros.
-- Dotación de herramientas, material vegetal e insumos necesarios para el cultivo.
-- Implementación de un enfoque agroecológico, sin el uso de abonos o insumos químicos.
-- Establecimiento de acuerdos comerciales entre productores y comercializadores para asegurar la venta del producto.
-- Realización de un plan de formación con talleres sobre género, temas productivos (manejo de plagas y enfermedades), y visión empresarial, abiertos a la comunidad en general.
+
+ - Objetivo: Fortalecer la soberanía alimentaria de 25 hogares de mujeres negras mediante la producción agrícola diversificada y saberes propios.
+
+- Actividades Clave: 
+  - Recuperar prácticas ancestrale sobre el cultivo de azotea
+  - Construcción de azoteas
+  - Cultivos de pancoger
+  - Intercambio de saberes
+  - Entrega e intercambio de semillas (plantas medicinales y condimentarias).
 :::
 
-## Establecimiento de azoteas, para la generación de ingresos, construcción de paz y bienestar el Consejo comunitario de Sivirú, Bajo Baudó Chocó
+## A mí me toca, edificar el medio ambiente
 ::: {.r-fit-text}
-- Establecimiento de 40 azoteas para 40 mujeres cabeza de hogar en las comunidades de Sivirú y Dotenedó, utilizando materiales de la región y sin químicos.
-- Capacitaciones en diversas áreas como buenas prácticas agropecuarias, contabilidad, estrategias de comercialización, proyecto de vida, liderazgo y género, solidaridad femenina, expresión oral, y derechos étnico-territoriales, y biodiversidad.
-- Fomenta el rescate, apropiación y preservación de saberes y costumbres culturales agroproductivas
+
+- Objetivo: Promover el manejo adecuado de residuos sólidos en la comunidad educativa de Puerto Saija
+
+- Actividades Clave: 
+  - Sensibilización y capacitación en residuos sólidos
+  - Reciclaje y reutilización para transformar desechos en manualidades y diseños artísticos
+  - Establecimiento de puntos de recolección
 :::
 
 # El rol de la encuestadora
@@ -136,26 +154,37 @@ format:
 
 
 # Tipos de pregunta en la aplicación
+:::: {.columns}
+
+::: {.column .r-fit-text width="50%"}
 
 Preguntas de información
+
 - Se leen, no requieren respuesta
 
 Selección única / múltiple
+
 - Leer todas las opciones
 - Esperar respuesta y seleccionar adecuadamente
 
 Texto y numéricas
+
 - Registrar de forma literal y precisa
 - Validar rangos y coherencia
+::: 
 
+::: {.column .r-fit-text width="50%"}
 Grabación de voz
+
 - Pedir autorización antes de grabar
 - Registrar también en texto
 
 Localización geográfica
+
 - Solicitar consentimiento antes de capturar coordenadas
+:::
 
-
+::::
 
 # Secciones del cuestionario
 
@@ -215,7 +244,7 @@ Localización geográfica
 
 - Practicar y Retroalimentar
 
-Miércoles 30 de Julio a final del día
+Jueves 7 de Agosto a final del día
 
 ## Estudiar el manual del encuestador
 
@@ -236,7 +265,7 @@ Miércoles 30 de Julio a final del día
 - Tomar notas de posibles errores del cuestionario y oportunidades de mejora del mismo
 :::
 
-## Entrevista a otra persona voluntaria
+## Entrevista a otra(s) persona(s) voluntaria(s)
 
 - Si les es posible, realizar entrevista completa a alguna persona voluntaria.
   + Familiares
@@ -266,3 +295,4 @@ Miércoles 30 de Julio a final del día
 ## ¡Gracias por tu compromiso!
 
 Tu labor es esencial para construir información confiable, útil y respetuosa con las comunidades del Pacífico colombiano.
+

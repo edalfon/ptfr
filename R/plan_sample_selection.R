@@ -22,6 +22,12 @@ plan_sample_selection <- function() {
       )
     ),
 
+    # saija
+    tar_target(cercano_saija, ingest_cercano_saija()),
+    tar_target(lejano_saija, ingest_lejano_saija()),
+    tar_target(control_cercano_saija, select_control_cercano_saija(cercano_saija)),
+    tar_target(control_lejano_saija, select_control_lejano_saija(lejano_saija)),
+
     NULL
   )
 }
