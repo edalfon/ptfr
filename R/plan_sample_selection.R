@@ -28,6 +28,9 @@ plan_sample_selection <- function() {
     tar_target(control_cercano_saija, select_control_cercano_saija(cercano_saija)),
     tar_target(control_lejano_saija, select_control_lejano_saija(lejano_saija)),
 
+    #acapa
+    tar_target(beneficiarios_acapa, ingest_beneficiarios_acapa()),
+    tar_target(muestra_acapa, select_muestra_acapa(beneficiarios_acapa)),
     NULL
   )
 }
