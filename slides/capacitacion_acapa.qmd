@@ -1,0 +1,286 @@
+---
+title: "Capacitación para Encuestadoras"
+author: "VCA"
+format:
+  revealjs:
+    theme: solarized
+    slide-number: true
+    transition: slide
+    chalkboard: true
+    logo: vca_logo.png
+---
+
+# Encuesta a personas de comunidades del pacífico colombiano
+
+## Objetivo de la capacitación
+
+- Comprender el propósito de la encuesta
+- Conocer la aplicación para el diligenciamiento del cuestionario
+- Conocer el cuestionario y el manual del encuestador
+- Desarrollar habilidades prácticas para aplicar entrevistas
+- Garantizar el cumplimiento ético, técnico y operativo del trabajo en campo
+
+
+# Presentación del estudio
+
+## Pacífico Task Force (PTF)
+
+- Alianza de organizaciones del Pacífico que busca consolidar un ecosistema de trabajo colaborativo para fortalecer la justicia étnico-racial en la región
+  + Jóvenes Creadores del Chocó (JCH)
+  + Proceso de Comunidades Negras (PCN)
+  + Centro de Estudios Afrodiaspóricos (CEAF)
+- Modelo de acompañamiento a organizaciones beneficiarias
+- Organizaciones beneficiarias ejecutan proyectos
+
+## Esta Encuesta
+
+- Investigación sobre condiciones, prácticas y creencias en comunidades del Pacífico colombiano
+- Realizado por VCA para PTF
+- Evaluar el modelo de acompañamiento
+- Evaluar cambios en las comunidades beneficiarias
+- Información clave para la gestión en justicia étnico-racial y desarrollo comunitario
+
+## El proyecto
+::: {.r-fit-text}
+
+
+Título del Proyecto: "TEJIENDO NATURALEZA" COMUNIDAD Y MUJERES EN ACCIÓN POR LA HABILITACIÓN ECOLÓGICA
+
+Lugar de Ejecución: El proyecto se ejecuta en el territorio del Consejo Comunitario ACAPA, específicamente en las veredas de Majagual, San Sebastián y Los Bajos, situadas a orillas del río Patía y su ensenada, en el departamento de Nariño.
+Organizaciones Involucradas:
+
+- Organización Beneficiaria (OB) ejecutora: Consejo Comunitario Río Patía Grande Sus Brazos y Ensenada ("ACAPA").
+- Organizaciones Administradoras (OA) y Financiadoras: Pacífico Task Force (PTF) en alianza con Proceso de Comunidades Negras (PCN)
+
+:::
+
+
+
+## Recolección de piangua y cuidado del ecosistema marino en el manglar
+::: {.r-fit-text}
+
+Objetivo del Proyecto: Implementar un plan activo de recuperación y rehabilitación ecológica para restaurar estructural y funcionalmente alrededor de 15 hectáreas afectadas por la acción humana dentro del Consejo Comunitario ACAPA. Este objetivo se ajustó para enfocarse en la siembra de mangle rojo y el establecimiento de azoteas (huertas caseras), involucrando activamente a la comunidad.
+Actividades Principales:
+
+- Rehabilitación Ecológica del Territorio: Desarrollo de un plan de recuperación y rehabilitación ecológica activa, centrándose en la reforestación de áreas afectadas, con un énfasis particular en la siembra de mangle rojo y la recuperación de especies nativas.
+- Establecimiento de Azoteas (Huertas Caseras): Implementación de sistemas productivos tradicionales de azoteas para complementar la dieta alimentaria familiar y generar ingresos para mujeres cabeza de hogar, utilizando materiales de la región.
+- Capacitación y Fortalecimiento de Capacidades: Realización de talleres y capacitaciones en áreas como:
+    - Manejo y recolección de material vegetal y técnicas de siembra.
+    - Gestión ambiental, gobernanza territorial y temas de salud y cuidado de niños.
+    - Enfoques de género e interseccionalidad, empoderando a las mujeres y jóvenes en el liderazgo y la ejecución de actividades.
+:::
+
+
+# El rol de la encuestadora
+
+## La importancia de la encuestadora
+
+- El encuestador/a es la voz del estudio en territorio. Su labor es fundamental para garantizar que la información recolectada sea confiable, veraz y útil.
+- A través de su actitud, claridad, y compromiso, establece una relación de confianza que permite obtener respuestas sinceras.
+- Su rol no es solo técnico, sino también ético y representativo: representa al proyecto ante las comunidades.
+- Un error del encuestador/a puede comprometer todo el esfuerzo investigativo; su precisión y profesionalismo hacen la diferencia.
+
+
+## Roles del operativo
+
+- Supervisor/a: coordina, revisa formularios, orienta
+- Encuestadores/as: aplican el cuestionario, resguardan la información, reportan dificultades
+
+
+
+# Principios éticos
+
+## Consentimiento informado
+
+- Presente su rol y propósito del estudio
+- Resalte la voluntariedad, confidencialidad y tiempo estimado
+- Ejemplo de introducción y obtención del consentimiento
+
+## Confidencialidad
+
+- No divulgar respuestas ni datos personales
+- Tratar toda la información con reserva y respeto
+
+
+# Técnica de entrevista
+
+## Neutralidad del encuestador
+
+- Es indispensable mantener una postura neutral frente a todas las respuestas, sin emitir juicios ni mostrar aprobación o desaprobación.
+- La neutralidad busca que la persona encuestada se exprese libremente y sin influencias.
+- Evite reforzar respuestas con frases como "muy bien", "correcto" o hacer gestos faciales de sorpresa o duda.
+- Si la persona pregunta "¿qué debería responder?", recuérdele amablemente que no hay respuestas correctas o incorrectas: lo importante es su experiencia o percepción.
+
+
+## Primera impresión y comportamiento profesional
+
+- Buena presentación, empatía, voz clara
+- Leer textualmente las preguntas
+- Escuchar con paciencia y sin juicios
+
+## Situaciones sensibles
+
+- Uso del modo privado para preguntas delicadas
+- Mostrar la pantalla si hay otras personas presentes
+
+## Negativa a participar
+
+- Argumentos de persuasión sin presionar
+- Si persiste, agradecer e informar al supervisor
+
+
+# Herramientas de recolección
+
+## Uso del dispositivo
+
+- Navegación por la app
+- Guardado y sincronización diaria
+- Solución de errores comunes
+
+- ¿Cómo les fue con la aplicación y el manual?
+
+
+
+
+# Tipos de pregunta en la aplicación
+:::: {.columns}
+
+::: {.column .r-fit-text width="50%"}
+
+Preguntas de información
+
+- Se leen, no requieren respuesta
+
+Selección única / múltiple
+
+- Leer todas las opciones
+- Esperar respuesta y seleccionar adecuadamente
+
+Texto y numéricas
+
+- Registrar de forma literal y precisa
+- Validar rangos y coherencia
+::: 
+
+::: {.column .r-fit-text width="50%"}
+Grabación de voz
+
+- Pedir autorización antes de grabar
+- Registrar también en texto
+
+Localización geográfica
+
+- Solicitar consentimiento antes de capturar coordenadas
+:::
+
+::::
+
+# Secciones del cuestionario
+
+## 1. Introducción y consentimiento
+- Presentación del encuestador/a
+- Aclaración sobre la voluntariedad y confidencialidad
+
+## 2. Identificación
+- Nombre (opcional), autorización para registrar coordenadas
+- Información básica para ubicar a la persona
+
+## 3. Datos sociodemográficos
+- Edad, sexo asignado al nacer, identidad de género, orientación sexual, autorreconocimiento étnico
+
+## 4. Educación
+- Nivel educativo alcanzado, capacidad de lectura y escritura
+
+## 5. Discapacidad y funcionamiento
+- Dificultades en oír, ver, caminar, hablar, recordar, etc.
+- Causas de dichas dificultades
+
+## 6. Condiciones de seguridad social
+- Afiliación a salud, pensión, ARL y tipo de régimen
+
+## 7. Trabajo e ingresos
+- Actividades realizadas la semana pasada
+- Ocupación principal, ingresos, disponibilidad laboral
+
+## 8. Gasto en alimentos
+- Frecuencia y valor de compras alimentarias
+- Fuentes no monetarias de alimentos (trueque, regalo, autosuministro)
+
+## 9. Ayudas institucionales
+- Subsidios de entidades gubernamentales o no gubernamentales
+
+## 10. Participación social y comunitaria
+- Pertenencia, contacto y liderazgo en organizaciones
+
+## 11. Percepciones sobre inclusión y discriminación
+- Sentido de respeto en organizaciones
+- Experiencias de discriminación por etnia, género, orientación, etc.
+
+
+
+
+# Próximos pasos
+
+## Próximos pasos
+
+- Estudiar el manual del encuestador
+
+- Entrevista entre compañeras
+
+- Entrevista a otra persona voluntaria
+
+- Diligenciamiento de cuestionarios simulados
+
+- Practicar y Retroalimentar
+
+
+## Estudiar el manual del encuestador
+
+- Estudiar el manual del encuestador, de cada proyecto
+- Fijarse particularmente en las instrucciones puntuales de las preguntas
+- Comentar necesidad de mejora en el manual. ¿qué falta?, ¿tiene errores?, ¿qué se puede mejorar?, ¿qué sobra?
+
+## Entrevista entre compañeras
+::: {.r-fit-text}
+- Cada encuestadora realizará una entrevista completa a su compañera, siguiendo todos los lineamientos aprendidos.
+  + Hacer la presentación inicial y solicitar el consentimiento.
+  + Leer las preguntas textualmente.
+  + Registrar fielmente las respuestas.
+  + Mantener la neutralidad en todo momento.
+  + Asegurarse de grabar y sincronizar las respuestas.
+- Al finalizar, retroaliméntense mutuamente: ¿Qué se hizo bien? ¿Qué se puede mejorar?
+- ¿Cuánto tiempo les tomó?
+- Tomar notas de posibles errores del cuestionario y oportunidades de mejora del mismo
+:::
+
+## Entrevista a otra(s) persona(s) voluntaria(s)
+
+- Si les es posible, realizar entrevista completa a alguna persona voluntaria.
+  + Familiares
+  + Amigos
+  + Vecinos
+- ¿Cuánto tiempo les tomó?
+- Tomar notas de posibles errores del cuestionario y oportunidades de mejora del mismo
+
+## Diligenciamiento de cuestionarios simulados
+
+- Recibirán respuestas simuladas para 10 cuestionarios (5 Sivirú, 5 Usuragá)
+- Diligenciar en el aplicativo, utilizando las respuestas simuladas
+- En este caso no es necesario leer
+- El ejercicio busca poner a prueba los distintos flujos del cuestionario
+- Tomar notas de posibles errores del cuestionario y oportunidades de mejora del mismo
+
+# Practicar y Retroalimentar
+
+- Esta práctica refuerza la confianza en el uso de la herramienta
+- Permite identificar oportunidades de mejora antes del trabajo en campo real
+- Permite tener una medición más realista del tiempo necesario para aplicar el cuestionario.
+- Retroalimentar el manual del encuestador
+- Retroalimentar los cuestionarios (flujo, saltos, lenguaje y terminología)
+
+# Agradecimientos
+
+## ¡Gracias por tu compromiso!
+
+Tu labor es esencial para construir información confiable, útil y respetuosa con las comunidades del Pacífico colombiano.
+

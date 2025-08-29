@@ -5,6 +5,7 @@ list(
   tar_quarto(capacita_slides, "slides/capacitacion.qmd"),
   tar_quarto(capacita_slides_sirenas, "slides/capacitacion_Sirenas_PuertoSaija.qmd"),
   tar_quarto(capacita_raices, "slides/capacitacion_raices.qmd"),
+  tar_quarto(capacita_acapa, "slides/capacitacion_acapa.qmd"),
 
   #lapply(as.list(body(plan_siviru))[-1], eval),
   tar_fn(plan_siviru),
