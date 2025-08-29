@@ -6,6 +6,9 @@ list(
   tar_quarto(capacita_slides_sirenas, "slides/capacitacion_Sirenas_PuertoSaija.qmd"),
   tar_quarto(capacita_raices, "slides/capacitacion_raices.qmd"),
 
-  NULL
-  # flowme::tar_bookdown("report")
+  #lapply(as.list(body(plan_siviru))[-1], eval),
+  tar_fn(plan_siviru),
+  NULL,
+  flowme::tar_bookdown("report"),
+  tar_target(openreport, browseURL("report/_book/index.html"))
 )

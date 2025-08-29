@@ -1,3 +1,6 @@
 *.html
 *.docx
 *.md
+_book
+_report_files
+_preview

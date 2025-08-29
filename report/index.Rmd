@@ -1,5 +1,5 @@
 ---
-title: "Report"
+title: "PTF"
 output:
   html_notebook:
     toc: yes
@@ -12,19 +12,19 @@ always_allow_html: true
 
 ```{r include=FALSE}
 knitr::opts_chunk$set(
-  echo = ech <- FALSE, warning = ech, message = ech, error = ech, 
-  include = TRUE, cache.comments = TRUE, cache = FALSE, fig.height = 4, 
+  echo = ech <- FALSE, warning = ech, message = ech, error = ech,
+  include = TRUE, cache.comments = TRUE, cache = FALSE, fig.height = 4,
   fig.width = 5
 )
 ```
 
 
-# Now it seems mandatory to have an index: a.k.a Hello World !
+# Resumen registros subidos
 
-```{r}
-tar_read(toy_data)
-```
+| Project  | Uploaded |
+|----------|----------|
+| Sirvirú  |     117  |
+| Usaragá  |      20  |
+| Sirenas  |      29  |
+| Pto Saíja|      63  |
 
-```{r}
-tar_load(fake_data)
-```
