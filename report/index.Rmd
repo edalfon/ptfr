@@ -16,15 +16,46 @@ knitr::opts_chunk$set(
   include = TRUE, cache.comments = TRUE, cache = FALSE, fig.height = 4,
   fig.width = 5
 )
+
+upload_count <- function(data) {
+  data %>%
+    dplyr::count(created_by, name = "Uploaded") %>%
+    dplyr::add_row(created_by = "Total", Uploaded = sum(.$Uploaded)) %>%
+    knitr::kable(col.names = c("User", "Uploaded"), align = "r")
+}
 ```
 
 
 # Resumen registros subidos
 
-| Project  | Uploaded |
-|----------|----------|
-| Sirvirú  |     117  |
-| Usaragá  |      20  |
-| Sirenas  |      29  |
-| Pto Saíja|      63  |
+## Sivirú
+
+```{r}
+siviru_survey <- tar_read(siviru_survey)
+upload_count(siviru_survey)
+```
+
+## Usaragá
+```{r}
+usaraga_survey <- tar_read(usaraga_survey)
+upload_count(usaraga_survey)
+```
+
+## Sirenas
+```{r}
+sirenas_survey <- tar_read(sirenas_survey)
+upload_count(sirenas_survey)
+```
+
+## Puerto Saíja
+```{r}
+saija_survey <- tar_read(saija_survey)
+upload_count(saija_survey)
+```
+
+## Raíces
+```{r}
+raices_survey <- tar_read(raices_survey)
+upload_count(raices_survey)
+```
 

@@ -9,6 +9,10 @@ list(
 
   #lapply(as.list(body(plan_siviru))[-1], eval),
   tar_fn(plan_siviru),
+  tar_fn(plan_usaraga),
+  tar_fn(plan_sirenas),
+  tar_fn(plan_raices),
+  tar_fn(plan_saija),
   NULL,
   flowme::tar_bookdown("report"),
   tar_target(openreport, browseURL("report/_book/index.html"))
