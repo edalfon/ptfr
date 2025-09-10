@@ -1,0 +1,214 @@
+---
+title: "PTF"
+output:
+  html_notebook:
+    toc: yes
+    toc_float:
+      collapsed: no
+    number_sections: no
+    code_folding: hide
+always_allow_html: true
+---
+
+```{r include=FALSE}
+knitr::opts_chunk$set(
+  echo = ech <- FALSE, warning = ech, message = ech, error = ech,
+  include = TRUE, cache.comments = TRUE, cache = FALSE, fig.height = 4,
+  fig.width = 5
+)
+
+upload_count <- function(data) {
+  data %>%
+    dplyr::count(created_by, name = "Uploaded") %>%
+    dplyr::add_row(created_by = "Total", Uploaded = sum(.$Uploaded)) %>%
+    knitr::kable(col.names = c("User", "Uploaded"), align = "r")
+}
+```
+
+
+# Resumen registros subidos
+
+## Sivirú
+
+```{r}
+siviru_survey <- tar_read(siviru_survey)
+upload_count(siviru_survey)
+```
+
+## Usaragá
+```{r}
+usaraga_survey <- tar_read(usaraga_survey)
+upload_count(usaraga_survey)
+```
+
+## Sirenas
+```{r}
+sirenas_survey <- tar_read(sirenas_survey)
+upload_count(sirenas_survey)
+```
+
+## Puerto Saíja
+```{r}
+saija_survey <- tar_read(saija_survey)
+upload_count(saija_survey)
+```
+
+## Raíces
+```{r}
+raices_survey <- tar_read(raices_survey)
+upload_count(raices_survey)
+```
+
+
+<!--chapter:end:index.Rmd-->
+
+---
+title: "Report"
+output:
+  html_notebook:
+    toc: yes
+    toc_float:
+      collapsed: no
+    number_sections: no
+    code_folding: hide
+always_allow_html: true
+---
+
+```{r include=FALSE}
+knitr::opts_chunk$set(
+  echo = ech <- FALSE, warning = ech, message = ech, error = ech,
+  include = TRUE, cache.comments = TRUE, cache = FALSE, fig.height = 4,
+  fig.width = 5
+)
+```
+
+
+# Tiempos Siviru
+
+```{r}
+siviru_times <- tar_read(siviru_times)
+```
+
+```{r}
+# Show the mean of Siviru Times (minutes) in a nicely formatted table
+knitr::kable(
+  data.frame(`Mean Siviru Time (minutes)` = mean(siviru_times$tot_mins)),
+  caption = "Mean of Siviru Times (minutes)",
+  digits = 1
+)
+```
+
+```{r}
+# siviru_times |> efun::denstogram(tot_mins)
+
+# Show summary quantiles in a nicely formatted table
+knitr::kable(
+  as.data.frame(
+    t(quantile(siviru_times$tot_mins, probs = c(0, 0.1, 0.25, 0.5, 0.75, 0.9, 1)))
+  ),
+  caption = "Summary of Siviru Times (minutes)",
+  digits = 2
+)
+```
+
+```{r, fig.width=7, fig.height=4, out.width='100%'}
+siviru_times |>
+  ggplot(aes(x = tot_mins)) +
+  geom_density(fill = "#3182bd", alpha = 0.6, color = "#08519c", size = 1) +
+  geom_rug() +
+  labs(
+    x = "Siviru Time (minutes)",
+    y = "Density"
+  ) +
+  theme_minimal(base_size = 14)
+```
+
+```{r, fig.width=7, fig.height=4, out.width='100%'}
+siviru_times |>
+  rename(beneficia = x190_72_la_persona_es) |>
+  ggplot(aes(x = tot_mins, fill = beneficia)) +
+  geom_density(alpha = 0.7, color = NA, size = 1) +
+  geom_rug() +
+  labs(
+    x = "Siviru Time (minutes)",
+    y = "Density"
+  ) +
+  theme_minimal(base_size = 14) +
+  theme(legend.position = "top")
+```
+
+```{r}
+# Cross-tabulate beneficia by created_by
+siviru_times |>
+  rename(beneficia = x190_72_la_persona_es) |>
+  count(beneficia, created_by) |>
+  tidyr::pivot_wider(
+    names_from = beneficia,
+    values_from = n,
+    values_fill = 0
+  ) |>
+  knitr::kable(
+    caption = "Cross-tabulation of Created By by Beneficia"
+  )
+```
+
+```{r, fig.width=7, fig.height=4, out.width='100%'}
+siviru_times |>
+  ggplot(aes(x = tot_mins, fill = created_by)) +
+  geom_density(alpha = 0.7, color = NA, size = 1) +
+  geom_rug() +
+  labs(
+    x = "Siviru Time (minutes)",
+    y = "Density"
+  ) +
+  theme_minimal(base_size = 14) +
+  theme(legend.position = "top") +
+  guides(fill = guide_legend(nrow = 2, byrow = TRUE))
+```
+
+
+```{r, fig.width=7, fig.height=7, out.width='100%'}
+siviru_times |>
+  rename(beneficia = x190_72_la_persona_es) |>
+  ggplot(aes(x = tot_mins, fill = created_by)) +
+  geom_density(alpha = 0.7, color = NA, size = 1) +
+  geom_rug() +
+  facet_grid(rows = vars(beneficia)) +
+  labs(
+    x = "Siviru Time (minutes)",
+    y = "Density"
+  ) +
+  theme_minimal(base_size = 14) +
+  theme(legend.position = "top") +
+  guides(fill = guide_legend(nrow = 2, byrow = TRUE))
+```
+
+<!--chapter:end:chapter1.Rmd-->
+
+---
+title: "Report"
+output:
+  html_notebook:
+    toc: yes
+    toc_float:
+      collapsed: no
+    number_sections: no
+    code_folding: hide
+always_allow_html: true
+---
+
+```{r include=FALSE}
+knitr::opts_chunk$set(
+  echo = ech <- FALSE, warning = ech, message = ech, error = ech,
+  include = TRUE, cache.comments = TRUE, cache = FALSE, fig.height = 4,
+  fig.width = 5
+)
+```
+
+
+# Chapter 2: only fake data here
+
+sdf
+
+<!--chapter:end:chapter2.Rmd-->
+

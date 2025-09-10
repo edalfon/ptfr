@@ -1,0 +1,43 @@
+```{r}
+upload_count <- function(data) {
+  data_counts <- dplyr::count(data, created_by, name = "Uploaded")
+
+  data_counts |> 
+    dplyr::add_row(created_by = "Total", Uploaded = sum(data_counts$Uploaded))  |> 
+    knitr::kable(col.names = c("User", "Uploaded"), align = "r")
+}
+```
+
+# Resumen registros subidos
+
+## Sivirú
+
+```{r}
+siviru_survey <- tar_read(siviru_survey)
+upload_count(siviru_survey)
+```
+
+## Usaragá
+```{r}
+usaraga_survey <- tar_read(usaraga_survey)
+upload_count(usaraga_survey)
+```
+
+## Sirenas
+```{r}
+sirenas_survey <- tar_read(sirenas_survey)
+upload_count(sirenas_survey)
+```
+
+## Puerto Saíja
+```{r}
+saija_survey <- tar_read(saija_survey)
+upload_count(saija_survey)
+```
+
+## Raíces
+```{r}
+raices_survey <- tar_read(raices_survey)
+upload_count(raices_survey)
+```
+

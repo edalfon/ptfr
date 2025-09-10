@@ -7,23 +7,17 @@ plan_siviru <- function() {
     epicollect_download_data(
       proj_slug = "PTF_SIVIRU",
       client_id = "6749",
-      client_secret = "Fno423tb3nHL7dfXDV1zX1UpebUgTfhs1fTrsZxc",
-      form_ref = "ENCUESTA"
+      client_secret = "Fno423tb3nHL7dfXDV1zX1UpebUgTfhs1fTrsZxc"
     ) |>
       janitor::clean_names() |>
-      dplyr::filter(title != "Prueba 1")
+      dplyr::filter(title != "Prueba 1") |>
+      identity()
   })
 
-  # tar_target(siviru_times, {
-  #   siviru_survey |>
-  #     select(
-  #       created_by,
-  #       x1_inicie,
-  #       x102_contine,
-  #       x233_finalice,
-  #       x190_72_la_persona_es
-  #     ) |>
-  #     mutate(tot_secs = x233_finalice - x1_inicie) |>
-  #     mutate(tot_mins = as.numeric(tot_secs, units = "mins"), )
-  # })
+  tar_target(siviru_times, {
+    siviru_survey |>
+      select(created_by, inicio, intermedio, final, beneficia) |>
+      mutate(tot_secs = final - inicio) |>
+      mutate(tot_mins = as.numeric(tot_secs, units = "mins"), )
+  })
 }

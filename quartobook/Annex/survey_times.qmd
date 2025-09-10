@@ -1,0 +1,41 @@
+## Tiempos de entrevista en el levantamiento de información
+
+## Tiempos Sivirú
+
+```{r}
+survey_times <- tar_read(siviru_times)
+```
+
+{{< include _survey_times.qmd >}}
+
+## Tiempos Usaragá
+
+```{r}
+survey_times <- tar_read(usaraga_times)
+```
+
+{{< include _survey_times.qmd >}}
+
+## Tiempos Sirenas
+
+```{r}
+survey_times <- tar_read(sirenas_times)
+```
+
+{{< include _survey_times.qmd >}}
+
+## Tiempos Saíja
+
+```{r}
+survey_times <- tar_read(saija_times)
+```
+
+{{< include _survey_times.qmd >}}
+
+## Tiempos Raíces
+
+```{r}
+survey_times <- tar_read(raices_times)
+```
+
+{{< include _survey_times.qmd >}}

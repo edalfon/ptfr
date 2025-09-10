@@ -14,6 +14,18 @@ list(
   tar_fn(plan_raices),
   tar_fn(plan_saija),
   NULL,
-  flowme::tar_bookdown("report"),
-  tar_target(openreport, browseURL("report/_book/index.html"))
+  #flowme::tar_bookdown("report"),
+  #tar_target(openreport, browseURL("report/_book/index.html")),
+  tar_quarto(quartobook, "quartobook", quiet = FALSE),
+  # tar_quarto(
+  #   quartobook,
+  #   "quartobook",
+  #   quiet = FALSE,
+  #   execute_params = list(execute_dir = ".")
+  # ),
+  # tar_target(
+  #   quartobook,
+  #   quarto::quarto_render(input = "quartobook", quiet = FALSE, execute_dir = ".")
+  # ),
+  NULL
 )

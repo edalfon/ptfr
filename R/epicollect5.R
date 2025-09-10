@@ -15,6 +15,7 @@ epicollect_download_data <- function(
       client_secret = client_secret
     )
   )
+  httr::message_for_status(res_token)
   stopifnot(res_token$status_code == 200)
   token <- httr::content(res_token)$access_token
 
@@ -25,7 +26,16 @@ epicollect_download_data <- function(
     proj_slug,
     "?format=csv&headers=true&per_page=1000"
   )
-  full_url <- paste(c(base_url, form_ref, map_index), collapse = "&")
+  # Add form_ref and map_index as query parameters if not NULL
+  query_params <- c()
+  if (!is.null(form_ref)) {
+    query_params <- c(query_params, paste0("form_ref=", form_ref))
+  }
+  if (!is.null(map_index)) {
+    query_params <- c(query_params, paste0("map_index=", map_index))
+  }
+
+  full_url <- paste(c(base_url, query_params), collapse = "&")
 
   res_csv <- httr::GET(
     full_url,
