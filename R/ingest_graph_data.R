@@ -22,21 +22,17 @@ ingest_graph_data <- function(filepath = "data/toc.xlsx") {
     ) |>
     dplyr::select(id, label, group, value, title, shape, level)
 
-  edged_nodes <- c(edges_raw$from, edges_raw$to) |>
-    na.omit() |>
-    unique()
-  missing_nodes <- edged_nodes[
-    !(efun::normalize_text(edged_nodes) %in% nodes$id)
-  ]
+  edged_nodes <- c(edges_raw$from, edges_raw$to) |> na.omit() |> unique()
+  missing_nodes <- edged_nodes[!(efun::normalize_text(edged_nodes) %in% nodes$id)]
   if (length(missing_nodes) > 0) {
     warning(
       "Nodes in edges data.frame, but missing in nodes (adding them!!!): \n",
       paste(missing_nodes, collapse = "\n")
     )
-    nodes <- bind_rows(nodes, data.frame(
-      id = efun::normalize_text(missing_nodes),
-      label = missing_nodes
-    ))
+    nodes <- bind_rows(
+      nodes,
+      data.frame(id = efun::normalize_text(missing_nodes), label = missing_nodes)
+    )
   }
 
   edges <- edges_raw |>
@@ -54,7 +50,6 @@ ingest_graph_data <- function(filepath = "data/toc.xlsx") {
   # at least for now, remove all nodes without any edges
   # nodes <- nodes |>
   #   filter(id %in% efun::normalize_text(edged_nodes))
-
 
   list(nodes = nodes, edges = edges)
 }
