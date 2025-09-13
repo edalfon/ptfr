@@ -1,0 +1,253 @@
+```{r}
+#| eval: false
+survey <- tar_read(siviru_survey)
+cont_var <- "edad"
+grp_var <- "beneficia"
+cont_lbl <- "Edad"
+grp_lbl <- "Exposición al proyecto"
+```
+
+```{r}
+survey_dict <- c(
+  setNames(cont_lbl, cont_var),
+  setNames(grp_lbl, grp_var),
+  ecdf = "Función de Distribución Acumulativa Empírica (ECDF)"
+)
+```
+
+```{r}
+efun::denstogram(
+  data = survey,
+  xvar = !!rlang::sym(cont_var),
+  xaxis_title = cont_lbl,
+  yaxis_title = "Densidad",
+  summary_geom = "line",
+  plotly = FALSE
+) +
+  ggplot2::labs(dictionary = survey_dict)
+```
+
+```{r}
+efun::denstogram(
+  data = survey,
+  xvar = !!rlang::sym(cont_var),
+  fillvar = !!rlang::sym(grp_var),
+  xaxis_title = cont_lbl,
+  yaxis_title = "Densidad",
+  plotly = FALSE
+) +
+  ggplot2::labs(dictionary = survey_dict)
+```
+
+```{r}
+# survey |> efun::ecdfgram(edad, grpvar = beneficia)
+survey |>
+  ggplot2::ggplot() +
+  ggplot2::aes(x = !!rlang::sym(cont_var), color = !!rlang::sym(grp_var)) +
+  ggplot2::stat_ecdf(na.rm = TRUE, linewidth = 2) +
+  ggplot2::labs(dictionary = survey_dict)
+```
+
+```{r}
+survey |>
+  ggplot2::ggplot() +
+  ggplot2::aes(
+    x = !!rlang::sym(grp_var),
+    y = !!rlang::sym(cont_var),
+    fill = !!rlang::sym(grp_var)
+  ) +
+  ggplot2::geom_violin(trim = FALSE, alpha = 0.55) +
+  ggplot2::geom_boxplot(width = 0.15) +
+  ggforce::geom_sina(aes(color = !!rlang::sym(grp_var)), alpha = .85, size = 3) +
+  stat_summary(
+    fun.y = mean,
+    geom = "point",
+    size = 3,
+    color = "red",
+    show.legend = FALSE
+  ) +
+  ggplot2::labs(dictionary = survey_dict)
+```
+
+
+
+```{r}
+# Energy test (strong omnibus power)
+# sizes <- base::as.integer(base::table(df$group))
+# energy::eqdist.etest(x = base::matrix(df$age, ncol = 1), sizes = sizes, R = 1999)
+
+# Split age by group
+vars_list <- base::split(survey[[cont_var]], survey[[grp_var]])
+
+# Anderson–Darling k-sample (tail-sensitive)
+# Run tests
+test1 <- kSamples::ad.test(vars_list)
+test2 <- stats::kruskal.test(
+  formula = as.formula(paste(cont_var, "~", grp_var)),
+  data = survey
+)
+test3 <- stats::oneway.test(
+  as.formula(paste(cont_var, "~", grp_var)),
+  var.equal = FALSE,
+  data = survey
+)
+
+
+```
+
+
+
+```{r}
+# Helper to safely extract fields
+get_field <- function(x, fields) {
+  for (f in fields) {
+    v <- base::tryCatch(base::get0(f, x, inherits = FALSE), error = function(e) NULL)
+    if (!base::is.null(v)) {
+      return(v)
+    }
+  }
+  return(NA_real_)
+}
+
+# Extract stats
+ad_stat <- get_field(test1, c("adk", "ad", "statistic"))
+ad_p <- get_field(test1, c("adk.p.value", "p.value"))
+kw_stat <- unname(test2$statistic)
+kw_df <- unname(test2$parameter)
+kw_p <- test2$p.value
+wl_F <- unname(test3$statistic)
+wl_df1 <- unname(test3$parameter[1]) # num df
+wl_df2 <- unname(test3$parameter[2]) # denom df
+wl_p <- test3$p.value
+
+# Format helpers
+fmt_num <- function(x) {
+  if (base::is.na(x)) NA_character_ else base::formatC(x, digits = 3, format = "f")
+}
+fmt_p <- function(p) {
+  if (base::is.na(p)) NA_character_ else base::format.pval(p, digits = 3, eps = 1e-3)
+}
+
+# Build table (as a base data.frame)
+out <- base::rbind(
+  base::data.frame(
+    Test = "Anderson–Darling (k-sample)",
+    Statistic = fmt_num(ad_stat),
+    DF = "",
+    `p-value` = fmt_p(ad_p),
+    Note = "Omnibus: equal distributions"
+  ),
+  base::data.frame(
+    Test = "Kruskal–Wallis",
+    Statistic = fmt_num(kw_stat),
+    DF = base::sprintf("df = %.0f", kw_df),
+    `p-value` = fmt_p(kw_p),
+    Note = "Location shift across groups (medians)"
+  ),
+  base::data.frame(
+    Test = "Welch ANOVA",
+    Statistic = base::sprintf("F = %s", fmt_num(wl_F)),
+    DF = base::sprintf("df1 = %.1f, df2 = %.1f", wl_df1, wl_df2),
+    `p-value` = fmt_p(wl_p),
+    Note = "Means across groups (unequal variances)"
+  )
+)
+
+# Render nicely
+knitr::kable(out, align = "lcccl", caption = "Multi-test comparison of age by group")
+```
+
+
+
+
+
+
+
+
+
+```{r}
+#| eval: false
+age_split <- base::split(survey$edad, survey$beneficia)
+
+# Kolmogorov–Smirnov
+stats::ks.test(age_split[[1]], age_split[[2]])
+
+# Anderson–Darling k-sample (more tail-sensitive)
+kSamples::ad.test(age_split)
+
+# Energy test (omnibus); x must be matrix/dist, pass sizes explicitly
+n_per <- base::table(survey$beneficia)
+energy::eqdist.etest(
+  x = base::matrix(survey$edad, ncol = 1),
+  sizes = base::as.integer(n_per),
+  R = 1999
+)
+
+```
+
+
+
+If you only care about central tendency (not full shape):
+
+# Kruskal–Wallis (nonparametric k-group location test)
+stats::kruskal.test(age ~ group, data = df)
+
+# Welch one-way ANOVA (means, unequal variances)
+onewaytests::welch.test(age ~ group, data = df)  # or stats::oneway.test(..., var.equal=FALSE)
+
+
+
+
+
+3) Post-hoc pairwise (only if the global test is significant)
+a) Location shifts (medians)
+stats::pairwise.wilcox.test(df$age, df$group, p.adjust.method = "BH")
+
+b) Full-distribution differences (energy test per pair)
+pairs <- utils::combn(base::levels(df$group), 2, simplify = FALSE)
+pvals <- base::numeric(base::length(pairs))
+nm    <- base::character(base::length(pairs))
+for (i in base::seq_along(pairs)) {
+  g <- pairs[[i]]
+  x <- df$age[df$group == g[1]]
+  y <- df$age[df$group == g[2]]
+  et <- energy::eqdist.etest(x = base::c(x, y),
+                             sizes = base::c(base::length(x), base::length(y)),
+                             R = 1999)
+  pvals[i] <- et$p.value; nm[i] <- base::paste(g, collapse = " vs ")
+}
+stats::p.adjust(pvals, method = "BH") |>
+  stats::setNames(nm)
+
+
+
+4) Effect sizes (report along with p-values)
+
+Ordinal effect (robust), pairwise: Vargha–Delaney 
+𝐴
+A or Cliff’s delta
+
+eff_fun <- function(a, b) effsize::VD.A(a, b)  # or effsize::cliff.delta(a, b)
+es <- base::lapply(pairs, function(g) eff_fun(df$age[df$group==g[1]],
+                                              df$age[df$group==g[2]]))
+base::setNames(es, nm)
+
+
+Mean-based global effect: eta-squared from one-way ANOVA (if means matter)
+
+fit <- stats::aov(age ~ group, data = df)
+ss  <- summary(fit)[[1]][["Sum Sq"]]
+eta2 <- ss[1] / base::sum(ss); eta2  # proportion of variance explained by group
+
+5) Compact per-group summary (sanity check)
+df |>
+  dplyr::group_by(group) |>
+  dplyr::summarise(n = dplyr::n(),
+                   mean = base::mean(age, na.rm=TRUE),
+                   sd = stats::sd(age, na.rm=TRUE),
+                   median = stats::median(age, na.rm=TRUE),
+                   q25 = stats::quantile(age, 0.25, na.rm=TRUE),
+                   q75 = stats::quantile(age, 0.75, na.rm=TRUE))
+
+
+

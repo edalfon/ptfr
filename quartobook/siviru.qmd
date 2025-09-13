@@ -1,0 +1,45 @@
+# Sivirú
+
+See @knuth84 
+
+
+# Edad
+```{r}
+survey <- tar_read(siviru_survey)
+cont_var <- "edad"
+grp_var <- "beneficia"
+cont_lbl <- "Edad"
+grp_lbl <- "Exposición al programa"
+```
+
+{{< include _includes/_var_cont_grp.qmd >}}
+
+# Ingreso persona
+
+```{r}
+survey <- tar_read(siviru_survey)
+cont_var <- "ingreso_persona"
+grp_var <- "beneficia"
+```
+
+{{< include _includes/_var_cont_grp.qmd >}}
+
+# Ingreso hogar
+
+```{r}
+survey <- tar_read(siviru_survey)
+cont_var <- "ingreso_hogar"
+grp_var <- "beneficia"
+```
+
+{{< include _includes/_var_cont_grp.qmd >}}
+
+# Gasto en alimentos
+
+```{r}
+survey <- tar_read(siviru_survey)
+cont_var <- "gasto_alimentos"
+grp_var <- "beneficia"
+```
+
+{{< include _includes/_var_cont_grp.qmd >}}

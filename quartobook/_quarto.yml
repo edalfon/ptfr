@@ -1,6 +1,7 @@
 project:
   type: book
   pre-render: pre-render.R
+  post-render: post-render.R
   output-dir: _book
   execute-dir: project
 
@@ -8,18 +9,20 @@ execute:
   echo: false    # hide code globally (show results only)
   warning: false # optional
   message: false # optional
+  freeze: auto  # re-render only when source changes
 
 book:
   title: "quartobook"
   author: "VCA"
   chapters:
     - index.qmd
-    - intro.qmd
+    - siviru.qmd
     - summary.qmd
     - references.qmd
   appendices:
     - Annex/entries_count.qmd
     - Annex/survey_times.qmd
+    - Annex/abridge.qmd
 
 
 bibliography: references.bib
@@ -29,10 +32,10 @@ format:
     theme:
       - cosmo
       - brand
-  pdf:
-    documentclass: scrreprt
-  docx:
-    toc: true
-    number-sections: true
+  # pdf:
+  #   documentclass: scrreprt
+  # docx:
+  #   toc: true
+  #   number-sections: true
 
 

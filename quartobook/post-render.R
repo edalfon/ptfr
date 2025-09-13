@@ -1,4 +1,5 @@
-cat("Loading pre-render.R -> getwd(): ", getwd(), "\n")
+print("THIS IS POST-RENDER.R RUNNING")
+cat(getwd())
 
 # https://github.com/quarto-dev/quarto-cli/discussions/10535
 # https://github.com/quarto-dev/quarto-cli/discussions/10681
@@ -8,10 +9,4 @@ cat("Loading pre-render.R -> getwd(): ", getwd(), "\n")
 # to the project root, it still does not run the .Rprofile there.
 # So we copy the .Rprofile to the quarto subproject root.
 
-fs::file_copy("../.Rprofile", ".Rprofile", overwrite = TRUE)
-
-# pre-render runs and copy the file
-# if the process fails, post-render will not run
-
-# the .Rprofile in the quarto subproject, will run on that directory
-# so, for example, it will not load the R scripts in ../R
+#fs::file_delete(".Rprofile")

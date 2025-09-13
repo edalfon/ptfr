@@ -1,0 +1,32 @@
+## Descriptivas
+
+## Sivirú
+
+```{r}
+tar_read(siviru_survey) |> efun::abridge_df()
+```
+
+## Usaragá
+
+```{r}
+tar_read(usaraga_survey) |> efun::abridge_df()
+```
+
+## Sirenas
+
+```{r}
+tar_read(sirenas_survey) |> efun::abridge_df()
+```
+
+## Saíja
+
+```{r}
+tar_read(saija_survey) |> efun::abridge_df()
+```
+
+## Raíces
+
+```{r}
+tar_read(raices_survey) |> efun::abridge_df()
+```
+

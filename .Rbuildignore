@@ -10,3 +10,5 @@
 ^report/index\.Rmd$
 ^report/chapter1\.Rmd$
 ^report/chapter2\.Rmd$
+^\.vscode$
+^[.]?air[.]toml$
