@@ -13,6 +13,7 @@ plan_usaraga <- function() {
     usaraga_survey_epicollect |>
       ptf_rename_vars() |>
       ptf_rename_vars_usaraga() |>
+      recode_beneficia_usaraga() |>
       ptf_clean_vars() |>
       identity()
   })
