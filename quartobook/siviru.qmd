@@ -1,24 +1,157 @@
-# Sivirú
+---
+title: "Sivirú"
+---
 
-See @knuth84 
+```{r}
+options(
+  digits = 3, # significant digits when R prints numbers
+  scipen = 999, # avoid scientific notation
+  OutDec = "." # decimal mark for format()/prettyNum()
+)
+options(pillar.sigfig = 3) # tibbles from dplyr
+
+# Your one-stop numeric formatter
+fmt_num <- function(x) {
+  prettyNum(
+    x,
+    big.mark = ",", # thousands separator
+    decimal.mark = ".", # decimal mark
+    scientific = FALSE,
+    preserve.width = "none"
+  )
+}
+
+# Inline results: e.g. `r 12345`
+knitr::knit_hooks$set(inline = function(x) {
+  if (is.numeric(x)) fmt_num(x) else as.character(x)
+})
+
+# --- S3 knit_print methods (REGISTERED correctly) --------------------------
+
+knit_print_numeric <- function(x, ...) {
+  # bare numeric vectors printed in text output
+  knitr::asis_output(paste(fmt_num(x), collapse = " "))
+}
+
+knit_print_df <- function(x, ...) {
+  num_cols <- vapply(x, is.numeric, logical(1))
+  if (any(num_cols)) {
+    x[num_cols] <- lapply(x[num_cols], fmt_num)
+  }
+  knitr::kable(x, ...)
+}
+
+knit_print_matrix <- function(x, ...) {
+  if (is.numeric(x)) {
+    x <- matrix(fmt_num(x), nrow = nrow(x), dimnames = dimnames(x))
+  } else {
+    num <- which(vapply(as.data.frame(x), is.numeric, logical(1)))
+    if (length(num)) {
+      for (j in num) {
+        x[, j] <- fmt_num(x[, j])
+      }
+    }
+  }
+  knitr::kable(x, ...)
+}
+
+# Register S3 methods in the knitr namespace (DO NOT assign into knitr::)
+registerS3method(
+  "knit_print",
+  "numeric",
+  knit_print_numeric,
+  envir = asNamespace("knitr")
+)
+registerS3method(
+  "knit_print",
+  "data.frame",
+  knit_print_df,
+  envir = asNamespace("knitr")
+)
+registerS3method(
+  "knit_print",
+  "matrix",
+  knit_print_matrix,
+  envir = asNamespace("knitr")
+)
+
+# --- 1) Centralized number style --------------------------------------------
+# Helper to feed kable's base::format() mechanism
+fmt_args <- function() {
+  list(big.mark = ",", decimal.mark = ".", scientific = FALSE, trim = TRUE)
+}
+
+# --- 2) Auto-print data frames / matrices via kable with our format ----------
+knit_print_df <- function(x, ...) {
+  # Let kable format numeric columns via format.args
+  # (Tibbles often print via pillar, so coerce to data.frame for consistency)
+  knitr::kable(as.data.frame(x), format.args = fmt_args(), ...)
+}
+
+knit_print_matrix <- function(x, ...) {
+  knitr::kable(x, format.args = fmt_args(), ...)
+}
+
+# Register S3 methods (no writing into knitr namespace)
+registerS3method(
+  "knit_print",
+  "data.frame",
+  knit_print_df,
+  envir = asNamespace("knitr")
+)
+registerS3method(
+  "knit_print",
+  "matrix",
+  knit_print_matrix,
+  envir = asNamespace("knitr")
+)
+
+# --- 3) Make *your* kable() calls inherit the same defaults ------------------
+# This masks knitr::kable in your session, so you can just write kable(df)
+kable <- function(x, ..., format.args = fmt_args()) {
+  knitr::kable(x, ..., format.args = format.args)
+}
+
+# If you use kableExtra::kbl(), give it the same defaults too:
+if (requireNamespace("kableExtra", quietly = TRUE)) {
+  kbl <- function(x, ..., format.args = fmt_args()) {
+    kableExtra::kbl(x, ..., format.args = format.args)
+  }
+}
+```
 
 
-# Edad
 ```{r}
 survey <- tar_read(siviru_survey)
+```
+
+
+## Edad
+```{r}
 cont_var <- "edad"
-grp_var <- "beneficia"
 cont_lbl <- "Edad"
+grp_var <- "beneficia"
 grp_lbl <- "Exposición al programa"
 ```
 
 {{< include _includes/_var_cont_grp.qmd >}}
 
-# Ingreso persona
+## Sexo asignado al nacer
+```{r}
+cat_var <- "sexo"
+cat_lbl <- "Sexo asignado al nacer"
+grp_var <- "beneficia"
+grp_lbl <- "Exposición al programa"
+```
+
+{{< include _includes/_var_cat_grp.qmd >}}
+
+
+## Ingreso persona
 
 ```{r}
-survey <- tar_read(siviru_survey)
 cont_var <- "ingreso_persona"
+cont_lbl <- "Ingreso personal"
 grp_var <- "beneficia"
 ```
 
@@ -27,8 +160,8 @@ grp_var <- "beneficia"
 # Ingreso hogar
 
 ```{r}
-survey <- tar_read(siviru_survey)
 cont_var <- "ingreso_hogar"
+cont_lbl <- "Ingreso familiar"
 grp_var <- "beneficia"
 ```
 
@@ -37,9 +170,12 @@ grp_var <- "beneficia"
 # Gasto en alimentos
 
 ```{r}
-survey <- tar_read(siviru_survey)
 cont_var <- "gasto_alimentos"
+cont_lbl <- "Gasto en alimentos"
 grp_var <- "beneficia"
 ```
 
 {{< include _includes/_var_cont_grp.qmd >}}
+
+
+

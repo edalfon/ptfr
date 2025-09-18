@@ -10,22 +10,30 @@
 plan_saija <- function() {
   tar_files_input(saija_survey_file, "data/survey/saija.csv")
 
-  tar_target(saija_survey, {
+  # Download data from Epicollect5
+  tar_target(saija_survey_epicollect, {
     epicollect_download_data(
       proj_slug = "ptf-puertosaija",
       client_id = "6752",
-      client_secret = "LymWzzPRo6A0TEfVJFuuTy7hMVLKwkHO2E7yGyEs"
-    ) |>
-      janitor::clean_names() |>
+      client_secret = "LymWzzPRo6A0TEfVJFuuTy7hMVLKwkHO2E7yGyEs",
+      map_index = 0
+    )
+  })
+
+  # Clean and rename variables
+  tar_target(saija_survey, {
+    saija_survey_epicollect |>
+      #ptf_rename_vars() |>
+      ptf_rename_vars_saija() |>
       dplyr::filter(title != "Kevin") |>
       dplyr::filter(title != "Tania Hurtado") |>
+      ptf_clean_vars() |>
       identity()
   })
 
-  tar_target(saija_times, {
-    saija_survey |>
-      select(created_by, inicio, intermedio, final, beneficia) |>
-      mutate(tot_secs = final - inicio) |>
-      mutate(tot_mins = as.numeric(tot_secs, units = "mins"))
-  })
+  # Field report
+  tar_target(saija_field_report, get_field_report(saija_survey))
+
+  # Calculate time spent on survey
+  tar_target(saija_times, calculate_survey_time(saija_survey))
 }

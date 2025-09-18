@@ -18,16 +18,15 @@ plan_siviru <- function() {
       ptf_rename_vars_siviru() |>
       dplyr::filter(title != "Prueba 1") |>
       ptf_clean_vars() |>
+      clean_siviru() |>
       identity()
   })
 
+  # Field report
+  tar_target(siviru_field_report, get_field_report(siviru_survey))
+
   # Calculate time spent on survey
-  tar_target(siviru_times, {
-    siviru_survey |>
-      select(created_by, inicio, intermedio, final, beneficia) |>
-      mutate(tot_secs = final - inicio) |>
-      mutate(tot_mins = as.numeric(tot_secs, units = "mins"), )
-  })
+  tar_target(siviru_times, calculate_survey_time(siviru_survey))
 
   # Calculate time spent on survey
   tar_target(siviru_abdrige, {

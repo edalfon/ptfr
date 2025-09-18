@@ -2,42 +2,56 @@
 upload_count <- function(data) {
   data_counts <- dplyr::count(data, created_by, name = "Uploaded")
 
-  data_counts |> 
-    dplyr::add_row(created_by = "Total", Uploaded = sum(data_counts$Uploaded))  |> 
+  data_counts |>
+    dplyr::add_row(created_by = "Total", Uploaded = sum(data_counts$Uploaded)) |>
     knitr::kable(col.names = c("User", "Uploaded"), align = "r")
 }
 ```
 
 # Resumen registros subidos
 
+```{r}
+field_report <- tar_read(field_report)
+```
+
 ## Sivirú
 
 ```{r}
-siviru_survey <- tar_read(siviru_survey)
-upload_count(siviru_survey)
+field_report[["SIVIRU_conteo"]] |> knitr::kable()
 ```
 
 ## Usaragá
 ```{r}
-usaraga_survey <- tar_read(usaraga_survey)
-upload_count(usaraga_survey)
+field_report[["USARAGA_conteo"]] |> knitr::kable()
 ```
 
 ## Sirenas
 ```{r}
-sirenas_survey <- tar_read(sirenas_survey)
-upload_count(sirenas_survey)
+field_report[["SIRENAS_conteo"]] |> knitr::kable()
 ```
 
 ## Puerto Saíja
 ```{r}
-saija_survey <- tar_read(saija_survey)
-upload_count(saija_survey)
+field_report[["SAIJA_conteo"]] |> knitr::kable()
 ```
 
 ## Raíces
 ```{r}
-raices_survey <- tar_read(raices_survey)
-upload_count(raices_survey)
+field_report[["RAICES_conteo"]] |> knitr::kable()
+```
+
+## ACAPA
+```{r}
+field_report[["ACAPA_conteo"]] |> knitr::kable()
+```
+
+## Mariposas
+```{r}
+field_report[["MARIPOSAS_conteo"]] |> knitr::kable()
+```
+
+## Asogesampa
+```{r}
+field_report[["ASOGESAMPA_conteo"]] |> knitr::kable()
 ```
 

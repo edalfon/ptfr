@@ -1,0 +1,234 @@
+```{r}
+#| eval: false
+survey <- tar_read(siviru_survey)
+cat_var <- "sexo"
+grp_var <- "beneficia"
+cat_lbl <- "Sexo"
+grp_lbl <- "Exposición al proyecto"
+```
+
+```{r}
+cat_sym <- rlang::sym(cat_var)
+grp_sym <- rlang::sym(grp_var)
+survey_dict <- c(
+  setNames(cat_lbl, cat_var),
+  setNames(grp_lbl, grp_var),
+  count = "Frecuencia"
+)
+```
+
+```{r}
+ggplot(survey) +
+  # aes(y = !!cat_sym |> forcats::fct_infreq() |> forcats::fct_rev()) +
+  # TODO: sort based on frquency, if no ordered
+  aes_string(y = cat_var) +
+  geom_bar(position = "dodge", fill = "#109180") +
+  geom_text(
+    aes(x = after_stat(count), label = paste0(
+      after_stat(count),
+      "\n[",
+      scales::percent(after_stat(count) / sum(after_stat(count)), 0.1), "]"
+    )),
+    stat = "count",
+    hjust = 0,
+    nudge_x = 0.2,
+    fontface = "bold"
+  ) +
+  theme(
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank()
+  ) +
+  ggplot2::labs(dictionary = survey_dict)
+```
+
+:::{#tbl-contingency layout-ncol=2}
+
+```{r}
+#| tbl-cap: Tabla de contingencia
+addmargins <- purrr::partial(addmargins, FUN=list(Total=sum), quiet = TRUE)
+tab <- table(survey[[cat_var]], survey[[grp_var]])
+tab |> addmargins() |> kable()
+```
+```{r}
+#| tbl-cap: Porcentajes fila
+row_pct <- tab |> addmargins(margin = 1) |> base::prop.table(margin = 1) * 100
+row_pct |> addmargins(margin = 2) |> kable()
+```
+```{r}
+#| tbl-cap: Porcentajes columna
+col_pct <- tab |> addmargins(margin = 2) |> base::prop.table(margin = 2) * 100
+col_pct |> addmargins(margin = 1) |> kable()
+```
+```{r}
+#| tbl-cap: Porcentajes celda
+cell_pct <- base::prop.table(tab) * 100
+cell_pct |> addmargins() |> kable()
+```
+
+Tabulación Cruzada
+:::
+
+```{r}
+ggplot(survey) +
+  aes_string(y = cat_var, fill = grp_var) +
+  geom_bar(position = "dodge") +
+  geom_text(
+    aes(x = after_stat(count), label = paste0(after_stat(count))),
+    stat = "count",
+    position = position_dodge(width = 0.9),
+    hjust = 0,
+    nudge_x = 0.2,
+    fontface = "bold"
+  ) +
+  theme(
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank()
+  ) +
+  ggplot2::labs(dictionary = survey_dict)
+```
+
+
+```{r}
+ggplot(survey) +
+  aes_string(y = cat_var, fill = grp_var) +
+  geom_bar(position = "fill") +
+  theme(
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank()
+  ) +
+  ggplot2::labs(dictionary = survey_dict) +
+  ggplot2::scale_x_continuous(labels = scales::percent_format(accuracy = 1))
+```
+
+```{r}
+ggplot(survey) +
+  aes_string(fill = cat_var, x = grp_var) +
+  geom_bar(position = "fill") +
+  theme(
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank()
+  ) +
+  ggplot2::labs(dictionary = survey_dict) +
+  ggplot2::scale_y_continuous(labels = scales::percent_format(accuracy = 1))
+```
+
+```{r}
+tab <- table(survey[[cat_var]], survey[[grp_var]])
+df_plot <- base::as.data.frame(tab, stringsAsFactors = FALSE)
+base::names(df_plot) <- c("category", "group", "count")
+
+# Join percentages for labels
+rp <- base::as.data.frame(row_pct)
+base::names(rp) <- c("category", "group", "row_pct")
+cp <- base::as.data.frame(col_pct)
+base::names(cp) <- c("category", "group", "col_pct")
+ap <- base::as.data.frame(cell_pct)
+base::names(ap) <- c("category", "group", "cell_pct")
+
+df_plot <- base::Reduce(
+  function(x, y) base::merge(x, y, by = c("category", "group"), all = TRUE),
+  list(df_plot, rp, cp, ap)
+)
+
+ggplot2::ggplot(
+  df_plot,
+  ggplot2::aes(x = group, y = category, fill = col_pct)
+) +
+  ggplot2::geom_tile() +
+  ggplot2::geom_text(
+    ggplot2::aes(label = base::ifelse(base::is.na(col_pct), "",
+      base::sprintf("%.0f%%\n(n=%d)", col_pct, count)
+    )),
+    size = 3
+  ) +
+  ggplot2::labs(
+    x = grp_var, y = cat_var, fill = "Col %",
+    title = "Heatmap of column percentages with counts"
+  ) +
+  ggplot2::scale_fill_continuous(na.value = "grey90")
+```
+
+```{r}
+graphics::mosaicplot(tab,
+  color = TRUE, main = "Mosaic plot: category × group",
+  xlab = cat_var, ylab = grp_var
+)
+```
+
+
+
+```{r}
+# 2) Chi-square (with automatic fallback if small expected counts)
+chi1 <- stats::chisq.test(tab, correct = FALSE)
+use_sim <- base::any(chi1$expected < 5) || base::any(tab == 0)
+chi <- if (use_sim) stats::chisq.test(tab, correct = FALSE, simulate.p.value = TRUE, B = 10000) else chi1
+
+# 3) Fisher’s exact (for tight/sparse tables; uses MC simulation for r×c)
+fisher <- stats::fisher.test(tab, simulate.p.value = TRUE, B = 10000)
+
+# 4) (Optional) Likelihood-ratio G-test if DescTools is available
+gtest <- base::tryCatch(DescTools::GTest(tab, correct = "none"),
+  error = function(e) NULL
+)
+
+# 5) Effect size: Cramér’s V (from chi-square)
+n <- base::sum(tab)
+kmin <- base::min(base::nrow(tab), base::ncol(tab))
+cramer_v <- base::sqrt(chi$statistic / (n * (kmin - 1)))
+cramer_v <- base::unname(cramer_v)
+
+# 6) Nicely formatted count and % by column (group)
+col_pct <- base::prop.table(tab, margin = 2) * 100
+counts_df <- as.data.frame.matrix(tab)
+pcts_df <- as.data.frame.matrix(base::round(col_pct, 1))
+
+# 7) Standardized residuals (for post-hoc interpretation)
+stdres <- base::round(chi$stdres, 2)
+
+# 8) Assemble results table
+fmt_p <- function(p) if (base::is.na(p)) NA_character_ else base::format.pval(p, digits = 3, eps = 1e-3)
+
+res <- base::rbind(
+  base::data.frame(
+    Test = "Chi-square (Pearson)",
+    Statistic = base::sprintf("X^2 = %.3f", base::unname(chi$statistic)),
+    DF = base::sprintf("%.0f", base::unname(chi$parameter)),
+    `p-value` = fmt_p(chi$p.value),
+    Note = if (use_sim) "MC p-value (small expected counts)" else "Asymptotic p-value"
+  ),
+  base::data.frame(
+    Test = "Fisher’s exact (r×c, MC)",
+    Statistic = "",
+    DF = "",
+    `p-value` = fmt_p(fisher$p.value),
+    Note = "Monte Carlo simulation"
+  ),
+  # base::data.frame(
+  #   Test = "G-test (likelihood ratio)",
+  #   Statistic = if (is.null(gtest)) "—" else base::sprintf("G = %.3f", base::unname(gtest$statistic))
+  # ),
+  base::data.frame(
+    Test = "Effect size (Cramér’s V)",
+    Statistic = base::sprintf("V = %.3f", cramer_v),
+    DF = "", `p-value` = "", Note = "0=no assoc, ~0.1 small, ~0.3 medium, ~0.5 large"
+  )
+)
+# Fill missing columns for G-test row
+# if (!is.null(gtest)) {
+#   res[3, "DF"] <- base::sprintf("%.0f", base::unname(gtest$parameter))
+#   res[3, "p-value"] <- fmt_p(gtest$p.value)
+#   res[3, "Note"] <- "If available (DescTools)"
+# } else {
+#   res[3, c("DF", "p-value", "Note")] <- c("", "", "DescTools::GTest unavailable")
+# }
+
+# 9) Render in Quarto
+#knitr::kable(counts_df, caption = base::sprintf("Counts of %s by %s", cat_var, grp_var))
+#knitr::kable(pcts_df, caption = base::sprintf("Column percentages of %s by %s", cat_var, grp_var))
+knitr::kable(base::as.data.frame.matrix(stdres),
+  caption = "Standardized residuals (>|2| suggests notable cells)"
+)
+knitr::kable(res, align = "lcccl", caption = "Association tests and effect size")
+```
+
+

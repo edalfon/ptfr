@@ -18,6 +18,8 @@ Imports:
     ggbeeswarm,
     ggforce,
     ggridges,
+    gt,
+    kableExtra,
     kSamples,
     logger,
     profvis,

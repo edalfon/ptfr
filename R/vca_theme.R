@@ -1,5 +1,9 @@
 #| eval: false
 
+# TODO:
+# https://drsimonj.svbtle.com/creating-corporate-colour-palettes-for-ggplot2
+# https://rpubs.com/mclaire19/ggplot2-custom-themes
+
 # add_logos <- function() {
 #   vca_logo <- magick::image_read("slides/vca_logo.png")
 #   ptf_logo <- magick::image_read("slides/ptf_logo.png")
