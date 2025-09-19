@@ -29,9 +29,12 @@ bibliography: references.bib
 
 format:
   html:
+    embed-resources: false
     theme:
       - cosmo
       - brand
+    lightbox: true
+    resources: _book
   # pdf:
   #   documentclass: scrreprt
   # docx:
