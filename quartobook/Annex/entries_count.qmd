@@ -55,3 +55,8 @@ field_report[["MARIPOSAS_conteo"]] |> knitr::kable()
 field_report[["ASOGESAMPA_conteo"]] |> knitr::kable()
 ```
 
+
+
+
+
+

@@ -1,13 +1,14 @@
-#' .. content for \description{} (no empty lines) ..
+#' Recode Beneficiario Siviru
 #'
-#' .. content for \details{} ..
+#' This function recodes the "beneficiario siviru" variable to address a limitation in the original data collection process. Initially, the survey only asked whether a respondent was a beneficiary or not, without distinguishing between "control cercano" and "control lejano" groups. To resolve this, the function matches respondents with the sample to assign the appropriate control group classification.
 #'
-#' @title
-
-#' @return
+#' This recoding ensures accurate group assignment for subsequent analyses and reporting.
+#'
+#' @title Recode Beneficiario Siviru
+#' @return A data frame with updated group classifications for each respondent.
 #' @author edalfon
 #' @export
-clean_siviru <- function(siviru_survey) {
+recode_beneficia_siviru <- function(siviru_survey) {
   cercano <- c(
     "dff148c9-b7b1-40f2-adaa-3523b7534b64",
     "974c17de-50b4-4182-b9a4-aebc715ab3e4",

@@ -16,6 +16,7 @@ plan_sirenas <- function() {
       dplyr::filter(title != "Lucia") |>
       dplyr::filter(title != "Eduardo") |>
       ptf_clean_vars() |>
+      recode_beneficia_sirenas() |>
       identity()
   })
 

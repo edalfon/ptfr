@@ -1,3 +1,4 @@
+#touch_outdated_quarto_files()
 list(
   plan_theory_of_change(),
   plan_simulation(),
@@ -34,6 +35,13 @@ list(
   NULL,
   #flowme::tar_bookdown("report"),
   #tar_target(openreport, browseURL("report/_book/index.html")),
+  # tar_target(
+  #   touchethemall,
+  #   touch_outdated_quarto_files(),
+  #   format = "file",
+  #   repository = "local",
+  #   cue = tar_cue("always")
+  # ),
   tar_quarto(
     quartobook,
     "quartobook",
@@ -41,6 +49,8 @@ list(
     # execute_params = list(execute_dir = ".")
     quiet = FALSE
   ),
+  #  |>
+  #   tarchetypes::tar_hook_before(hook = touch_outdated_quarto_files()),
   # tar_target(
   #   quartobook,
   #   quarto::quarto_render(input = "quartobook", quiet = FALSE, execute_dir = ".")

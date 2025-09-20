@@ -17,7 +17,8 @@ plan_saija <- function() {
       client_id = "6752",
       client_secret = "LymWzzPRo6A0TEfVJFuuTy7hMVLKwkHO2E7yGyEs",
       map_index = 0
-    )
+    ) |>
+      identity()
   })
 
   # Clean and rename variables
@@ -28,6 +29,7 @@ plan_saija <- function() {
       dplyr::filter(title != "Kevin") |>
       dplyr::filter(title != "Tania Hurtado") |>
       ptf_clean_vars() |>
+      recode_beneficia_saija() |>
       identity()
   })
 
