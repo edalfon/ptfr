@@ -1,14 +1,14 @@
-#' .. content for \description{} (no empty lines) ..
-#'
-#' .. content for \details{} ..
-#'
-#' @title
-
-#' @return
-#' @author edalfon
-#' @export
 plan_saija <- function() {
-  tar_files_input(saija_survey_file, "data/survey/saija.csv")
+  #tar_files_input(saija_survey_file, "data/survey/saija.csv")
+
+  # Download Epicollect5 project metadata
+  tar_target(saija_epicollect_proj, {
+    epicollect_get_project(
+      proj_slug = "ptf-puertosaija",
+      client_id = "6752",
+      client_secret = "LymWzzPRo6A0TEfVJFuuTy7hMVLKwkHO2E7yGyEs"
+    )
+  })
 
   # Download data from Epicollect5
   tar_target(saija_survey_epicollect, {

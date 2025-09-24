@@ -1,7 +1,7 @@
 project:
   type: book
   pre-render: pre-render.R
-  post-render: post-render.R
+  # post-render: post-render.R
   output-dir: _book
   execute-dir: project
 
@@ -17,6 +17,7 @@ book:
   chapters:
     - index.qmd
     - siviru.qmd
+    - siviru_caracteriza.qmd
     - summary.qmd
     - references.qmd
   appendices:

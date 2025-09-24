@@ -1,4 +1,16 @@
 plan_sirenas <- function() {
+  #
+
+  # Download Epicollect5 project metadata
+  tar_target(sirenas_epicollect_proj, {
+    epicollect_get_project(
+      proj_slug = "PTF_SIRENAS",
+      client_id = "6751",
+      client_secret = "UXg1XqKBjbMvia1IzmKMhTSLaaYlFF4KNPZZiv4f"
+    )
+  })
+
+  # Download data from Epicollect5
   tar_target(sirenas_survey_epicollect, {
     epicollect_download_data(
       proj_slug = "PTF_SIRENAS",

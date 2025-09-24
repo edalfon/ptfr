@@ -21,7 +21,7 @@ list(
   # field report
   tar_target(
     field_report,
-    build_field_report(
+    identity(build_field_report(
       siviru_field_report,
       usaraga_field_report,
       sirenas_field_report,
@@ -30,7 +30,7 @@ list(
       raices_field_report,
       mariposas_field_report,
       asogesampa_field_report
-    )
+    ))
   ),
   NULL,
   #flowme::tar_bookdown("report"),
@@ -45,7 +45,7 @@ list(
   tar_quarto(
     quartobook,
     "quartobook",
-    execute_params = list(freeze = "false"),
+    #execute_params = list(freeze = "false"),
     # execute_params = list(execute_dir = ".")
     quiet = FALSE
   ),
@@ -58,3 +58,18 @@ list(
   # quarto render quartobook --execute-dir=.
   NULL
 )
+
+# c(
+#   "siviru" = tar_read(siviru_survey_epicollect),
+#   "sirenas" = tar_read(sirenas_survey_epicollect),
+#   "usaraga" = tar_read(usaraga_survey_epicollect),
+#   "acapa" = tar_read(acapa_survey_epicollect),
+#   "saija" = tar_read(saija_survey_epicollect),
+#   "asogesampa" = tar_read(asogesampa_survey_epicollect),
+#   "raices" = tar_read(raices_survey_epicollect),
+#   "mariposas" = tar_read(mariposas_survey_epicollect)
+# ) |>
+#   names() |>
+#   unique() |>
+#   paste0(collapse = ", ") |>
+#   efun::clipboard_writeto()

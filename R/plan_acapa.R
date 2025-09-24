@@ -1,13 +1,15 @@
-#' .. content for \description{} (no empty lines) ..
-#'
-#' .. content for \details{} ..
-#'
-#' @title
-
-#' @return
-#' @author edalfon
-#' @export
 plan_acapa <- function() {
+  #
+
+  # Download Epicollect5 project metadata
+  tar_target(acapa_epicollect_proj, {
+    epicollect_get_project(
+      proj_slug = "PTF_ACAPA",
+      client_id = "6787",
+      client_secret = "zINAr1AaJhRwCe0SnKNwYZDUye40huOJxjDwumGn"
+    )
+  })
+
   # Download data from Epicollect5
   tar_target(acapa_survey_epicollect, {
     epicollect_download_data(

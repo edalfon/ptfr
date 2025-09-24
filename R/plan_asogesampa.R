@@ -1,4 +1,16 @@
 plan_asogesampa <- function() {
+  #
+
+  # Download Epicollect5 project metadata
+  tar_target(asogesampa_epicollect_proj, {
+    epicollect_get_project(
+      proj_slug = "PTF_ASOGESAMPA",
+      client_id = "6785",
+      client_secret = "PNnosEcgQVvK7wj4ETMNUuibVUmnzQV7aVeQPP3Y"
+    )
+  })
+
+  # Download data from Epicollect5
   tar_target(asogesampa_survey_epicollect, {
     epicollect_download_data(
       proj_slug = "PTF_ASOGESAMPA",
@@ -16,7 +28,7 @@ plan_asogesampa <- function() {
       ptf_rename_vars_asogesampa() |>
       dplyr::filter(title != "Prueba") |>
       dplyr::filter(title != "PRUEBA 1") |>
-      #ptf_clean_vars() |>
+      ptf_clean_vars() |>
       identity()
   })
 

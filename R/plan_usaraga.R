@@ -1,4 +1,16 @@
 plan_usaraga <- function() {
+  #
+
+  # Download Epicollect5 project metadata
+  tar_target(usaraga_epicollect_proj, {
+    epicollect_get_project(
+      proj_slug = "PTF_USARAGA",
+      client_id = "6750",
+      client_secret = "tBetQueAv8scIixyKesXyDVN3Tcllb57QHWjqB1S"
+    )
+  })
+
+  # Download data from Epicollect5
   tar_target(usaraga_survey_epicollect, {
     epicollect_download_data(
       proj_slug = "PTF_USARAGA",

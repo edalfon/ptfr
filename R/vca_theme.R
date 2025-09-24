@@ -38,7 +38,7 @@ vca_theme <- function(
       ),
       legend.position = "top", #legend on top
       #grid elements
-      #panel.grid.major = ggplot2::element_blank(), #strip major gridlines
+      panel.grid.major = ggplot2::element_blank(), #strip major gridlines
       panel.grid.minor = ggplot2::element_blank(), #strip minor gridlines
       axis.ticks = ggplot2::element_blank(), #strip axis ticks
 

@@ -1,5 +1,14 @@
 plan_raices <- function() {
-  tar_files_input(raices_survey_file, "data/survey/raices.csv")
+  #tar_files_input(raices_survey_file, "data/survey/raices.csv")
+
+  # Download Epicollect5 project metadata
+  tar_target(raices_epicollect_proj, {
+    epicollect_get_project(
+      proj_slug = "PTF_RAICES",
+      client_id = "6753",
+      client_secret = "PgEl0OfULPYd2KMHHiC7Aa8mhQKXKEJHjouwzRiY"
+    )
+  })
 
   # Download data from Epicollect5
   tar_target(raices_survey_epicollect, {

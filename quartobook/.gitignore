@@ -1,4 +1,10 @@
 /.quarto/
 _book
 _freeze
-siviru_files
+
+*.pdf
+*.html
+*.png
+**/*.pdf
+**/*.html
+**/*.png

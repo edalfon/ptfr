@@ -49,13 +49,18 @@ ptf_rename_vars <- function(df) {
     autocuidado_causa = "30_171_Comer_vestirs",
     interaccion = "31_18_Relacionarse_o",
     interaccion_causa = "32_181_Relacionarse_",
+
     afectacion_conflicto = "33_19_Usted_o_algn_m",
     afectacion_otro_1 = "35_Otro_cul",
     afectacion_otro_2 = "36_Otro_cul",
+
+    # seguridad social
     afiliado_riesgos_laborales = "37_20_Est_afiliadoa_",
     cotiza_pension = "38_21_Est_cotizando_",
     afiliado_salud = "39_22_Est_afiliadoa_",
     regimen_salud = "40_23_A_cul_de_los_s",
+
+    # ocupación
     actividad_semana = "41_24_En_qu_activida",
     actividad_paga_semana = "42_25_Adems_de_lo_an",
     tenia_trabajo_semana = "43_26_Aunque_no_trab",

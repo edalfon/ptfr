@@ -113,11 +113,7 @@ survey |>
 ```{r}
 survey |>
   ggplot2::ggplot() +
-  ggplot2::aes(
-    x = !!grp_sym,
-    y = !!cont_sym,
-    fill = !!grp_sym
-  ) +
+  ggplot2::aes(x = !!grp_sym, y = !!cont_sym, fill = !!grp_sym) +
   ggplot2::geom_violin(trim = FALSE, alpha = 0.55) +
   ggplot2::geom_boxplot(width = 0.15) +
   ggforce::geom_sina(aes(color = !!grp_sym), alpha = .85, size = 3) +

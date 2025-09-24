@@ -1,0 +1,243 @@
+---
+title: "Caracterización de beneficiarios -  SIVIRÚ"
+fig-cap-location: top
+---
+
+## Edad y sexo asignado al nacer
+
+```{r}
+#| eval: true
+survey <- tar_read(siviru_survey) |> filter(startsWith(beneficia, "Beneficia"))
+
+# attr(survey$edad, "label") <- "Edad en anos cumplidos"
+```
+
+
+```{r}
+#| label: edad
+#| fig-cap: Edad
+ggplot(survey) +
+  aes(x = edad) +
+  geom_histogram(bins = 10, fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_rug() +
+  labs(y = "Frecuencia")
+```
+
+
+```{r}
+#| label: sexo
+#| fig-cap: Sexo
+ggplot(survey) +
+  aes(x = sexo) +
+  geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_rug() +
+  labs(y = "Frecuencia")
+```
+
+
+## Orientación sexual e identidad de género
+
+```{r}
+#| label: orientacion_sexual
+#| fig-cap: Orientación sexual
+ggplot(survey) +
+  aes(x = orientacion_sexual) +
+  geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
+  scale_fill_discrete(drop = FALSE) +
+  scale_x_discrete(drop = FALSE) +
+  geom_rug() +
+  labs(y = "Frecuencia")
+```
+
+
+```{r}
+#| label: identidad_genero
+#| fig-cap: Identidad de género
+ggplot(survey) +
+  aes(x = identidad_genero) +
+  geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
+  scale_fill_discrete(drop = FALSE) +
+  scale_x_discrete(drop = FALSE) +
+  geom_rug() +
+  labs(y = "Frecuencia")
+```
+
+## Autoreconocimiento étnico
+
+```{r}
+#| label: etnia
+#| fig-cap: Autoreconocimiento étnico
+ggplot(survey) +
+  aes(y = etnia) +
+  geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
+  scale_fill_discrete(drop = FALSE) +
+  scale_y_discrete(
+    drop = FALSE,
+    guide = guide_axis(check.overlap = TRUE, n.dodge = 1),
+    labels = \(x) stringr::str_wrap(x, 20)
+  ) +
+  geom_rug() +
+  labs(x = "Frecuencia", y = NULL) # title = attr(survey$etnia, "label")
+```
+
+## Educación
+
+```{r}
+#| label: alfabetismo
+#| fig-cap: Sabe leer y escribir
+ggplot(survey) +
+  aes(x = alfabetismo) +
+  geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
+  scale_fill_discrete(drop = FALSE) +
+  scale_x_discrete(
+    drop = FALSE,
+    guide = guide_axis(check.overlap = TRUE, n.dodge = 1)
+  ) +
+  geom_rug() +
+  labs(y = "Frecuencia")
+```
+
+
+```{r}
+#| label: educacion
+#| fig-cap: Nivel educativo más alto alcanzado
+ggplot(survey) +
+  aes(y = educacion) +
+  geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
+  scale_fill_discrete(drop = FALSE) +
+  scale_y_discrete(
+    drop = FALSE,
+    guide = guide_axis(check.overlap = TRUE, n.dodge = 1)
+  ) +
+  geom_rug() +
+  labs(x = "Frecuencia", y = NULL)
+```
+
+## Situaciones de discapacidad
+
+```{r}
+#| label: discapacidad_any
+ggplot(survey) +
+  aes(x = discapacidad_any) +
+  geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
+  scale_fill_discrete(drop = FALSE) +
+  scale_x_discrete(drop = FALSE) +
+  geom_rug() +
+  labs(y = "Frecuencia")
+```
+
+
+```{r}
+#| label: discapacidad_cnt
+ggplot(survey) +
+  aes(x = discapacidad_cnt) +
+  geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
+  scale_fill_discrete(drop = FALSE) +
+  scale_x_discrete(drop = FALSE) +
+  geom_rug() +
+  labs(y = "Frecuencia")
+```
+
+
+```{r}
+#| label: oir
+ggplot(survey) +
+  aes(x = oir) +
+  geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
+  scale_fill_discrete(drop = FALSE) +
+  scale_x_discrete(drop = FALSE) +
+  geom_rug() +
+  labs(y = "Frecuencia")
+```
+
+```{r}
+#| label: hablar
+ggplot(survey) +
+  aes(x = hablar) +
+  geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
+  scale_fill_discrete(drop = FALSE) +
+  scale_x_discrete(drop = FALSE) +
+  geom_rug() +
+  labs(y = "Frecuencia")
+```
+
+```{r}
+#| label: ver
+ggplot(survey) +
+  aes(x = ver) +
+  geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
+  scale_fill_discrete(drop = FALSE) +
+  scale_x_discrete(drop = FALSE) +
+  geom_rug() +
+  labs(y = "Frecuencia")
+```
+
+```{r}
+#| label: moverse
+ggplot(survey) +
+  aes(x = moverse) +
+  geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
+  scale_fill_discrete(drop = FALSE) +
+  scale_x_discrete(drop = FALSE) +
+  geom_rug() +
+  labs(y = "Frecuencia")
+```
+
+```{r}
+#| label: manos
+ggplot(survey) +
+  aes(x = manos) +
+  geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
+  scale_fill_discrete(drop = FALSE) +
+  scale_x_discrete(drop = FALSE) +
+  geom_rug() +
+  labs(y = "Frecuencia")
+```
+
+```{r}
+#| label: cognitiva
+ggplot(survey) +
+  aes(x = cognitiva) +
+  geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
+  scale_fill_discrete(drop = FALSE) +
+  scale_x_discrete(drop = FALSE) +
+  geom_rug() +
+  labs(y = "Frecuencia")
+```
+
+```{r}
+#| label: autocuidado
+ggplot(survey) +
+  aes(x = autocuidado) +
+  geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
+  scale_fill_discrete(drop = FALSE) +
+  scale_x_discrete(drop = FALSE) +
+  geom_rug() +
+  labs(y = "Frecuencia")
+```
+
+```{r}
+#| label: interaccion
+ggplot(survey) +
+  aes(x = interaccion) +
+  geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
+  scale_fill_discrete(drop = FALSE) +
+  scale_x_discrete(drop = FALSE) +
+  geom_rug() +
+  labs(y = "Frecuencia")
+```
+
+
+
+## Afectaciones por el conflicto armado
+```{r}
+#| label: afectacion_conflicto
+ggplot(survey) +
+  aes(y = afectacion_conflicto) +
+  geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_rug() +
+  labs(y = "Frecuencia")
+```
+
+
+
