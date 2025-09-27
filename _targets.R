@@ -21,7 +21,7 @@ list(
   # field report
   tar_target(
     field_report,
-    identity(build_field_report(
+    build_field_report(
       siviru_field_report,
       usaraga_field_report,
       sirenas_field_report,
@@ -30,8 +30,20 @@ list(
       raices_field_report,
       mariposas_field_report,
       asogesampa_field_report
-    ))
+    )
   ),
+  tar_target(xxx, {
+    c(
+      siviru_survey$ocupacion_desc_txt,
+      usaraga_survey$ocupacion_desc_txt,
+      sirenas_survey$ocupacion_desc_txt,
+      saija_survey$ocupacion_desc_txt,
+      acapa_survey$ocupacion_desc_txt,
+      raices_survey$ocupacion_desc_txt,
+      mariposas_survey$ocupacion_desc_txt,
+      asogesampa_survey$ocupacion_desc_txt
+    )
+  }),
   NULL,
   #flowme::tar_bookdown("report"),
   #tar_target(openreport, browseURL("report/_book/index.html")),

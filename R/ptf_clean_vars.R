@@ -34,5 +34,33 @@ ptf_clean_vars <- function(survey) {
     labels = c("No", "Sí"),
   )
 
+  survey <- tryCatch(
+    survey |>
+      mutate(
+        mcdo_laboral = case_when(
+          actividad_semana == "Trabajando" ~ "Ocupados",
+          actividad_semana == "Incapacitado permanente para trabajar" ~
+            "Incapacitados permanentes",
+          actividad_paga_semana == "Sí" ~ "Ocupados",
+          tenia_trabajo_semana == "Sí" ~ "Ocupados",
+          trabajo_no_remunerado_semana == "Sí" ~ "Ocupados",
+          quiere_trabajo == "No" ~ "Desocupados",
+          disponible_semana == "Sí" ~ "Desocupados",
+          disponible_semana == "No" ~ "No Activos",
+          TRUE ~ NA_character_
+        )
+      ),
+    error = function(e) survey
+  )
+
+  survey <- tryCatch(
+    {
+      survey$ocupacion <- unname(ocupacion_map[survey$ocupacion_desc_txt])
+      #df$categoria <- dplyr::coalesce(df$categoria, "Otros / verificar")
+      survey
+    },
+    error = function(e) survey
+  )
+
   survey
 }

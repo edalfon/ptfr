@@ -50,6 +50,7 @@ ptf_rename_vars <- function(df) {
     interaccion = "31_18_Relacionarse_o",
     interaccion_causa = "32_181_Relacionarse_",
 
+    # afectacion conflicto armado
     afectacion_conflicto = "33_19_Usted_o_algn_m",
     afectacion_otro_1 = "35_Otro_cul",
     afectacion_otro_2 = "36_Otro_cul",
@@ -71,29 +72,40 @@ ptf_rename_vars <- function(df) {
     busco_despues_ultimo_empleo = "48_31_Despus_de_su_l",
     busco_12_meses = "49_32_Durante_los_lt",
     disponible_semana = "50_33_Si_le_hubiera_",
-    ocupacion_desc_1 = "52_Qu_hace_en_este_t",
-    ocupacion_desc_2 = "53_Qu_hace_en_este_t",
+    ocupacion_desc_voz = "52_Qu_hace_en_este_t",
+    ocupacion_desc_txt = "53_Qu_hace_en_este_t",
+
+    #
     ingreso_principal = "54_35_Cunto_gan_el_M",
     otros_trabajos = "55_36_Adems_de_su_oc",
     otros_trabajos_cuales_1 = "57_Otro_cul",
     otros_trabajos_cuales_2 = "58_Otro_cul",
     ingreso_otros = "59_37_Cunto_gan_el_M",
+
     ingreso_persona = "60_38_Cul_es_el_tota",
     ingreso_hogar = "61_39_Cul_es_el_tota",
     ingresos_alcance = "62_40_Los_ingresos_d",
+
     gasto_alimentos = "63_41_Cunto_gast_su_",
+
     alimentos_sin_compra = "64_42_Durante_el_PAS",
     alimentos_sin_compra_valor = "65_43_En_cunto_estim",
     alimentos_sin_compra_origen = "66_44_Cmo_obtuvieron",
+
+    # ayudas
     ayudas_gobierno = "67_45_Durante_los_lt",
     ayudas_gobierno_otro_1 = "69_Otro_cul",
     ayudas_gobierno_otro_2 = "70_Otro_cul",
     ayudas_no_gubernamentales = "71_46_Durante_los_lt",
     ayudas_no_gub_cuales_1 = "73_Otro_cul",
     ayudas_no_gub_cuales_2 = "74_Otro_cul",
+
+    # participación social
     pertenencia_organizaciones = "75_47_Pertenece_a_al",
     contacto_organizaciones = "76_48_En_el_ltimo_ao",
     liderazgo_organizaciones = "77_49_Usted_lidera_p",
+
+    # DEI
     respeto_inclusion_puntaje = "78_50_Indique_su_niv",
     discriminacion_motivos = "79_51_Durante_el_PRE",
     trabajos_mujeres_puntaje = "80_52_Indique_su_niv",

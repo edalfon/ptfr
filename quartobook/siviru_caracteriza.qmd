@@ -8,8 +8,6 @@ fig-cap-location: top
 ```{r}
 #| eval: true
 survey <- tar_read(siviru_survey) |> filter(startsWith(beneficia, "Beneficia"))
-
-# attr(survey$edad, "label") <- "Edad en anos cumplidos"
 ```
 
 
@@ -30,7 +28,7 @@ ggplot(survey) +
 ggplot(survey) +
   aes(x = sexo) +
   geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
-  geom_rug() +
+  geom_percent() +
   labs(y = "Frecuencia")
 ```
 
@@ -43,9 +41,9 @@ ggplot(survey) +
 ggplot(survey) +
   aes(x = orientacion_sexual) +
   geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_percent() +
   scale_fill_discrete(drop = FALSE) +
   scale_x_discrete(drop = FALSE) +
-  geom_rug() +
   labs(y = "Frecuencia")
 ```
 
@@ -56,9 +54,9 @@ ggplot(survey) +
 ggplot(survey) +
   aes(x = identidad_genero) +
   geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_percent() +
   scale_fill_discrete(drop = FALSE) +
   scale_x_discrete(drop = FALSE) +
-  geom_rug() +
   labs(y = "Frecuencia")
 ```
 
@@ -70,13 +68,13 @@ ggplot(survey) +
 ggplot(survey) +
   aes(y = etnia) +
   geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_percent_h() +
   scale_fill_discrete(drop = FALSE) +
   scale_y_discrete(
     drop = FALSE,
     guide = guide_axis(check.overlap = TRUE, n.dodge = 1),
     labels = \(x) stringr::str_wrap(x, 20)
   ) +
-  geom_rug() +
   labs(x = "Frecuencia", y = NULL) # title = attr(survey$etnia, "label")
 ```
 
@@ -88,12 +86,12 @@ ggplot(survey) +
 ggplot(survey) +
   aes(x = alfabetismo) +
   geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_percent() +
   scale_fill_discrete(drop = FALSE) +
   scale_x_discrete(
     drop = FALSE,
     guide = guide_axis(check.overlap = TRUE, n.dodge = 1)
   ) +
-  geom_rug() +
   labs(y = "Frecuencia")
 ```
 
@@ -104,12 +102,12 @@ ggplot(survey) +
 ggplot(survey) +
   aes(y = educacion) +
   geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_percent_h() +
   scale_fill_discrete(drop = FALSE) +
   scale_y_discrete(
     drop = FALSE,
     guide = guide_axis(check.overlap = TRUE, n.dodge = 1)
   ) +
-  geom_rug() +
   labs(x = "Frecuencia", y = NULL)
 ```
 
@@ -120,9 +118,9 @@ ggplot(survey) +
 ggplot(survey) +
   aes(x = discapacidad_any) +
   geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_percent() +
   scale_fill_discrete(drop = FALSE) +
   scale_x_discrete(drop = FALSE) +
-  geom_rug() +
   labs(y = "Frecuencia")
 ```
 
@@ -132,9 +130,9 @@ ggplot(survey) +
 ggplot(survey) +
   aes(x = discapacidad_cnt) +
   geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_percent() +
   scale_fill_discrete(drop = FALSE) +
   scale_x_discrete(drop = FALSE) +
-  geom_rug() +
   labs(y = "Frecuencia")
 ```
 
@@ -144,9 +142,9 @@ ggplot(survey) +
 ggplot(survey) +
   aes(x = oir) +
   geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_percent() +
   scale_fill_discrete(drop = FALSE) +
   scale_x_discrete(drop = FALSE) +
-  geom_rug() +
   labs(y = "Frecuencia")
 ```
 
@@ -155,9 +153,9 @@ ggplot(survey) +
 ggplot(survey) +
   aes(x = hablar) +
   geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_percent() +
   scale_fill_discrete(drop = FALSE) +
   scale_x_discrete(drop = FALSE) +
-  geom_rug() +
   labs(y = "Frecuencia")
 ```
 
@@ -166,9 +164,9 @@ ggplot(survey) +
 ggplot(survey) +
   aes(x = ver) +
   geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_percent() +
   scale_fill_discrete(drop = FALSE) +
   scale_x_discrete(drop = FALSE) +
-  geom_rug() +
   labs(y = "Frecuencia")
 ```
 
@@ -177,9 +175,9 @@ ggplot(survey) +
 ggplot(survey) +
   aes(x = moverse) +
   geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_percent() +
   scale_fill_discrete(drop = FALSE) +
   scale_x_discrete(drop = FALSE) +
-  geom_rug() +
   labs(y = "Frecuencia")
 ```
 
@@ -188,9 +186,9 @@ ggplot(survey) +
 ggplot(survey) +
   aes(x = manos) +
   geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_percent() +
   scale_fill_discrete(drop = FALSE) +
   scale_x_discrete(drop = FALSE) +
-  geom_rug() +
   labs(y = "Frecuencia")
 ```
 
@@ -199,9 +197,9 @@ ggplot(survey) +
 ggplot(survey) +
   aes(x = cognitiva) +
   geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_percent() +
   scale_fill_discrete(drop = FALSE) +
   scale_x_discrete(drop = FALSE) +
-  geom_rug() +
   labs(y = "Frecuencia")
 ```
 
@@ -210,9 +208,9 @@ ggplot(survey) +
 ggplot(survey) +
   aes(x = autocuidado) +
   geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_percent() +
   scale_fill_discrete(drop = FALSE) +
   scale_x_discrete(drop = FALSE) +
-  geom_rug() +
   labs(y = "Frecuencia")
 ```
 
@@ -221,23 +219,301 @@ ggplot(survey) +
 ggplot(survey) +
   aes(x = interaccion) +
   geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_percent() +
   scale_fill_discrete(drop = FALSE) +
   scale_x_discrete(drop = FALSE) +
-  geom_rug() +
   labs(y = "Frecuencia")
 ```
 
 
 
 ## Afectaciones por el conflicto armado
+
 ```{r}
-#| label: afectacion_conflicto
-ggplot(survey) +
-  aes(y = afectacion_conflicto) +
+#| label: afectacion_conflicto_any
+#| fig-cap: Afectación por el conflicto armado (alguna)
+survey$afectacion_conflicto |>
+  checkbox_to_dummies() |>
+  dummies_to_any() |>
+  tibble(x = _) |>
+  ggplot(aes(x = x)) +
   geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
-  geom_rug() +
+  geom_percent() +
+  scale_fill_discrete(drop = FALSE) +
+  scale_x_discrete(drop = FALSE) +
+  labs(y = "Frecuencia", x = "Ha vivido alguna afectación por el conflicto armado")
+```
+
+```{r}
+#| label: afectacion_conflicto_which
+#| fig-cap: Tipo de afectación por el conflicto armado
+survey$afectacion_conflicto |>
+  checkbox_to_dummies() |>
+  mutate(tot = 1) |>
+  summarise(across(everything(), sum)) |>
+  pivot_longer(-tot) |>
+  mutate(perc = value / tot) |>
+  ggplot(aes(x = name, y = value)) +
+  geom_col(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_text(
+    aes(
+      label = scales::percent(perc, 0.1)
+    ),
+    vjust = 0,
+    # nudge_y = -0.2,
+    fontface = "bold"
+  ) +
+  scale_fill_discrete(drop = FALSE) +
+  scale_x_discrete(drop = FALSE) +
+  labs(y = "Frecuencia", x = "Tipo de afectación por el conflicto armado")
+```
+
+## Seguridad social
+
+```{r}
+#| label: salud
+#| fig-cap: Salud
+ggplot(survey) +
+  aes(x = afiliado_salud) +
+  geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_percent() +
+  labs(y = "Frecuencia")
+```
+
+```{r}
+#| label: pension
+#| fig-cap: Pensión
+ggplot(survey) +
+  aes(x = cotiza_pension) +
+  geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_percent() +
+  labs(y = "Frecuencia")
+```
+
+```{r}
+#| label: riesgos
+#| fig-cap: Riesgos
+ggplot(survey) +
+  aes(x = afiliado_riesgos_laborales) +
+  geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_percent() +
   labs(y = "Frecuencia")
 ```
 
 
+## Ocupación
+
+```{r}
+#| label: mcdo_laboral
+#| fig-cap: Participación en el mercado laboral
+ggplot(survey) +
+  aes(x = mcdo_laboral) +
+  geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_percent() +
+  labs(y = "Frecuencia")
+```
+
+```{r}
+#| label: ocupacion
+#| fig-cap: Ocupación
+survey |>
+  filter(!is.na(ocupacion)) |>
+  ggplot(aes(y = ocupacion |> forcats::fct_infreq() |> forcats::fct_rev())) +
+  geom_bar(fill = "steelblue", color = "white", alpha = 0.7, na.rm = TRUE) +
+  geom_percent_h() +
+  labs(y = "Frecuencia")
+```
+
+```{r}
+#| label: otros_trabajos
+#| fig-cap: Participación en el mercado laboral
+ggplot(survey) +
+  aes(x = otros_trabajos) +
+  geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_percent() +
+  labs(y = "Frecuencia")
+```
+
+## Apoyos gubernamentales y no gubernamentales
+
+```{r}
+#| label: ayudas_gobierno_any
+#| fig-cap: Recibió durante los últimos 12 meses alguna ayuda o subsidio de entidades gubernamentales
+survey$ayudas_gobierno |>
+  checkbox_to_dummies() |>
+  dummies_to_any() |>
+  tibble(x = _) |>
+  ggplot(aes(x = x)) +
+  geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_percent() +
+  scale_fill_discrete(drop = FALSE) +
+  scale_x_discrete(drop = FALSE) +
+  labs(y = "Frecuencia", x = "Recibe ayudas o subsidios de entidades gubernamentales")
+```
+
+```{r}
+#| label: ayudas_gobierno_which
+#| fig-cap: Programas de los cuales recibió ayudas o subsidios
+survey$ayudas_gobierno |>
+  checkbox_to_dummies() |>
+  mutate(tot = 1) |>
+  summarise(across(everything(), sum)) |>
+  pivot_longer(-tot) |>
+  mutate(perc = value / tot) |>
+  ggplot(aes(x = name, y = value)) +
+  geom_col(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_text(
+    aes(
+      label = scales::percent(perc, 0.1)
+    ),
+    vjust = 0,
+    # nudge_y = -0.2,
+    fontface = "bold"
+  ) +
+  scale_fill_discrete(drop = FALSE) +
+  scale_x_discrete(drop = FALSE) +
+  labs(y = "Frecuencia", x = "Programas de los cuales recibió ayudas o subsidios")
+```
+
+
+```{r}
+#| label: ayudas_no_gubernamentales
+#| fig-cap: Recibió durante los últimos 12 meses alguna ayuda o subsidio de entidades no gubernamentales
+ggplot(survey) +
+  aes(x = ayudas_no_gubernamentales) +
+  geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_percent() +
+  labs(y = "Frecuencia")
+```
+
+
+## Participación comunitaria
+
+```{r}
+#| label: pertenencia_organizaciones_any
+#| fig-cap: Pertenece a alguna organización
+survey$pertenencia_organizaciones |>
+  checkbox_to_dummies() |>
+  dummies_to_any() |>
+  tibble(x = _) |>
+  ggplot(aes(x = x)) +
+  geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_percent() +
+  scale_fill_discrete(drop = FALSE) +
+  scale_x_discrete(drop = FALSE) +
+  labs(y = "Frecuencia", x = "Pertenece a alguna organización")
+```
+
+```{r}
+#| label: pertenencia_organizaciones_which
+#| fig-cap: Organizaciones a las que pertenece
+survey$pertenencia_organizaciones |>
+  checkbox_to_dummies() |>
+  mutate(tot = 1) |>
+  summarise(across(everything(), sum)) |>
+  pivot_longer(-tot) |>
+  mutate(perc = value / tot) |>
+  filter(value > 0) |>
+  ggplot(aes(y = name |> forcats::fct_reorder(value), x = value)) +
+  geom_col(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_text(
+    aes(
+      label = scales::percent(perc, 0.1)
+    ),
+    hjust = "inward",
+    # nudge_y = -0.2,
+    fontface = "bold"
+  ) +
+  scale_fill_discrete(drop = FALSE) +
+  scale_y_discrete(drop = FALSE) +
+  # scale_x_continuous(expand = expansion(0, 1))+
+  labs(x = "Frecuencia", y = "Organizaciones a las que pertenece")
+```
+
+
+
+
+```{r}
+#| label: contacto_organizaciones_any
+#| fig-cap: En el último año, tuvo contacto con alguna organización
+survey$contacto_organizaciones |>
+  checkbox_to_dummies() |>
+  dummies_to_any() |>
+  tibble(x = _) |>
+  ggplot(aes(x = x)) +
+  geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_percent() +
+  scale_fill_discrete(drop = FALSE) +
+  scale_x_discrete(drop = FALSE) +
+  labs(y = "Frecuencia", x = "En el último año, tuvo contacto con alguna organización")
+```
+
+```{r}
+#| label: contacto_organizaciones_which
+#| fig-cap: Organizaciones con las que tuvo contacto el último año
+survey$contacto_organizaciones |>
+  checkbox_to_dummies() |>
+  mutate(tot = 1) |>
+  summarise(across(everything(), sum)) |>
+  pivot_longer(-tot) |>
+  mutate(perc = value / tot) |>
+  filter(value > 0) |>
+  ggplot(aes(y = name |> forcats::fct_reorder(value), x = value)) +
+  geom_col(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_text(
+    aes(
+      label = scales::percent(perc, 0.1)
+    ),
+    hjust = "inward",
+    # nudge_y = -0.2,
+    fontface = "bold"
+  ) +
+  scale_fill_discrete(drop = FALSE) +
+  scale_y_discrete(drop = FALSE) +
+  # scale_x_continuous(expand = expansion(0, 1))+
+  labs(x = "Frecuencia", y = "Organizaciones a las que pertenece")
+```
+
+
+
+```{r}
+#| label: liderazgo_organizaciones_any
+#| fig-cap: Lidera organizaciones
+survey$liderazgo_organizaciones |>
+  checkbox_to_dummies() |>
+  dummies_to_any() |>
+  tibble(x = _) |>
+  ggplot(aes(x = x)) +
+  geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_percent() +
+  scale_fill_discrete(drop = FALSE) +
+  scale_x_discrete(drop = FALSE) +
+  labs(y = "Frecuencia", x = "Lidera organizaciones")
+```
+
+```{r}
+#| label: liderazgo_organizaciones_which
+#| fig-cap: Organizaciones que lidera
+survey$liderazgo_organizaciones |>
+  checkbox_to_dummies() |>
+  mutate(tot = 1) |>
+  summarise(across(everything(), sum)) |>
+  pivot_longer(-tot) |>
+  mutate(perc = value / tot) |>
+  filter(value > 0) |>
+  ggplot(aes(y = name |> forcats::fct_reorder(value), x = value)) +
+  geom_col(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_text(
+    aes(
+      label = scales::percent(perc, 0.1)
+    ),
+    hjust = "inward",
+    # nudge_y = -0.2,
+    fontface = "bold"
+  ) +
+  scale_fill_discrete(drop = FALSE) +
+  scale_y_discrete(drop = FALSE) +
+  # scale_x_continuous(expand = expansion(0, 1))+
+  labs(x = "Frecuencia", y = "Organizaciones que lidera")
+```
 

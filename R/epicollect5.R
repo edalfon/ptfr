@@ -86,6 +86,9 @@ epicollect_get_project <- function(
 }
 
 epicollect_assign_labels <- function(target_data, proj_metadata) {
+  # target_data <- tar_read(siviru_survey_epicollect)
+  # proj_metadata <- tar_read(siviru_epicollect_proj)
+
   # get all the questions (inputs) in a data frame
   inputs <- tibble(proj_metadata$data$project$forms$inputs[[1]])
 
@@ -105,11 +108,14 @@ epicollect_assign_labels <- function(target_data, proj_metadata) {
     # col <- "33_19_Usted_o_algn_m"
     label_row <- labels_map |> filter(map_to == col)
     if (nrow(label_row) == 1) {
+      possible_answers <- label_row$possible_answers[[1]]$answer
+      # if it's a single answer question, convert to factor
       if (label_row$type == "radio") {
-        target_data[, col] <- factor(
-          target_data[[col]],
-          levels = label_row$possible_answers[[1]]$answer
-        )
+        target_data[, col] <- factor(target_data[[col]], levels = possible_answers)
+      }
+      # if it's a multiple answer question, store possible answers as attribute
+      if (label_row$type == "checkbox") {
+        attr(target_data[[col]], "possible_answers") <- possible_answers
       }
       if (!is.na(label_row$question)) {
         # Remove leading numbers, points (including decimals), and a
@@ -124,6 +130,33 @@ epicollect_assign_labels <- function(target_data, proj_metadata) {
   }
 
   target_data
+}
+
+checkbox_to_dummies <- function(checkbox_col) {
+  # checkbox_col <- survey$afectacion_conflicto
+  possible_answers <- attr(checkbox_col, "possible_answers")
+
+  checkbox_indicators <- purrr::map_dfc(.x = possible_answers, .f = \(x) {
+    stringr::str_detect(checkbox_col, stringr::fixed(x)) |>
+      tidyr::replace_na(0) |>
+      as.integer()
+  }) |>
+    purrr::set_names(possible_answers)
+
+  checkbox_indicators
+  # checkbox_indicators <- sapply(possible_answers, function(ans) {
+  #   as.integer(grepl(ans, checkbox_col, fixed = TRUE))
+  # })
+  # colnames(checkbox_indicators) <- possible_answers
+  # checkbox_indicators <- as.data.frame(checkbox_indicators)
+}
+
+dummies_to_cnt <- function(df, na.rm = FALSE) {
+  factor(x = rowSums(df, na.rm = na.rm), levels = 0:ncol(df), ordered = TRUE)
+}
+
+dummies_to_any <- function(df, na.rm = FALSE) {
+  factor(x = apply(df, 1, max, na.rm = TRUE), levels = 0:1, labels = c("No", "Sí"))
 }
 
 # Danke für deinen Einkauf bei Brille24
