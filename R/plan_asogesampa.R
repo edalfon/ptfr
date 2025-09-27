@@ -24,11 +24,13 @@ plan_asogesampa <- function() {
   # Clean and rename variables
   tar_target(asogesampa_survey, {
     asogesampa_survey_epicollect |>
+      epicollect_assign_labels(asogesampa_epicollect_proj) |>
       ptf_rename_vars() |>
       ptf_rename_vars_asogesampa() |>
       dplyr::filter(title != "Prueba") |>
       dplyr::filter(title != "PRUEBA 1") |>
       ptf_clean_vars() |>
+      ptf_assign_labels() |>
       identity()
   })
 

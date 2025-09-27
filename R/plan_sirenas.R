@@ -23,11 +23,13 @@ plan_sirenas <- function() {
   # Clean and rename variables
   tar_target(sirenas_survey, {
     sirenas_survey_epicollect |>
+      epicollect_assign_labels(sirenas_epicollect_proj) |>
       ptf_rename_vars() |>
       ptf_rename_vars_sirenas() |>
       dplyr::filter(title != "Lucia") |>
       dplyr::filter(title != "Eduardo") |>
       ptf_clean_vars() |>
+      ptf_assign_labels() |>
       recode_beneficia_sirenas() |>
       identity()
   })

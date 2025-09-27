@@ -24,10 +24,12 @@ plan_acapa <- function() {
   # Clean and rename variables
   tar_target(acapa_survey, {
     acapa_survey_epicollect |>
+      epicollect_assign_labels(acapa_epicollect_proj) |>
       ptf_rename_vars() |>
       ptf_rename_vars_acapa() |>
       dplyr::filter(title != "Prueba 1") |>
       ptf_clean_vars() |>
+      ptf_assign_labels() |>
       identity()
   })
 

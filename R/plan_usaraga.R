@@ -23,10 +23,12 @@ plan_usaraga <- function() {
   # Clean and rename variables
   tar_target(usaraga_survey, {
     usaraga_survey_epicollect |>
+      epicollect_assign_labels(usaraga_epicollect_proj) |>
       ptf_rename_vars() |>
       ptf_rename_vars_usaraga() |>
-      recode_beneficia_usaraga() |>
       ptf_clean_vars() |>
+      ptf_assign_labels() |>
+      recode_beneficia_usaraga() |>
       identity()
   })
 

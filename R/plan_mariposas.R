@@ -24,10 +24,12 @@ plan_mariposas <- function() {
   # Clean and rename variables
   tar_target(mariposas_survey, {
     mariposas_survey_epicollect |>
+      epicollect_assign_labels(mariposas_epicollect_proj) |>
       #ptf_rename_vars() |>
       ptf_rename_vars_mariposas() |>
       dplyr::filter(title != "Tjfh") |>
       ptf_clean_vars() |>
+      ptf_assign_labels() |>
       identity()
   })
 

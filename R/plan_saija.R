@@ -24,11 +24,13 @@ plan_saija <- function() {
   # Clean and rename variables
   tar_target(saija_survey, {
     saija_survey_epicollect |>
+      epicollect_assign_labels(saija_epicollect_proj) |>
       #ptf_rename_vars() |>
       ptf_rename_vars_saija() |>
       dplyr::filter(title != "Kevin") |>
       dplyr::filter(title != "Tania Hurtado") |>
       ptf_clean_vars() |>
+      ptf_assign_labels() |>
       recode_beneficia_saija() |>
       identity()
   })

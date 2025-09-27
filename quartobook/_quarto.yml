@@ -18,6 +18,7 @@ book:
     - index.qmd
     - siviru.qmd
     - siviru_caracteriza.qmd
+    - usaraga_caracteriza.qmd
     - summary.qmd
     - references.qmd
   appendices:

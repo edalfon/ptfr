@@ -23,10 +23,12 @@ plan_raices <- function() {
   # Clean and rename variables
   tar_target(raices_survey, {
     raices_survey_epicollect |>
+      epicollect_assign_labels(raices_epicollect_proj) |>
       ptf_rename_vars() |>
       ptf_rename_vars_raices() |>
       dplyr::filter(title != "Sin nombre") |>
       ptf_clean_vars() |>
+      ptf_assign_labels() |>
       identity()
   })
 

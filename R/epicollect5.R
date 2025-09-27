@@ -135,6 +135,7 @@ epicollect_assign_labels <- function(target_data, proj_metadata) {
 checkbox_to_dummies <- function(checkbox_col) {
   # checkbox_col <- survey$afectacion_conflicto
   possible_answers <- attr(checkbox_col, "possible_answers")
+  stopifnot(length(possible_answers) > 0)
 
   checkbox_indicators <- purrr::map_dfc(.x = possible_answers, .f = \(x) {
     stringr::str_detect(checkbox_col, stringr::fixed(x)) |>
