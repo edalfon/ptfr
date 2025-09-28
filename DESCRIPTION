@@ -56,4 +56,5 @@ Imports:
     usethis,
     utils,
     visNetwork,
-    writexl
+    writexl,
+    quarto
