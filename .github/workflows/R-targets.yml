@@ -130,7 +130,7 @@ jobs:
         run: |
           options(crayon.enabled = TRUE)
           targets::tar_make()
-        shell: Rscript {0}
+        shell: Rscript --vanilla {0}
         continue-on-error: true # do not fail, to let the artifact be created even for partial builds
 
       - name: Upload targets store
