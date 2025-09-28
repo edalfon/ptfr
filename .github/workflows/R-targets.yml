@@ -57,6 +57,11 @@ jobs:
           remotes::install_deps(upgrade = "always"); remotes::install_github("edalfon/efun")
         shell: Rscript --vanilla {0}
 
+      - name: Download a single artifact
+        uses: actions/download-artifact@v5
+        with:
+          name: targets-store
+
       - name: Run targets pipeline
         run: |
           options(crayon.enabled = TRUE)
