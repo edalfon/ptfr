@@ -17,7 +17,6 @@ Imports:
     devtools,
     dplyr,
     effects,
-    edalfon/efun,
     emojifont,
     fs,
     furrr,

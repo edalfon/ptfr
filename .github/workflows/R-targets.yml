@@ -54,7 +54,7 @@ jobs:
       - name: Install dependencies
         run: |
           if (!require("remotes", quietly = TRUE)) install.packages("remotes", repos = "http://cran.us.r-project.org")
-          remotes::install_deps(upgrade = "always")
+          remotes::install_deps(upgrade = "always"); remotes::install_github("edalfon/efun")
         shell: Rscript --vanilla {0}
 
       - name: Run targets pipeline
