@@ -65,6 +65,7 @@ jobs:
           name: targets-store
 
       - name: Run targets pipeline
+        id: run_targets_pipeline
         run: |
           options(crayon.enabled = TRUE)
           targets::tar_make()
@@ -76,3 +77,11 @@ jobs:
         with:
           name: targets-store
           path: _targets/
+
+      - name: Upload Quarto book
+        if: steps.run_targets_pipeline.outcome == 'success'
+        uses: actions/upload-artifact@v4
+        with:
+          name: quartobook
+          path: quartobook/_book
+
