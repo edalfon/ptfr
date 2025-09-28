@@ -60,9 +60,7 @@ jobs:
       - name: Get latest workflow run
         id: get_run
         run: |
-          run_id=$(gh api \
-            repos/${{ github.repository }}/actions/workflows/${{ github.workflow }}.yml/runs \
-            --jq '.workflow_runs | map(select(.conclusion=="success")) | .[0].id')
+          run_id=$(gh api repos/${{ github.repository }}/actions/workflows/R-targets.yml/runs --jq '.workflow_runs | map(select(.conclusion=="success")) | .[0].id')
           echo "run_id=$run_id" >> $GITHUB_OUTPUT
         env:
           GH_TOKEN: ${{ github.token }}
