@@ -10,6 +10,9 @@ on:
 jobs:
   build:
     runs-on: macos-latest
+    permissions:
+      actions: read # Required to read details about other workflow runs
+      contents: read
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
       R_KEEP_PKG_SOURCE: yes
