@@ -1,9 +1,9 @@
 project:
   type: book
-  pre-render: pre-render.R
-  # post-render: post-render.R
   output-dir: _book
   execute-dir: project
+  pre-render: pre-render.R
+  # post-render: post-render.R
 
 execute:
   echo: false    # hide code globally (show results only)
@@ -12,13 +12,15 @@ execute:
   freeze: auto  # re-render only when source changes
 
 book:
-  title: "quartobook"
+  title: "Evaluación PTF"
   author: "VCA"
   chapters:
     - index.qmd
     - siviru.qmd
-    - siviru_caracteriza.qmd
-    - usaraga_caracteriza.qmd
+    - part: "Caracterización de beneficiarias y beneficiarios"
+      chapters:
+      - siviru_caracteriza.qmd
+      - usaraga_caracteriza.qmd
     - summary.qmd
     - references.qmd
   appendices:

@@ -10,6 +10,84 @@ fig-cap-location: top
 survey <- tar_read(siviru_survey) |> filter(startsWith(beneficia, "Beneficia"))
 ```
 
+```{r}
+#| label: map_all
+#| fig-cap: Ubicación de entrevista de los beneficiarios
+leaflet::leaflet(height = "700px") |>
+  leaflet::addProviderTiles(leaflet::providers$OpenStreetMap, group = "Street View") |>
+  leaflet::addProviderTiles(leaflet::providers$Esri.WorldImagery, group = "Satellite") |>
+  leaflet::addLayersControl(
+    baseGroups = c("Street View", "Satellite"),
+    options = leaflet::layersControlOptions(collapsed = FALSE)
+  ) |>
+  # leaflet::addTiles() |> # Add OpenStreetMap tiles
+  leaflet::addAwesomeMarkers(
+    lng = survey$longitud,
+    lat = survey$latitud,
+    icon = leaflet::awesomeIcons(
+      icon = "user",
+      library = "fa",
+      markerColor = "lightblue",
+      squareMarker = TRUE,
+      iconColor = "black",
+      spin = FALSE
+    ),
+    options = leaflet::markerOptions(opacity = 0.7)
+  )
+```
+
+```{r}
+#| label: map_siviru
+#| fig-cap: Ubicación de entrevista de los beneficiarios
+leaflet::leaflet(height = "700px") |>
+  leaflet::addProviderTiles(leaflet::providers$OpenStreetMap, group = "Street View") |>
+  leaflet::addProviderTiles(leaflet::providers$Esri.WorldImagery, group = "Satellite") |>
+  leaflet::addLayersControl(
+    baseGroups = c("Street View", "Satellite"),
+    options = leaflet::layersControlOptions(collapsed = FALSE)
+  ) |>
+  # leaflet::addTiles() |> # Add OpenStreetMap tiles
+  leaflet::addAwesomeMarkers(
+    lng = survey |> filter(latitud <= 4.806288) |> pull(longitud),
+    lat = survey |> filter(latitud <= 4.806288) |> pull(latitud),
+    icon = leaflet::awesomeIcons(
+      icon = "user",
+      library = "fa",
+      markerColor = "lightblue",
+      squareMarker = TRUE,
+      iconColor = "black",
+      spin = FALSE
+    ),
+    options = leaflet::markerOptions(opacity = 0.7)
+  )
+```
+
+```{r}
+#| label: map_dotenedo
+#| fig-cap: Ubicación de entrevista de los beneficiarios
+leaflet::leaflet(height = "700px") |>
+  leaflet::addProviderTiles(leaflet::providers$OpenStreetMap, group = "Street View") |>
+  leaflet::addProviderTiles(leaflet::providers$Esri.WorldImagery, group = "Satellite") |>
+  leaflet::addLayersControl(
+    baseGroups = c("Street View", "Satellite"),
+    options = leaflet::layersControlOptions(collapsed = FALSE)
+  ) |>
+  # leaflet::addTiles() |> # Add OpenStreetMap tiles
+  leaflet::addAwesomeMarkers(
+    lng = survey |> filter(latitud >= 4.861149 & latitud <= 4.862274) |> pull(longitud),
+    lat = survey |> filter(latitud >= 4.861149 & latitud <= 4.862274) |> pull(latitud),
+    icon = leaflet::awesomeIcons(
+      icon = "user",
+      library = "fa",
+      markerColor = "lightblue",
+      squareMarker = TRUE,
+      iconColor = "black",
+      spin = FALSE
+    ),
+    options = leaflet::markerOptions(opacity = 0.7)
+  )
+```
+
 
 ```{r}
 #| label: edad

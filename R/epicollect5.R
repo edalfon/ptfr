@@ -42,7 +42,7 @@ epicollect_download_data <- function(
     httr::add_headers("Authorization" = paste("Bearer", token))
   )
   stopifnot(res_csv$status_code == 200)
-  rawToChar(res_csv$content) |> readr::read_csv() |> identity()
+  rawToChar(res_csv$content) |> readr::read_csv()
 }
 
 # https://developers.epicollect.net/project/export-project
