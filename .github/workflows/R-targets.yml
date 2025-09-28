@@ -91,7 +91,7 @@ jobs:
           # is treated as a regular expression if input name_is_regexp is true
           # will download only those artifacts with a name that matches this regular expression
           # https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions
-          name: _targets
+          name: targetsstore
           # Optional, name is treated as a regular expression if set true
           name_is_regexp: false
           # Optional, a directory where to extract artifact(s), defaults to the current directory
@@ -104,7 +104,7 @@ jobs:
           check_artifacts: false
           # Optional, search for the last workflow run whose stored an artifact named as in `name` input
           # default false
-          search_artifacts: false
+          search_artifacts: true
           # Optional, choose to skip unpacking the downloaded artifact(s)
           # default false
           skip_unpack: false
@@ -134,8 +134,8 @@ jobs:
       - name: Upload targets store
         uses: actions/upload-artifact@v4
         with:
-          name: _targets
-          path: _targets
+          name: targetsstore
+          path: targetsstore
 
       - name: Upload Quarto book
         if: steps.run_targets_pipeline.outcome == 'success'
