@@ -63,8 +63,8 @@ jobs:
           targets::tar_make()
         shell: Rscript {0}
 
-      # - name: Upload targets store
-      #   uses: actions/upload-artifact@v3
-      #   with:
-      #     name: targets-store
-      #     path: _targets/
+      - name: Upload targets store
+        uses: actions/upload-artifact@v4
+        with:
+          name: targets-store
+          path: _targets/
