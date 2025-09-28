@@ -26,8 +26,8 @@ jobs:
           r-version: 'release'
           use-public-rspm: true
 
-      # - name: Set up pandoc
-      #   uses: r-lib/actions/setup-pandoc@v2
+      - name: Set up pandoc
+        uses: r-lib/actions/setup-pandoc@v2
 
       - name: Install Quarto
         uses: quarto-dev/quarto-actions/setup@v2
