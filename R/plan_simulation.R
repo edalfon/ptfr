@@ -17,7 +17,7 @@ plan_simulation <- function() {
     lapply(as.list(body(sim_siviru))[-1], eval),
     lapply(as.list(body(sim_usuraga))[-1], eval),
 
-    tar_quarto(sim_slides, "slides/slides.qmd"),
+    tar_quarto(sim_slides, "slides/slides.qmd", quiet = FALSE),
 
     #sim_acapa(),
 
