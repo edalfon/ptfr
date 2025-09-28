@@ -63,7 +63,7 @@ jobs:
         uses: actions/download-artifact@v5
         with:
           name: _targets
-          github-token: ${{ secrets.GH_PAT }} # token with actions:read permissions on target repo
+          github-token: ${{ secrets.GH_PAT }} # token with actions:read permissions on target repo, so it can read artifacts from previous workflow runs
 
       - name: Run targets pipeline
         id: run_targets_pipeline
