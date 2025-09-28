@@ -48,6 +48,7 @@ jobs:
       - name: Download artifact
         id: download-artifact
         uses: dawidd6/action-download-artifact@v11
+        continue-on-error: true
         with:
           # Optional, GitHub token, a Personal Access Token with `public_repo` scope if needed
           # Required, if the artifact is from a different repo
@@ -122,6 +123,7 @@ jobs:
           # Optional, if multiple artifacts are found with `name_is_regexp` set to `true`, merge them into one directory
           # default false
           merge_multiple: false
+          
 
       - name: Run targets pipeline
         id: run_targets_pipeline
