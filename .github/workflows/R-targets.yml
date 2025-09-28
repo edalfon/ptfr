@@ -62,7 +62,8 @@ jobs:
         continue-on-error: true # artifact may not be available yet
         uses: actions/download-artifact@v5
         with:
-          name: targets-store
+          name: _targets
+          github-token: ${{ secrets.GH_PAT }} # token with actions:read permissions on target repo
 
       - name: Run targets pipeline
         id: run_targets_pipeline
@@ -75,8 +76,8 @@ jobs:
       - name: Upload targets store
         uses: actions/upload-artifact@v4
         with:
-          name: targets-store
-          path: _targets/
+          name: _targets
+          path: _targets
 
       - name: Upload Quarto book
         if: steps.run_targets_pipeline.outcome == 'success'
