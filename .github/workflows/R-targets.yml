@@ -59,7 +59,7 @@ jobs:
 
       - name: Download a single artifact
         id: download_artifact
-        continue-on-error: true
+        continue-on-error: true # artifact may not be available yet
         uses: actions/download-artifact@v5
         with:
           name: targets-store
@@ -69,6 +69,7 @@ jobs:
           options(crayon.enabled = TRUE)
           targets::tar_make()
         shell: Rscript {0}
+        continue-on-error: true # do not fail, to let the artifact be created even for partial builds
 
       - name: Upload targets store
         uses: actions/upload-artifact@v4
