@@ -56,4 +56,5 @@ Imports:
     utils,
     visNetwork,
     writexl,
-    quarto
+    quarto,
+    flexdashboard
