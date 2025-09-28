@@ -57,6 +57,16 @@ jobs:
           remotes::install_deps(upgrade = "always"); remotes::install_github("edalfon/efun")
         shell: Rscript --vanilla {0}
 
+      - name: Get latest workflow run
+        id: get_run
+        run: |
+          run_id=$(gh api \
+            repos/${{ github.repository }}/actions/workflows/${{ github.workflow }}.yml/runs \
+            --jq '.workflow_runs | map(select(.conclusion=="success")) | .[0].id')
+          echo "run_id=$run_id" >> $GITHUB_OUTPUT
+        env:
+          GH_TOKEN: ${{ github.token }}
+
       - name: Download a single artifact
         id: download_artifact
         continue-on-error: true # artifact may not be available yet
@@ -64,6 +74,7 @@ jobs:
         with:
           name: _targets
           github-token: ${{ secrets.GH_PAT }} # token with actions:read permissions on target repo, so it can read artifacts from previous workflow runs
+          run-id: ${{ steps.get_run.outputs.run_id }}
 
       - name: Run targets pipeline
         id: run_targets_pipeline
