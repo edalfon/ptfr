@@ -57,4 +57,5 @@ Imports:
     visNetwork,
     writexl,
     quarto,
-    flexdashboard
+    flexdashboard,
+    forcats
