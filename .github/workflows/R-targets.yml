@@ -151,7 +151,7 @@ jobs:
         with:
           repository: edalfon/ptfrbook
           path: ./ptfrbook
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.PTFRBOOK_PAT }}
 
       - name: Copy Quarto book to ptfrbook
         run: |
@@ -165,8 +165,11 @@ jobs:
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          # ensure the remote uses the PAT
+          # ensure the remote uses the PAT (must have 'repo' scope and access to edalfon/ptfrbook)
           git remote set-url origin "https://${PAT}@github.com/edalfon/ptfrbook.git"
+
+          git fetch origin main
+          git pull origin main
 
           git add -A
           git commit -m "Update Quarto book from main repo" || echo "No changes to commit"
