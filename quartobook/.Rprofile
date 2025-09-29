@@ -1,4 +1,5 @@
-cat("Loading .Rprofile -> getwd(): ", getwd(), "\n")
+cat("Loading .Rprofile IN QUARTOBOOK -> getwd(): ", getwd(), "\n")
+cat("here: ", here::here("./R"), "\n")
 
 options(conflicts.policy = "strict")
 if (file.exists("~/.Rprofile")) {
