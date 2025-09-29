@@ -1,14 +1,25 @@
 ---
-title: "Caracterización de beneficiarios -  SIVIRÚ"
+title: "Sivirú"
 fig-cap-location: top
 ---
-
-## Edad y sexo asignado al nacer
 
 ```{r}
 #| eval: true
 survey <- tar_read(siviru_survey) |> filter(startsWith(beneficia, "Beneficia"))
 ```
+
+La población objetivo directa del proyecto de fortalecimiento de sistemas productivos de azoteas fue originalmente definida como 40 familias afrocolombianas de las comunidades de Sivirú y Dotenedó, caracterizadas como una población vulnerable que en su mayoría ha sido víctima del conflicto armado. @diseno_siviru
+
+El proceso de selección de los beneficiarios para el proyecto de fortalecimiento de azoteas en Sivirú fue notablemente participativo, llevándose a cabo a través de una asamblea comunitaria. La junta directiva convocó a la comunidad, explicó el proyecto y sus requisitos, incluyendo los principios de interseccionalidad que exigían un porcentaje de participación femenina. Durante la asamblea, surgió una propuesta de la propia comunidad (en donde los informantes resaltan que la propuesta fue apoyada de manera generalizada por los hombres), para que el proyecto beneficiara exclusivamente a mujeres cabeza de familia, al considerarlas más dedicadas y cuidadosas. Una vez acordado este enfoque, se aplicaron criterios de selección concertados: pertenecer al censo del Consejo Comunitario, ser mujer cabeza de hogar, tener vocación para la agricultura en azoteas, participar activamente en los procesos del territorio y no haber sido sancionada por la comunidad. Con base en estos criterios, se seleccionaron 40 mujeres. Adicionalmente, y como muestra del alto interés generado, el propio Consejo Comunitario decidió financiar con recursos propios la participación de otras 14 familias que también cumplían los requisitos. @entrevistas_siviru
+
+Adicionalmente, el proyecto estima que beneficia de manera indirecta a aproximadamente 200 personas. Estos beneficiarios son principalmente los núcleos familiares de las 40 mujeres participantes, y sus habitantes cercanos. @diseno_siviru
+
+A continuación se presenta una caracterización de los beneficiarios del proyecto, a partir de los datos recopilados en campo durante la encuesta para la evaluación del proyecto.
+
+
+## Ubicación geográfica
+
+Los mapas presentados a continuación muestran la ubicación de los beneficiarios del proyecto implementado por el Consejo Comunitario de Sivirú. En ellos se identifican los lugares donde se realizaron las entrevistas, que en la mayoría de los casos corresponden a las viviendas y familias participantes en las comunidades de Sivirú y Dotenedó (Nota: para no viiolar la confidencialidad de los informantes de la encuesta, pero aún así poder ilustrar su distribución geográfica, se ha introducido un componente aleatorio en la ubicación, para no revelar de manera pública el lugar puntual de la entrevista). La georreferenciación de los hogares permite visualizar la distribución territorial de las 40 familias beneficiarias, resaltando su localización a lo largo de la zona ribereña y dentro del territorio colectivo adjudicado al Consejo Comunitario.
 
 ```{r}
 #| label: map_all
@@ -38,7 +49,7 @@ leaflet::leaflet(height = "700px") |>
 
 ```{r}
 #| label: map_siviru
-#| fig-cap: Ubicación de entrevista de los beneficiarios
+#| fig-cap: Ubicación de entrevista de los beneficiarios - Sivirú
 leaflet::leaflet(height = "700px") |>
   leaflet::addProviderTiles(leaflet::providers$OpenStreetMap, group = "Street View") |>
   leaflet::addProviderTiles(leaflet::providers$Esri.WorldImagery, group = "Satellite") |>
@@ -64,7 +75,7 @@ leaflet::leaflet(height = "700px") |>
 
 ```{r}
 #| label: map_dotenedo
-#| fig-cap: Ubicación de entrevista de los beneficiarios
+#| fig-cap: Ubicación de entrevista de los beneficiarios - Dotenedó
 leaflet::leaflet(height = "700px") |>
   leaflet::addProviderTiles(leaflet::providers$OpenStreetMap, group = "Street View") |>
   leaflet::addProviderTiles(leaflet::providers$Esri.WorldImagery, group = "Satellite") |>
@@ -89,6 +100,16 @@ leaflet::leaflet(height = "700px") |>
 ```
 
 
+## Edad y sexo asignado al nacer
+
+La distribución por edades de las personas beneficiarias muestra un rango amplio que va de los 20 a los 70 años, con mayor concentración entre los 30 y 40 años, así como en el grupo de 60 años. Esto refleja la participación tanto de personas jóvenes como adultas mayores en las actividades del proyecto, lo que estaría en línea con un propósito del mismo como es favorecer la transmisión intergeneracional de conocimientos y prácticas comunitarias.
+
+TODO: ¿Por qué hay un par de hombres ahí, si se supone que en los criterios dijeron que solamente mujeres?. Validar con Claudio lo del criterio, y validar con campo para ver si pudo ser problema de registro. Las 40 en el listado de beneficiarios, todas parecían tener nombre de mujeres (no había variable sexo). También ver si es un tema de reconocimiento. Ok, después de mirar, también tienen nombre, aparentemente, de mujer. Puede ser solamente un tema de recolección. TODO, recode it.
+
+En cuanto al sexo, se observa una clara mayoría de mujeres (97,4%), mientras que los hombres representan solo el 2,6% de los beneficiarios. Esta alta participación femenina confirma el enfoque del proyecto en el fortalecimiento de mujeres cabeza de hogar como actoras centrales en la implementación de sistemas productivos tradicionales de azoteas, en concordancia con los objetivos de generación de ingresos, soberanía alimentaria y liderazgo comunitario.
+
+TODO: tenemos datos de la población del consejo comunitario?
+
 ```{r}
 #| label: edad
 #| fig-cap: Edad
@@ -97,6 +118,13 @@ ggplot(survey) +
   geom_histogram(bins = 10, fill = "steelblue", color = "white", alpha = 0.7) +
   geom_rug() +
   labs(y = "Frecuencia")
+```
+
+```{r}
+#| tbl-cap: Cuantiles
+quantile(survey$edad, na.rm = TRUE) |>
+  t() |>
+  knitr::kable()
 ```
 
 
@@ -112,6 +140,9 @@ ggplot(survey) +
 
 
 ## Orientación sexual e identidad de género
+
+En cuanto a la identidad de género, el 100% de las personas beneficiarias se reconocen como mujeres. Respecto a la orientación sexual, la mayoría de las beneficiarias (94,7%) manifestó sentir atracción sexual o romántica por hombres, mientras que un 2,6% expresó atracción por ambos sexos y otro 2,6% prefirió no responder. Esta información, aunque limitada en diversidad, aporta a la comprensión de la composición de las participantes y ofrece elementos para asegurar que el proyecto continúe promoviendo espacios de inclusión y respeto por la diversidad sexual.
+
 
 ```{r}
 #| label: orientacion_sexual
@@ -140,11 +171,13 @@ ggplot(survey) +
 
 ## Autoreconocimiento étnico
 
+La totalidad de las personas beneficiarias del proyecto en Sivirú se autorreconocen como negras, mulatas, afrodescendientes o afrocolombianas. Este resultado es consistente con la identidad étnica del territorio colectivo del Consejo Comunitario de Sivirú, en el municipio de Bajo Baudó (Chocó), y pone de relieve el carácter afrodescendiente de la comunidad participante. Y aunque no sorprende el resultado, sí está alineado con los objetivos de PTF y confirma la pertinencia de las acciones del proyecto en un contexto donde la cultura, la organización social y las prácticas productivas están profundamente vinculadas a la tradición afrocolombiana.
+
 ```{r}
 #| label: etnia
 #| fig-cap: Autoreconocimiento étnico
 ggplot(survey) +
-  aes(y = etnia) +
+  aes(y = etnia |> forcats::fct_infreq() |> forcats::fct_rev()) +
   geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
   geom_percent_h() +
   scale_fill_discrete(drop = FALSE) +
@@ -157,6 +190,8 @@ ggplot(survey) +
 ```
 
 ## Educación
+
+Los resultados sobre alfabetismo y logro educativo muestran que la gran mayoría de las personas beneficiarias (92,1%) sabe leer y escribir, mientras que un 7,9% no cuenta con esta habilidad básica. En relación con el nivel educativo alcanzado, el 34,2% logró finalizar la básica primaria, el 31,6% alcanzó la educación media y el 18,4% llegó hasta la secundaria. Un porcentaje menor obtuvo formación técnica (7,9%) o tecnológica (2,6%), y solo una fracción muy reducida alcanzó educación superior. Estos resultados reflejan que, aunque la alfabetización está ampliamente extendida, los niveles de logro educativo superiores siguen siendo limitados, lo que evidencia los retos en la comunidad frente a las oportunidades de acceso y permanencia en la educación postsecundaria.
 
 ```{r}
 #| label: alfabetismo
@@ -191,6 +226,8 @@ ggplot(survey) +
 
 ## Situaciones de discapacidad
 
+Los resultados sobre discapacidad muestran que el 7,9% de las personas beneficiarias reporta encontrarse en alguna situación de discapacidad, mientras que la gran mayoría (92,1%) no presenta ninguna condición. En cuanto al número de situaciones reportadas, todas corresponden a un único tipo de discapacidad (dificultades para ver), lo que indica que no se registran casos de personas con múltiples situaciones de discapacidad. Estos resultados, aunque reflejan una presencia minoritaria, resaltan la importancia de incorporar un enfoque inclusivo en el diseño y la ejecución de los proyectos, asegurando que quienes viven con discapacidad cuenten con condiciones adecuadas de participación y acceso a los beneficios de la iniciativa.
+
 ```{r}
 #| label: discapacidad_any
 ggplot(survey) +
@@ -201,7 +238,6 @@ ggplot(survey) +
   scale_x_discrete(drop = FALSE) +
   labs(y = "Frecuencia")
 ```
-
 
 ```{r}
 #| label: discapacidad_cnt
@@ -214,27 +250,44 @@ ggplot(survey) +
   labs(y = "Frecuencia")
 ```
 
-
 ```{r}
-#| label: oir
-ggplot(survey) +
-  aes(x = oir) +
-  geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
-  geom_percent() +
+#| label: discapacidad_which
+dicapacidad_vars <- c(
+  "oir",
+  "hablar",
+  "ver",
+  "moverse",
+  "manos",
+  "cognitiva",
+  "autocuidado",
+  "interaccion"
+)
+dicapacidad_dummy_vars <- paste0(dicapacidad_vars, "_dummy")
+labelsvars <- purrr::map_chr(dicapacidad_vars, \(x) attr(survey[[x]], "label"))
+rename_map <- setNames(dicapacidad_dummy_vars, labelsvars)
+survey |>
+  select(any_of(dicapacidad_dummy_vars)) |>
+  rename(!!!rename_map) |>
+  mutate(tot = 1) |>
+  summarise(across(everything(), sum)) |>
+  pivot_longer(-tot) |>
+  mutate(perc = value / tot) |>
+  ggplot(aes(y = name, x = value)) +
+  geom_col(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_text(
+    aes(
+      label = scales::percent(perc, 0.1)
+    ),
+    hjust = "inward",
+    fontface = "bold"
+  ) +
   scale_fill_discrete(drop = FALSE) +
-  scale_x_discrete(drop = FALSE) +
-  labs(y = "Frecuencia")
-```
-
-```{r}
-#| label: hablar
-ggplot(survey) +
-  aes(x = hablar) +
-  geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
-  geom_percent() +
-  scale_fill_discrete(drop = FALSE) +
-  scale_x_discrete(drop = FALSE) +
-  labs(y = "Frecuencia")
+  scale_y_discrete(
+    drop = FALSE,
+    guide = guide_axis(check.overlap = TRUE, n.dodge = 1),
+    labels = \(x) stringr::str_wrap(x, 20)
+  ) +
+  labs(x = "Frecuencia", y = "Tipo de discapacidad")
 ```
 
 ```{r}
@@ -248,64 +301,10 @@ ggplot(survey) +
   labs(y = "Frecuencia")
 ```
 
-```{r}
-#| label: moverse
-ggplot(survey) +
-  aes(x = moverse) +
-  geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
-  geom_percent() +
-  scale_fill_discrete(drop = FALSE) +
-  scale_x_discrete(drop = FALSE) +
-  labs(y = "Frecuencia")
-```
-
-```{r}
-#| label: manos
-ggplot(survey) +
-  aes(x = manos) +
-  geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
-  geom_percent() +
-  scale_fill_discrete(drop = FALSE) +
-  scale_x_discrete(drop = FALSE) +
-  labs(y = "Frecuencia")
-```
-
-```{r}
-#| label: cognitiva
-ggplot(survey) +
-  aes(x = cognitiva) +
-  geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
-  geom_percent() +
-  scale_fill_discrete(drop = FALSE) +
-  scale_x_discrete(drop = FALSE) +
-  labs(y = "Frecuencia")
-```
-
-```{r}
-#| label: autocuidado
-ggplot(survey) +
-  aes(x = autocuidado) +
-  geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
-  geom_percent() +
-  scale_fill_discrete(drop = FALSE) +
-  scale_x_discrete(drop = FALSE) +
-  labs(y = "Frecuencia")
-```
-
-```{r}
-#| label: interaccion
-ggplot(survey) +
-  aes(x = interaccion) +
-  geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
-  geom_percent() +
-  scale_fill_discrete(drop = FALSE) +
-  scale_x_discrete(drop = FALSE) +
-  labs(y = "Frecuencia")
-```
-
-
 
 ## Afectaciones por el conflicto armado
+
+Más de la mitad de las personas beneficiarias (57,9%) ha vivido alguna afectación derivada del conflicto armado, mientras que el 42,1% no reporta haber sido víctima. Entre los tipos de afectaciones mencionadas, el desplazamiento forzado es el más frecuente, con un 52,6% de los casos, seguido por el despojo de tierras (7,9%), el abandono forzado de tierras (5,3%) y otras formas de afectación (5,3%). Estos resultados ponen de relieve la fuerte huella que la violencia ha dejado en la comunidad, lo cual constituye un elemento central para comprender la vulnerabilidad social y económica de Sivirú.
 
 ```{r}
 #| label: afectacion_conflicto_any
@@ -331,22 +330,23 @@ survey$afectacion_conflicto |>
   summarise(across(everything(), sum)) |>
   pivot_longer(-tot) |>
   mutate(perc = value / tot) |>
-  ggplot(aes(x = name, y = value)) +
+  ggplot(aes(y = name |> forcats::fct_reorder(value), x = value)) +
   geom_col(fill = "steelblue", color = "white", alpha = 0.7) +
   geom_text(
     aes(
       label = scales::percent(perc, 0.1)
     ),
-    vjust = 0,
-    # nudge_y = -0.2,
+    hjust = "inward",
     fontface = "bold"
   ) +
   scale_fill_discrete(drop = FALSE) +
-  scale_x_discrete(drop = FALSE) +
-  labs(y = "Frecuencia", x = "Tipo de afectación por el conflicto armado")
+  scale_y_discrete(drop = FALSE) +
+  labs(x = "Frecuencia", y = "Tipo de afectación por el conflicto armado")
 ```
 
 ## Seguridad social
+
+Consistente con la priorización de esta población, las preguntas sobre protección social en la encuesta evidencian un acceso limitado a mecanismos formales de protección social asociados al trabajo entre las personas beneficiarias en Sivirú. En primer lugar, solo un 2,6% se encuentra cotizando actualmente a un fondo de pensiones y otro 2,6% ya está pensionado, mientras que la gran mayoría (94,7%) no cuenta con cobertura pensional. De forma similar, apenas un 2,6% está afiliado a una Administradora de Riesgos Laborales (ARL), lo que refleja una casi inexistente protección frente a accidentes o enfermedades laborales. En contraste, la afiliación al sistema de salud muestra una mejor cobertura: el 94,7% de las personas beneficiarias está vinculado a alguna entidad promotora de salud, aunque aún persiste un pequeño grupo (5,2%) sin claridad o sin afiliación. La afiliación al sistema de salud es el reflejo de la cobertura del sistema, en particular, en el Régmien Subsidiado en el cual reportan se encuentran afiliados la gran mayoría de beneficiarios. Estos resultados ponen de relieve la vulnerabilidad en términos de seguridad social, especialmente en materia pensional y de riesgos laborales en la comunidad.
 
 ```{r}
 #| label: salud
@@ -381,6 +381,8 @@ ggplot(survey) +
 
 ## Ocupación
 
+Los datos sobre participación en el mercado laboral muestran que el 60,5% de las personas beneficiarias se encuentra ocupadas, mientras que el 31,6% está en condición de desempleo. Un 5,3% se clasifica como población no activa y un 2,6% como incapacitado permanente. Entre quienes están ocupadas, las actividades más frecuentes corresponden a gastronomía y alimentos (18,2%), la pesca artesanal de viche (18,2%), y el piangüeo (13,6%), seguidas por el comercio y ventas (9,1%) y distintos cultivos agrícolas (caña, coco, entre otros), además de oficios varios, servicios personales y comunitarios, cada uno con menor representación. Finalmente, al indagar por actividades adicionales que generen ingresos, solo el 7,9% desarrolla trabajos complementarios. Estos resultados reflejan la centralidad de actividades tradicionales como la gastronomía, la pesca y la recolección de piangua en la economía local, en un contexto en donde, como se evidenció en la sección de seguridad social, el nivel de formalidad laboral es bajo, lo que se complementa aquí con evidencia de altos niveles de desempleo y la limitada diversificación de ingresos en el territorio.
+
 ```{r}
 #| label: mcdo_laboral
 #| fig-cap: Participación en el mercado laboral
@@ -399,7 +401,7 @@ survey |>
   ggplot(aes(y = ocupacion |> forcats::fct_infreq() |> forcats::fct_rev())) +
   geom_bar(fill = "steelblue", color = "white", alpha = 0.7, na.rm = TRUE) +
   geom_percent_h() +
-  labs(y = "Frecuencia")
+  labs(y = "Ocupación", x = "Frecuencia")
 ```
 
 ```{r}
@@ -413,6 +415,11 @@ ggplot(survey) +
 ```
 
 ## Apoyos gubernamentales y no gubernamentales
+
+Una minoría de las personas beneficiarias (26,3%) recibe apoyos de entidades gubernamentales, mientras que el 73,7% no cuenta con este tipo de ayudas. Entre los programas más mencionados figuran el Programa Colombia Mayor (10,5%), Ingreso Solidario o Renta Ciudadana (10,5%), así como otros subsidios (5,3%) y Familias en Acción (2,6%).
+
+De manera similar, el 26,3% reporta haber recibido apoyos de entidades no gubernamentales, frente a un 73,7% que no lo ha hecho. Estos resultados reflejan una cobertura limitada y fragmentada de los programas sociales, donde solo una parte de la población logra acceder a beneficios estatales o de cooperación, lo que pone en evidencia la necesidad de fortalecer las redes de apoyo institucional para mejorar la seguridad económica de los hogares en Sivirú, máxime si se tiene en cuenta las características de vulnerabilidad en varias dimensiones documentadas anteriormente.
+
 
 ```{r}
 #| label: ayudas_gobierno_any
@@ -438,19 +445,18 @@ survey$ayudas_gobierno |>
   summarise(across(everything(), sum)) |>
   pivot_longer(-tot) |>
   mutate(perc = value / tot) |>
-  ggplot(aes(x = name, y = value)) +
+  ggplot(aes(y = name |> forcats::fct_reorder(value), x = value)) +
   geom_col(fill = "steelblue", color = "white", alpha = 0.7) +
   geom_text(
     aes(
       label = scales::percent(perc, 0.1)
     ),
-    vjust = 0,
-    # nudge_y = -0.2,
+    hjust = "inward",
     fontface = "bold"
   ) +
   scale_fill_discrete(drop = FALSE) +
-  scale_x_discrete(drop = FALSE) +
-  labs(y = "Frecuencia", x = "Programas de los cuales recibió ayudas o subsidios")
+  scale_y_discrete(drop = FALSE) +
+  labs(x = "Frecuencia", y = "Programas de los cuales recibió ayudas o subsidios")
 ```
 
 
@@ -466,6 +472,11 @@ ggplot(survey) +
 
 
 ## Participación comunitaria
+
+La encuesta a beneficiarios revela un importante nivel de vinculación comunitaria en Sivirú. El 94,7% de las personas beneficiarias manifiesta pertenecer a alguna organización, siendo mayoritarias las organizaciones comunitarias como el consejo comunitario (71,1%), seguidas por asociaciones campesinas o agropecuarias (36,8%) y en menor medida organizaciones culturales o deportivas (13,2%), religiosas (5,3%) y educativas (2,6%). De igual forma, en el último año el 94,7% tuvo contacto con alguna organización, lo que sugiere una vida comunitaria activa, y no solamente una pertenencia pasiva en las organizaciones.
+
+En cuanto al liderazgo, el 31,6% de las personas beneficiarias ejerce roles directivos dentro de organizaciones, principalmente en asociaciones campesinas o agropecuarias (18,4%), así como en organizaciones comunitarias y culturales (7,9% cada una). También se reporta liderazgo en grupos religiosos (2,6%) y educativos (2,6%). Estos resultados evidencian no solo una alta pertenencia organizativa, sino también una participación significativa en el liderazgo comunitario dentro de las beneficiarias, lo que constituye una fortaleza clave para la gestión colectiva y la sostenibilidad de los proyectos en el territorio.
+
 
 ```{r}
 #| label: pertenencia_organizaciones_any
@@ -499,11 +510,16 @@ survey$pertenencia_organizaciones |>
       label = scales::percent(perc, 0.1)
     ),
     hjust = "inward",
-    # nudge_y = -0.2,
     fontface = "bold"
   ) +
   scale_fill_discrete(drop = FALSE) +
-  scale_y_discrete(drop = FALSE) +
+  scale_y_discrete(
+    drop = FALSE,
+    guide = guide_axis(check.overlap = TRUE, n.dodge = 1),
+    labels = \(x) x |>
+      stringr::str_trunc(50) |>
+      stringr::str_wrap(25)
+  ) +
   # scale_x_continuous(expand = expansion(0, 1))+
   labs(x = "Frecuencia", y = "Organizaciones a las que pertenece")
 ```
@@ -543,12 +559,16 @@ survey$contacto_organizaciones |>
       label = scales::percent(perc, 0.1)
     ),
     hjust = "inward",
-    # nudge_y = -0.2,
     fontface = "bold"
   ) +
   scale_fill_discrete(drop = FALSE) +
-  scale_y_discrete(drop = FALSE) +
-  # scale_x_continuous(expand = expansion(0, 1))+
+  scale_y_discrete(
+    drop = FALSE,
+    guide = guide_axis(check.overlap = TRUE, n.dodge = 1),
+    labels = \(x) x |>
+      stringr::str_trunc(50) |>
+      stringr::str_wrap(25)
+  ) +
   labs(x = "Frecuencia", y = "Organizaciones a las que pertenece")
 ```
 
@@ -586,12 +606,15 @@ survey$liderazgo_organizaciones |>
       label = scales::percent(perc, 0.1)
     ),
     hjust = "inward",
-    # nudge_y = -0.2,
     fontface = "bold"
   ) +
   scale_fill_discrete(drop = FALSE) +
-  scale_y_discrete(drop = FALSE) +
-  # scale_x_continuous(expand = expansion(0, 1))+
+  scale_y_discrete(
+    drop = FALSE,
+    guide = guide_axis(check.overlap = TRUE, n.dodge = 1),
+    labels = \(x) x |>
+      stringr::str_trunc(50) |>
+      stringr::str_wrap(25)
+  ) +
   labs(x = "Frecuencia", y = "Organizaciones que lidera")
 ```
-

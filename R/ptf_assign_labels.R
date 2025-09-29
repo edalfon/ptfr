@@ -57,9 +57,9 @@ ptf_assign_labels <- function(df) {
     # afectacion_otro_2 = "36_Otro_cul",
 
     # # seguridad social
-    # afiliado_riesgos_laborales = "37_20_Est_afiliadoa_",
-    # cotiza_pension = "38_21_Est_cotizando_",
-    # afiliado_salud = "39_22_Est_afiliadoa_",
+    afiliado_riesgos_laborales = "Afiliado a una Administradora de Riesgos Laborales (ARL)",
+    cotiza_pension = "Cotiza a pensiones",
+    afiliado_salud = "Afiliado al sistema de salud (a una EPS)",
     # regimen_salud = "40_23_A_cul_de_los_s",
 
     # # ocupación
@@ -75,8 +75,10 @@ ptf_assign_labels <- function(df) {
     # disponible_semana = "50_33_Si_le_hubiera_",
     # ocupacion_desc_1 = "52_Qu_hace_en_este_t",
     # ocupacion_desc_2 = "53_Qu_hace_en_este_t",
+    mcdo_laboral = "Participación en el mercado laboral",
+
     # ingreso_principal = "54_35_Cunto_gan_el_M",
-    # otros_trabajos = "55_36_Adems_de_su_oc",
+    otros_trabajos = "Otros trabajos o negocios que generan ingresos",
     # otros_trabajos_cuales_1 = "57_Otro_cul",
     # otros_trabajos_cuales_2 = "58_Otro_cul",
     # ingreso_otros = "59_37_Cunto_gan_el_M",
@@ -90,9 +92,10 @@ ptf_assign_labels <- function(df) {
     # ayudas_gobierno = "67_45_Durante_los_lt",
     # ayudas_gobierno_otro_1 = "69_Otro_cul",
     # ayudas_gobierno_otro_2 = "70_Otro_cul",
-    # ayudas_no_gubernamentales = "71_46_Durante_los_lt",
+    ayudas_no_gubernamentales = "Recibió ayuda o subsidio de entidades no gubernamentales",
     # ayudas_no_gub_cuales_1 = "73_Otro_cul",
     # ayudas_no_gub_cuales_2 = "74_Otro_cul",
+
     # pertenencia_organizaciones = "75_47_Pertenece_a_al",
     # contacto_organizaciones = "76_48_En_el_ltimo_ao",
     # liderazgo_organizaciones = "77_49_Usted_lidera_p",

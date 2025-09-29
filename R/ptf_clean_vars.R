@@ -62,5 +62,16 @@ ptf_clean_vars <- function(survey) {
     error = function(e) survey
   )
 
+  survey <- tryCatch(
+    {
+      survey$otros_trabajos <- forcats::fct_na_value_to_level(
+        survey$otros_trabajos,
+        level = "Sin actividad principal"
+      )
+      survey
+    },
+    error = function(e) survey
+  )
+
   survey
 }
