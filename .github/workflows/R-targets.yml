@@ -1,4 +1,4 @@
-name: R targets pipeline
+name: R-targets.yml
 
 on:
   push:
