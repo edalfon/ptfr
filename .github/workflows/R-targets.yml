@@ -159,14 +159,14 @@ jobs:
 
       - name: Commit and push changes to ptfrbook
         env:
-          PAT: ${{ secrets.PTFRBOOK_PAT }}   # Fine-grained: Contents: Read & write on edalfon/ptfrbook
+          PAT: ${{ secrets.PTFRBOOK_PAT }}
         run: |
           cd ptfrbook
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
           # ensure the remote uses the PAT
-          git remote set-url origin "https://x-access-token:${PAT}@github.com/edalfon/ptfrbook.git"
+          git remote set-url origin "https://${PAT}@github.com/edalfon/ptfrbook.git"
 
           git add -A
           git commit -m "Update Quarto book from main repo" || echo "No changes to commit"
