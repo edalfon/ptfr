@@ -1,5 +1,5 @@
 cat("Loading .Rprofile IN QUARTOBOOK -> getwd(): ", getwd(), "\n")
-cat("here: ", here::here("./R"), "\n")
+cat("here: ", here::here(), "\n")
 
 options(conflicts.policy = "strict")
 if (file.exists("~/.Rprofile")) {
@@ -29,7 +29,7 @@ if (rlang::is_interactive()) {
   }
 } else {
   invisible(lapply(
-    list.files(here::here("./R"), full.names = TRUE),
+    list.files("../R", full.names = TRUE),
     source,
     encoding = "UTF-8"
   ))
