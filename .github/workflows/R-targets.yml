@@ -146,3 +146,24 @@ jobs:
           name: quartobook
           path: quartobook/_book
 
+      - name: Check out ptfrbook
+        uses: actions/checkout@v3
+        with:
+          repository: edalfon/ptfrbook
+          path: ./ptfrbook
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Copy Quarto book to ptfrbook
+        run: |
+          cp -r quartobook/_book/* ptfrbook/
+
+      - name: Commit and push changes to ptfrbook
+        run: |
+          cd ptfrbook
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "Update Quarto book from main repo" || echo "No changes to commit"
+          git push origin HEAD:main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
