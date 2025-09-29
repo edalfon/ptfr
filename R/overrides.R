@@ -5,15 +5,15 @@
 # help finding it note here heuristics to find it
 # see ?flowme::tar_bookdown
 
-tar_read <- purrr::partial(
-  .f = targets::tar_read,
-  store = here::here(targets::tar_config_get("store"))
-)
+# tar_read <- purrr::partial(
+#   .f = targets::tar_read,
+#   store = here::here(targets::tar_config_get("store"))
+# )
 
-tar_load <- purrr::partial(
-  .f = targets::tar_load,
-  store = here::here(targets::tar_config_get("store"))
-)
+# tar_load <- purrr::partial(
+#   .f = targets::tar_load,
+#   store = here::here(targets::tar_config_get("store"))
+# )
 
 tar_fn <- function(fn) {
   lapply(as.list(body(fn))[-1], eval)
