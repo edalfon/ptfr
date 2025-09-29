@@ -57,6 +57,7 @@ list(
   tar_quarto(
     quartobook,
     "quartobook",
+    working_directory = ".",
     #execute_params = list(freeze = "false"),
     # execute_params = list(execute_dir = ".")
     quiet = FALSE
