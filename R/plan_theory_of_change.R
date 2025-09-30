@@ -34,7 +34,7 @@ plan_theory_of_change <- function() {
     tar_target(toc_jcc, visualize_graph(toc_jcc_raw)),
 
     # put all tocs together in a single page
-    tar_render(toc_all, "notebooks/viz_toc.Rmd"),
+    tar_render(toc_all, "notebooks/viz_toc.Rmd", cue = tar_cue(file = FALSE)),
 
     # end
     NULL
