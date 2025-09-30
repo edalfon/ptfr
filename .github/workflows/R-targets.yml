@@ -32,13 +32,6 @@ jobs:
       - name: Install Quarto
         uses: quarto-dev/quarto-actions/setup@v2
 
-      # - name: Cache R packages
-      #   uses: actions/cache@v3
-      #   with:
-      #     path: ${{ env.R_LIBS_USER }}
-      #     key: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-${{ hashFiles('.github/depends.Rds') }}
-      #     restore-keys: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-
-
       - name: Install dependencies
         run: |
           if (!require("remotes", quietly = TRUE)) install.packages("remotes", repos = "http://cran.us.r-project.org")
@@ -127,6 +120,23 @@ jobs:
 
       - name: Run targets pipeline
         id: run_targets_pipeline
+        env:
+          SIVIRU_CLIENT_ID: ${{ secrets.SIVIRU_CLIENT_ID }}
+          SIVIRU_CLIENT_SECRET: ${{ secrets.SIVIRU_CLIENT_SECRET }}
+          USARAGA_CLIENT_ID: ${{ secrets.USARAGA_CLIENT_ID }}
+          USARAGA_CLIENT_SECRET: ${{ secrets.USARAGA_CLIENT_SECRET }}
+          SIRENAS_CLIENT_ID: ${{ secrets.SIRENAS_CLIENT_ID }}
+          SIRENAS_CLIENT_SECRET: ${{ secrets.SIRENAS_CLIENT_SECRET }}
+          SAIJA_CLIENT_ID: ${{ secrets.SAIJA_CLIENT_ID }}
+          SAIJA_CLIENT_SECRET: ${{ secrets.SAIJA_CLIENT_SECRET }}
+          ACAPA_CLIENT_ID: ${{ secrets.ACAPA_CLIENT_ID }}
+          ACAPA_CLIENT_SECRET: ${{ secrets.ACAPA_CLIENT_SECRET }}
+          RAICES_CLIENT_ID: ${{ secrets.RAICES_CLIENT_ID }}
+          RAICES_CLIENT_SECRET: ${{ secrets.RAICES_CLIENT_SECRET }}
+          MARIPOSAS_CLIENT_ID: ${{ secrets.MARIPOSAS_CLIENT_ID }}
+          MARIPOSAS_CLIENT_SECRET: ${{ secrets.MARIPOSAS_CLIENT_SECRET }}
+          ASOGESAMPA_CLIENT_ID: ${{ secrets.ASOGESAMPA_CLIENT_ID }}
+          ASOGESAMPA_CLIENT_SECRET: ${{ secrets.ASOGESAMPA_CLIENT_SECRET }}
         run: |
           options(crayon.enabled = TRUE)
           targets::tar_make()
