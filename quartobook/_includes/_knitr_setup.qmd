@@ -1,8 +1,10 @@
----
-title: "Sivirú"
----
+```{r}
+library(knitr)
+```
 
 ```{r}
+#| eval: false
+
 options(
   digits = 3, # significant digits when R prints numbers
   scipen = 999, # avoid scientific notation
@@ -119,97 +121,3 @@ if (requireNamespace("kableExtra", quietly = TRUE)) {
   }
 }
 ```
-
-
-```{r}
-survey <- tar_read(siviru_survey)
-```
-
-
-## Edad
-```{r}
-cont_var <- "edad"
-cont_lbl <- "Edad"
-grp_var <- "beneficia"
-grp_lbl <- "Exposición al programa"
-```
-
-{{< include _includes/_var_cont_grp.qmd >}}
-
-## Sexo asignado al nacer
-```{r}
-cat_var <- "sexo"
-cat_lbl <- "Sexo asignado al nacer"
-```
-
-{{< include _includes/_var_cat_grp.qmd >}}
-
-## Orientación sexual
-```{r}
-cat_var <- "orientacion_sexual"
-cat_lbl <- "Orientación sexual"
-```
-
-{{< include _includes/_var_cat_grp.qmd >}}
-
-## Identidad de género
-```{r}
-cat_var <- "identidad_genero"
-cat_lbl <- "Identidad de género"
-```
-
-{{< include _includes/_var_cat_grp.qmd >}}
-
-## Autoreconocimiento étnico
-```{r}
-cat_var <- "etnia"
-cat_lbl <- "Autoreconocimiento étnico"
-```
-
-{{< include _includes/_var_cat_grp.qmd >}}
-
-## Sabe leer y escribir
-```{r}
-cat_var <- "alfabetismo"
-cat_lbl <- "Sabe leer y escribir"
-```
-
-{{< include _includes/_var_cat_grp.qmd >}}
-
-## Nivel educativo
-```{r}
-cat_var <- "educacion"
-cat_lbl <- "Nivel educativo"
-```
-
-{{< include _includes/_var_cat_grp.qmd >}}
-
-## Ingreso persona
-
-```{r}
-cont_var <- "ingreso_persona"
-cont_lbl <- "Ingreso personal"
-```
-
-{{< include _includes/_var_cont_grp.qmd >}}
-
-# Ingreso hogar
-
-```{r}
-cont_var <- "ingreso_hogar"
-cont_lbl <- "Ingreso familiar"
-```
-
-{{< include _includes/_var_cont_grp.qmd >}}
-
-# Gasto en alimentos
-
-```{r}
-cont_var <- "gasto_alimentos"
-cont_lbl <- "Gasto en alimentos"
-```
-
-{{< include _includes/_var_cont_grp.qmd >}}
-
-
-

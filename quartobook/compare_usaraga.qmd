@@ -1,0 +1,108 @@
+---
+title: "Usaragá"
+---
+
+{{< include _includes/_knitr_setup.qmd >}}
+
+```{r}
+survey <- tar_read(usaraga_survey)
+```
+
+## Edad
+
+```{r}
+#| label: edad
+cont_var <- "edad"
+cont_lbl <- "Edad"
+grp_var <- "beneficia"
+grp_lbl <- "Exposición al programa"
+```
+
+{{< include _includes/_var_cont_grp.qmd >}}
+
+## Sexo asignado al nacer
+```{r}
+#| label: sexo
+cat_var <- "sexo"
+cat_lbl <- "Sexo asignado al nacer"
+```
+
+{{< include _includes/_var_cat_grp.qmd >}}
+
+## Orientación sexual
+```{r}
+#| label: orientacion_sexual
+cat_var <- "orientacion_sexual"
+cat_lbl <- "Orientación sexual"
+```
+
+{{< include _includes/_var_cat_grp.qmd >}}
+
+## Identidad de género
+```{r}
+#| label: identidad_genero
+cat_var <- "identidad_genero"
+cat_lbl <- "Identidad de género"
+```
+
+{{< include _includes/_var_cat_grp.qmd >}}
+
+## Autoreconocimiento étnico
+```{r}
+#| label: etnia
+cat_var <- "etnia"
+cat_lbl <- "Autoreconocimiento étnico"
+```
+
+--
+
+## Sabe leer y escribir
+```{r}
+#| label: alfabetismo
+cat_var <- "alfabetismo"
+cat_lbl <- "Sabe leer y escribir"
+```
+
+{{< include _includes/_var_cat_grp.qmd >}}
+
+## Nivel educativo
+```{r}
+#| label: educacion
+cat_var <- "educacion"
+cat_lbl <- "Nivel educativo"
+```
+
+{{< include _includes/_var_cat_grp.qmd >}}
+
+## Ingreso persona
+
+```{r}
+#| label: ingreso_persona
+cont_var <- "ingreso_persona"
+cont_lbl <- "Ingreso personal"
+```
+
+{{< include _includes/_var_cont_grp.qmd >}}
+
+# Ingreso hogar
+
+```{r}
+#| label: ingreso_hogar
+cont_var <- "ingreso_hogar"
+cont_lbl <- "Ingreso familiar"
+```
+
+{{< include _includes/_var_cont_grp.qmd >}}
+
+# Gasto en alimentos
+
+```{r}
+#| label: gasto_alimentos
+cont_var <- "gasto_alimentos"
+cont_lbl <- "Gasto en alimentos"
+```
+
+{{< include _includes/_var_cont_grp.qmd >}}
+
+
+

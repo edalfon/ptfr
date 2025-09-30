@@ -1,0 +1,58 @@
+---
+title: "Puerto Saíja"
+---
+
+{{< include _includes/_knitr_setup.qmd >}}
+
+```{r}
+survey <- tar_read(saija_survey)
+```
+
+## Edad
+
+```{r}
+#| label: edad
+cont_var <- "edad"
+cont_lbl <- "Edad"
+grp_var <- "beneficia"
+grp_lbl <- "Exposición al programa"
+```
+
+{{< include _includes/_var_cont_grp.qmd >}}
+
+## Sexo asignado al nacer
+```{r}
+#| label: sexo
+cat_var <- "sexo"
+cat_lbl <- "Sexo asignado al nacer"
+```
+
+{{< include _includes/_var_cat_grp.qmd >}}
+
+## Autoreconocimiento étnico
+```{r}
+#| label: etnia
+cat_var <- "etnia"
+cat_lbl <- "Autoreconocimiento étnico"
+```
+
+{{< include _includes/_var_cat_grp.qmd >}}
+
+## Sabe leer y escribir
+```{r}
+#| label: alfabetismo
+cat_var <- "alfabetismo"
+cat_lbl <- "Sabe leer y escribir"
+```
+
+
+
+## Nivel educativo
+```{r}
+#| label: educacion
+cat_var <- "educacion"
+cat_lbl <- "Nivel educativo"
+```
+
+{{< include _includes/_var_cat_grp.qmd >}}
+

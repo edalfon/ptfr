@@ -16,12 +16,20 @@ book:
   author: "VCA"
   chapters:
     - index.qmd
-    - siviru.qmd
     - part: "Caracterización de beneficiarias y beneficiarios"
       chapters:
-      - siviru_caracteriza.qmd
-      - usaraga_caracteriza.qmd
-    - summary.qmd
+      - caracteriza_siviru.qmd
+      #- caracteriza_usaraga.qmd
+    - part: "Comparación entre grupos"
+      chapters:
+        - compare_siviru.qmd
+        - compare_usaraga.qmd
+        - compare_sirenas.qmd
+        - compare_saija.qmd
+        - compare_acapa.qmd
+        - compare_raices.qmd
+        - compare_mariposas.qmd
+        - compare_asogesampa.qmd
     - references.qmd
   appendices:
     - Annex/entries_count.qmd
