@@ -33,8 +33,10 @@ jobs:
         uses: quarto-dev/quarto-actions/setup@v2
 
       - name: Install TinyTeX
-        run: quarto install tinytex
-        
+        run: quarto install tinytex --update-path
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                  
       - name: Install dependencies
         run: |
           if (!require("remotes", quietly = TRUE)) install.packages("remotes", repos = "http://cran.us.r-project.org")
