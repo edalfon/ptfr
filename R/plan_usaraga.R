@@ -5,8 +5,8 @@ plan_usaraga <- function() {
   tar_target(usaraga_epicollect_proj, {
     epicollect_get_project(
       proj_slug = "PTF_USARAGA",
-      client_id = "6750",
-      client_secret = "tBetQueAv8scIixyKesXyDVN3Tcllb57QHWjqB1S"
+      client_id = Sys.getenv("USARAGA_CLIENT_ID"),
+      client_secret = Sys.getenv("USARAGA_CLIENT_SECRET")
     )
   })
 
@@ -14,8 +14,8 @@ plan_usaraga <- function() {
   tar_target(usaraga_survey_epicollect, {
     epicollect_download_data(
       proj_slug = "PTF_USARAGA",
-      client_id = "6750",
-      client_secret = "tBetQueAv8scIixyKesXyDVN3Tcllb57QHWjqB1S",
+      client_id = Sys.getenv("USARAGA_CLIENT_ID"),
+      client_secret = Sys.getenv("USARAGA_CLIENT_SECRET"),
       map_index = 0
     )
   })

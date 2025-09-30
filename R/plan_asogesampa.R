@@ -5,8 +5,8 @@ plan_asogesampa <- function() {
   tar_target(asogesampa_epicollect_proj, {
     epicollect_get_project(
       proj_slug = "PTF_ASOGESAMPA",
-      client_id = "6785",
-      client_secret = "PNnosEcgQVvK7wj4ETMNUuibVUmnzQV7aVeQPP3Y"
+      client_id = Sys.getenv("ASOGESAMPA_CLIENT_ID"),
+      client_secret = Sys.getenv("ASOGESAMPA_CLIENT_SECRET")
     )
   })
 
@@ -14,8 +14,8 @@ plan_asogesampa <- function() {
   tar_target(asogesampa_survey_epicollect, {
     epicollect_download_data(
       proj_slug = "PTF_ASOGESAMPA",
-      client_id = "6785",
-      client_secret = "PNnosEcgQVvK7wj4ETMNUuibVUmnzQV7aVeQPP3Y",
+      client_id = Sys.getenv("ASOGESAMPA_CLIENT_ID"),
+      client_secret = Sys.getenv("ASOGESAMPA_CLIENT_SECRET"),
       form_ref = NULL,
       map_index = 0
     )

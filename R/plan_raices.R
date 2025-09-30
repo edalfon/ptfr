@@ -5,8 +5,8 @@ plan_raices <- function() {
   tar_target(raices_epicollect_proj, {
     epicollect_get_project(
       proj_slug = "PTF_RAICES",
-      client_id = "6753",
-      client_secret = "PgEl0OfULPYd2KMHHiC7Aa8mhQKXKEJHjouwzRiY"
+      client_id = Sys.getenv("RAICES_CLIENT_ID"),
+      client_secret = Sys.getenv("RAICES_CLIENT_SECRET")
     )
   })
 
@@ -14,8 +14,8 @@ plan_raices <- function() {
   tar_target(raices_survey_epicollect, {
     epicollect_download_data(
       proj_slug = "PTF_RAICES",
-      client_id = "6753",
-      client_secret = "PgEl0OfULPYd2KMHHiC7Aa8mhQKXKEJHjouwzRiY",
+      client_id = Sys.getenv("RAICES_CLIENT_ID"),
+      client_secret = Sys.getenv("RAICES_CLIENT_SECRET"),
       map_index = 0
     )
   })

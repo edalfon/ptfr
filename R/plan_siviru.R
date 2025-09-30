@@ -5,8 +5,8 @@ plan_siviru <- function() {
   tar_target(siviru_epicollect_proj, {
     epicollect_get_project(
       proj_slug = "PTF_SIVIRU",
-      client_id = "6749",
-      client_secret = "Fno423tb3nHL7dfXDV1zX1UpebUgTfhs1fTrsZxc"
+      client_id = Sys.getenv("SIVIRU_CLIENT_ID"),
+      client_secret = Sys.getenv("SIVIRU_CLIENT_SECRET")
     )
   })
 
@@ -14,8 +14,8 @@ plan_siviru <- function() {
   tar_target(siviru_survey_epicollect, {
     epicollect_download_data(
       proj_slug = "PTF_SIVIRU",
-      client_id = "6749",
-      client_secret = "Fno423tb3nHL7dfXDV1zX1UpebUgTfhs1fTrsZxc",
+      client_id = Sys.getenv("SIVIRU_CLIENT_ID"),
+      client_secret = Sys.getenv("SIVIRU_CLIENT_SECRET"),
       map_index = 0
     )
   })

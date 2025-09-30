@@ -5,8 +5,8 @@ plan_sirenas <- function() {
   tar_target(sirenas_epicollect_proj, {
     epicollect_get_project(
       proj_slug = "PTF_SIRENAS",
-      client_id = "6751",
-      client_secret = "UXg1XqKBjbMvia1IzmKMhTSLaaYlFF4KNPZZiv4f"
+      client_id = Sys.getenv("SIRENAS_CLIENT_ID"),
+      client_secret = Sys.getenv("SIRENAS_CLIENT_SECRET")
     )
   })
 
@@ -14,8 +14,8 @@ plan_sirenas <- function() {
   tar_target(sirenas_survey_epicollect, {
     epicollect_download_data(
       proj_slug = "PTF_SIRENAS",
-      client_id = "6751",
-      client_secret = "UXg1XqKBjbMvia1IzmKMhTSLaaYlFF4KNPZZiv4f",
+      client_id = Sys.getenv("SIRENAS_CLIENT_ID"),
+      client_secret = Sys.getenv("SIRENAS_CLIENT_SECRET"),
       map_index = 0
     )
   })

@@ -5,8 +5,8 @@ plan_mariposas <- function() {
   tar_target(mariposas_epicollect_proj, {
     epicollect_get_project(
       proj_slug = "PTF_MARIPOSAS",
-      client_id = "6788",
-      client_secret = "rY4q88Xo1mqLcX2I5jdFLvaHtSEPayaXp6hcCfme"
+      client_id = Sys.getenv("MARIPOSAS_CLIENT_ID"),
+      client_secret = Sys.getenv("MARIPOSAS_CLIENT_SECRET")
     )
   })
 
@@ -14,8 +14,8 @@ plan_mariposas <- function() {
   tar_target(mariposas_survey_epicollect, {
     epicollect_download_data(
       proj_slug = "PTF_MARIPOSAS",
-      client_id = "6788",
-      client_secret = "rY4q88Xo1mqLcX2I5jdFLvaHtSEPayaXp6hcCfme",
+      client_id = Sys.getenv("MARIPOSAS_CLIENT_ID"),
+      client_secret = Sys.getenv("MARIPOSAS_CLIENT_SECRET"),
       form_ref = NULL,
       map_index = 0
     )

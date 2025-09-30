@@ -5,8 +5,8 @@ plan_saija <- function() {
   tar_target(saija_epicollect_proj, {
     epicollect_get_project(
       proj_slug = "ptf-puertosaija",
-      client_id = "6752",
-      client_secret = "LymWzzPRo6A0TEfVJFuuTy7hMVLKwkHO2E7yGyEs"
+      client_id = Sys.getenv("SAIJA_CLIENT_ID"),
+      client_secret = Sys.getenv("SAIJA_CLIENT_SECRET")
     )
   })
 
@@ -14,8 +14,8 @@ plan_saija <- function() {
   tar_target(saija_survey_epicollect, {
     epicollect_download_data(
       proj_slug = "ptf-puertosaija",
-      client_id = "6752",
-      client_secret = "LymWzzPRo6A0TEfVJFuuTy7hMVLKwkHO2E7yGyEs",
+      client_id = Sys.getenv("SAIJA_CLIENT_ID"),
+      client_secret = Sys.getenv("SAIJA_CLIENT_SECRET"),
       map_index = 0
     ) |>
       identity()

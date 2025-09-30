@@ -5,8 +5,8 @@ plan_acapa <- function() {
   tar_target(acapa_epicollect_proj, {
     epicollect_get_project(
       proj_slug = "PTF_ACAPA",
-      client_id = "6787",
-      client_secret = "zINAr1AaJhRwCe0SnKNwYZDUye40huOJxjDwumGn"
+      client_id = Sys.getenv("ACAPA_CLIENT_ID"),
+      client_secret = Sys.getenv("ACAPA_CLIENT_SECRET")
     )
   })
 
@@ -14,8 +14,8 @@ plan_acapa <- function() {
   tar_target(acapa_survey_epicollect, {
     epicollect_download_data(
       proj_slug = "PTF_ACAPA",
-      client_id = "6787",
-      client_secret = "zINAr1AaJhRwCe0SnKNwYZDUye40huOJxjDwumGn",
+      client_id = Sys.getenv("ACAPA_CLIENT_ID"),
+      client_secret = Sys.getenv("ACAPA_CLIENT_SECRET"),
       map_index = 0
     ) |>
       identity()
