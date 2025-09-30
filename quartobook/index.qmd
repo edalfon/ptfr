@@ -6,4 +6,4 @@ PTF
 
 To learn more about Quarto books visit <https://quarto.org/docs/books>.
 
-{{< embed siviru_caracteriza.qmd#sexo >}}
+{{< embed caracteriza_siviru.qmd#edad >}}

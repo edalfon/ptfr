@@ -19,7 +19,6 @@ book:
     - part: "Caracterización de beneficiarias y beneficiarios"
       chapters:
       - caracteriza_siviru.qmd
-      #- caracteriza_usaraga.qmd
     - part: "Comparación entre grupos"
       chapters:
         - compare_siviru.qmd
