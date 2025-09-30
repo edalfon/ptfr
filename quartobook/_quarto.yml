@@ -21,6 +21,7 @@ book:
       chapters:
       - caracteriza_siviru.qmd
       - caracteriza_usaraga.qmd
+      - caracteriza_sirenas.qmd
     - part: "Comparación entre grupos"
       chapters:
         - compare_siviru.qmd

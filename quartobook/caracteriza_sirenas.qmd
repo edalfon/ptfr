@@ -1,0 +1,609 @@
+---
+title: "Sirenas"
+fig-cap-location: top
+---
+
+```{r}
+#| eval: true
+survey <- tar_read(sirenas_survey) |> filter(startsWith(beneficia, "Beneficia"))
+```
+
+El diseño del proyecto define que la población directamente beneficiaria está conformada por 25 mujeres, todas ellas descritas como mujeres negras rurales residentes de la vereda de Quiroga, perteneciente al Consejo Comunitario Río Guajuí en la zona rural de Guapi, Cauca. En cuanto a sus características demográficas, el diseño del proyecto especifica que el 100% son mujeres de etnia afrocolombiana, con edades comprendidas entre los 40 y 70 años. La selección de este grupo se basó en que son mujeres que ya tienen experiencia previa en agricultura, particularmente con el cultivo de plátano, y el proyecto les brindaría la oportunidad de diversificar sus siembras. El diseño del proyecto también las caracteriza desde una perspectiva interseccional, reconociendo sus experiencias como mujeres que desempeñan labores de cuidado, como campesinas que han enfrentado el abandono estatal, y como mujeres negras que son portadoras de saberes y tradiciones comunitarias. @diseno_sirenas
+
+De acuerdo con los documentos del proyecto, la población que se beneficia indirectamente del proyecto ejecutado por la Asociación GAADE LAS SIRENAS está compuesta por tres grupos principales. El primero son aproximadamente 200 personas de la comunidad de Quiroga. El segundo grupo corresponde a unas 100 personas que son familiares de las 25 mujeres que participan directamente en la asociación. Finalmente, el tercer grupo lo conforman cerca de 20 personas de veredas aledañas. El beneficio para estas poblaciones se genera a través de la consolidación de ciclos de autoabastecimiento y de redes cortas de comercialización de los productos cosechados. Para las veredas vecinas, el proyecto contempla la venta de productos y el intercambio de semillas, plántulas y saberes. Para la comunidad de Quiroga y las familias de las participantes, el impacto indirecto se materializa en un mayor acceso y diversidad de alimentos para el consumo y la compra local. Esto es significativo, ya que el proyecto identifica que la comunidad enfrenta dificultades para abastecerse de alimentos debido a sus altos precios y a las complicaciones del transporte desde la cabecera municipal. Al fortalecer la producción local, se espera aportar a la soberanía alimentaria, mejorar la economía familiar y la de la comunidad en su conjunto. @diseno_sirenas
+
+TODO: detalles selección. @entrevistas_sirenas
+
+A continuación se presenta una caracterización de los beneficiarios del proyecto, a partir de los datos recopilados en campo durante la encuesta para la evaluación del proyecto.
+
+
+## Ubicación geográfica
+
+A continuación se presenta la distribución geográfica, del lugar donde se lograron realizar las encuestas de los beneficiarios del proyecto.
+
+```{r}
+#| label: map_all
+#| fig-cap: Ubicación de entrevista de los beneficiarios
+leaflet::leaflet(height = "700px") |>
+  leaflet::addProviderTiles(leaflet::providers$OpenStreetMap, group = "Street View") |>
+  leaflet::addProviderTiles(leaflet::providers$Esri.WorldImagery, group = "Satellite") |>
+  leaflet::addLayersControl(
+    baseGroups = c("Street View", "Satellite"),
+    options = leaflet::layersControlOptions(collapsed = FALSE)
+  ) |>
+  # leaflet::addTiles() |> # Add OpenStreetMap tiles
+  leaflet::addAwesomeMarkers(
+    lng = survey$longitud,
+    lat = survey$latitud,
+    icon = leaflet::awesomeIcons(
+      icon = "user",
+      library = "fa",
+      markerColor = "lightblue",
+      squareMarker = TRUE,
+      iconColor = "black",
+      spin = FALSE
+    ),
+    options = leaflet::markerOptions(opacity = 0.7)
+  )
+```
+
+```{r}
+#| label: map_siviru
+#| fig-cap: Ubicación de entrevista de los beneficiarios - Sivirú
+leaflet::leaflet(height = "700px") |>
+  leaflet::addProviderTiles(leaflet::providers$OpenStreetMap, group = "Street View") |>
+  leaflet::addProviderTiles(leaflet::providers$Esri.WorldImagery, group = "Satellite") |>
+  leaflet::addLayersControl(
+    baseGroups = c("Street View", "Satellite"),
+    options = leaflet::layersControlOptions(collapsed = FALSE)
+  ) |>
+  # leaflet::addTiles() |> # Add OpenStreetMap tiles
+  leaflet::addAwesomeMarkers(
+    lng = survey |> filter(latitud <= 4.950081) |> pull(longitud),
+    lat = survey |> filter(latitud <= 4.950081) |> pull(latitud),
+    icon = leaflet::awesomeIcons(
+      icon = "user",
+      library = "fa",
+      markerColor = "lightblue",
+      squareMarker = TRUE,
+      iconColor = "black",
+      spin = FALSE
+    ),
+    options = leaflet::markerOptions(opacity = 0.7)
+  )
+```
+
+```{r}
+#| label: map_dotenedo
+#| fig-cap: Ubicación de entrevista de los beneficiarios - Dotenedó
+leaflet::leaflet(height = "700px") |>
+  leaflet::addProviderTiles(leaflet::providers$OpenStreetMap, group = "Street View") |>
+  leaflet::addProviderTiles(leaflet::providers$Esri.WorldImagery, group = "Satellite") |>
+  leaflet::addLayersControl(
+    baseGroups = c("Street View", "Satellite"),
+    options = leaflet::layersControlOptions(collapsed = FALSE)
+  ) |>
+  # leaflet::addTiles() |> # Add OpenStreetMap tiles
+  leaflet::addAwesomeMarkers(
+    lng = survey |> filter(latitud >= 4.950081) |> pull(longitud),
+    lat = survey |> filter(latitud >= 4.950081) |> pull(latitud),
+    icon = leaflet::awesomeIcons(
+      icon = "user",
+      library = "fa",
+      markerColor = "lightblue",
+      squareMarker = TRUE,
+      iconColor = "black",
+      spin = FALSE
+    ),
+    options = leaflet::markerOptions(opacity = 0.7)
+  )
+```
+
+
+## Edad y sexo asignado al nacer
+
+La población beneficiaria presenta un rango amplio de edades, que va desde los 25 hasta los 70 años. Se observa una concentración importante en los grupos de 30 a 40 años y entre los 45 y 50 años, mientras que la participación disminuye en los grupos de mayor edad. Esto sugiere que el proyecto reúne tanto a mujeres jóvenes adultas como a adultas mayores, lo que puede aportar diversidad de experiencias. La totalidad de las participantes reportan Femenino como el sex oasignado al nacer. Este dato es consistente con la definición de la población objetivo del proyecto Sirenas.
+
+```{r}
+#| label: edad
+#| fig-cap: Edad
+ggplot(survey) +
+  aes(x = edad) +
+  geom_histogram(bins = 10, fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_rug() +
+  labs(y = "Frecuencia")
+```
+
+```{r}
+#| tbl-cap: Cuantiles
+quantile(survey$edad, na.rm = TRUE) |>
+  t() |>
+  knitr::kable()
+```
+
+
+```{r}
+#| label: sexo
+#| fig-cap: Sexo
+ggplot(survey) +
+  aes(x = sexo) +
+  geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_percent() +
+  labs(y = "Frecuencia")
+```
+
+
+## Orientación sexual e identidad de género
+
+La orientación sexual de las participantes indica que la gran mayoría (95,2%) manifestó sentir atracción por los hombres, mientras que solo un 4,8% indicó atracción por mujeres. No se registraron respuestas en las categorías de atracción hacia ambos sexos, otras opciones o preferencia por no responder. La caracterización de las participantes en términos de identidad de género muestra que todas (100%) se identificaron como mujeres, sin reportarse casos en las demás categorías (hombre, hombre trans, mujer trans, otro o no responde).
+
+```{r}
+#| label: orientacion_sexual
+#| fig-cap: Orientación sexual
+ggplot(survey) +
+  aes(x = orientacion_sexual) +
+  geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_percent() +
+  scale_fill_discrete(drop = FALSE) +
+  scale_x_discrete(drop = FALSE) +
+  labs(y = "Frecuencia")
+```
+
+
+```{r}
+#| label: identidad_genero
+#| fig-cap: Identidad de género
+ggplot(survey) +
+  aes(x = identidad_genero) +
+  geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_percent() +
+  scale_fill_discrete(drop = FALSE) +
+  scale_x_discrete(drop = FALSE) +
+  labs(y = "Frecuencia")
+```
+
+## Autoreconocimiento étnico
+
+La gráfica muestra la autoadscripción étnica de las participantes del proyecto Sirenas. En su totalidad (100%), las mujeres encuestadas se reconocen como afrocolombianas, negras, mulatas o afrodescendientes. No se reportaron casos en otros grupos étnicos como indígenas, gitanos, raizales, palenqueros ni en la categoría de quienes no se reconocen dentro de un grupo étnico.
+
+```{r}
+#| label: etnia
+#| fig-cap: Autoreconocimiento étnico
+ggplot(survey) +
+  aes(y = etnia |> forcats::fct_infreq() |> forcats::fct_rev()) +
+  geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_percent_h() +
+  scale_fill_discrete(drop = FALSE) +
+  scale_y_discrete(
+    drop = FALSE,
+    guide = guide_axis(check.overlap = TRUE, n.dodge = 1),
+    labels = \(x) stringr::str_wrap(x, 20)
+  ) +
+  labs(x = "Frecuencia", y = NULL) # title = attr(survey$etnia, "label")
+```
+
+## Educación
+
+Aquí se presentan los resultados frente a logro educativo y las capacidades básicas de lectoescritura en el grupo de beneficiarias del proyecto Sirenas. La primera evidencia que la gran mayoría de las participantes (71,4 %) sabe leer y escribir, aunque un 28,6 % aún no ha desarrollado estas competencias, mostrando un reto importante en esta dimensión. La segunda gráfica indica que, en términos de nivel educativo, predomina la educación básica primaria (33,3 %), seguida por la media (23,8 %) y la secundaria (19,0 %). También aparecen casos de formación técnica y universitaria sin título (cada uno con 4,8 %), así como un 9,5 % sin ningún nivel educativo formal. En conjunto, los datos reflejan que, si bien la alfabetización está presente en la mayoría, la formación académica de las participantes se concentra en niveles básicos, con pocos avances hacia educación técnica o superior. Esto resulta coherente con el perfil comunitario del proyecto, que está centrado en mujeres afrocolombianas vinculadas a actividades tradicionales, y refuerza la pertinencia de fortalecer procesos de capacitación complementaria para apoyar sus iniciativas organizativas y productivas.
+
+```{r}
+#| label: alfabetismo
+#| fig-cap: Sabe leer y escribir
+ggplot(survey) +
+  aes(x = alfabetismo) +
+  geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_percent() +
+  scale_fill_discrete(drop = FALSE) +
+  scale_x_discrete(
+    drop = FALSE,
+    guide = guide_axis(check.overlap = TRUE, n.dodge = 1)
+  ) +
+  labs(y = "Frecuencia")
+```
+
+
+```{r}
+#| label: educacion
+#| fig-cap: Nivel educativo más alto alcanzado
+ggplot(survey) +
+  aes(y = educacion) +
+  geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_percent_h() +
+  scale_fill_discrete(drop = FALSE) +
+  scale_y_discrete(
+    drop = FALSE,
+    guide = guide_axis(check.overlap = TRUE, n.dodge = 1)
+  ) +
+  labs(x = "Frecuencia", y = NULL)
+```
+
+## Situaciones de discapacidad
+
+Ninguno de los beneficiarios encuestados reporta limitaciones funcionales ni condiciones de discapacidad. El 100 % indicó no presentar situaciones de discapacidad, y por lo tanto el número de limitaciones registradas es nulo en todos los casos. Este hallazgo es consistente con una población mayoritariamente activa en términos físicos y funcionales, lo cual facilita su participación en actividades comunitarias, productivas y organizativas. Además, contrasta con otras comunidades del Pacífico donde suelen encontrarse porcentajes, aunque bajos, de algún tipo de limitación. Aquí la ausencia total de reportes de discapacidad refuerza la idea de un grupo en condiciones de salud que posibilitan el involucramiento en procesos colectivos y en la implementación del proyecto.
+
+
+```{r}
+#| label: discapacidad_any
+ggplot(survey) +
+  aes(x = discapacidad_any) +
+  geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_percent() +
+  scale_fill_discrete(drop = FALSE) +
+  scale_x_discrete(drop = FALSE) +
+  labs(y = "Frecuencia")
+```
+
+```{r}
+#| label: discapacidad_cnt
+ggplot(survey) +
+  aes(x = discapacidad_cnt) +
+  geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_percent() +
+  scale_fill_discrete(drop = FALSE) +
+  scale_x_discrete(drop = FALSE) +
+  labs(y = "Frecuencia")
+```
+
+```{r}
+#| label: discapacidad_which
+dicapacidad_vars <- c(
+  "oir",
+  "hablar",
+  "ver",
+  "moverse",
+  "manos",
+  "cognitiva",
+  "autocuidado",
+  "interaccion"
+)
+dicapacidad_dummy_vars <- paste0(dicapacidad_vars, "_dummy")
+labelsvars <- purrr::map_chr(dicapacidad_vars, \(x) attr(survey[[x]], "label"))
+rename_map <- setNames(dicapacidad_dummy_vars, labelsvars)
+survey |>
+  select(any_of(dicapacidad_dummy_vars)) |>
+  rename(!!!rename_map) |>
+  mutate(tot = 1) |>
+  summarise(across(everything(), sum)) |>
+  pivot_longer(-tot) |>
+  mutate(perc = value / tot) |>
+  ggplot(aes(y = name, x = value)) +
+  geom_col(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_text(
+    aes(
+      label = scales::percent(perc, 0.1)
+    ),
+    hjust = "inward",
+    fontface = "bold"
+  ) +
+  scale_fill_discrete(drop = FALSE) +
+  scale_y_discrete(
+    drop = FALSE,
+    guide = guide_axis(check.overlap = TRUE, n.dodge = 1),
+    labels = \(x) stringr::str_wrap(x, 20)
+  ) +
+  labs(x = "Frecuencia", y = "Tipo de discapacidad")
+```
+
+
+## Afectaciones por el conflicto armado
+
+En el caso del proyecto Sirenas, los datos muestran una fuerte incidencia del conflicto armado en la población participante. La primera gráfica indica que el 81 % de las personas encuestadas ha vivido algún tipo de afectación por el conflicto armado, mientras que solo el 19 % no reporta experiencias directas. La segunda gráfica detalla los tipos de afectación: El desplazamiento forzado es la más recurrente, con un 81 % de los casos; un 42,9 % señala abandono forzado de tierras; un 33,3 % ha sufrido despojo de tierras. Adicionalmente, un 9,5 % menciona otras formas de afectación. Este patrón refleja una experiencia marcada por la violencia y el desarraigo, donde el desplazamiento constituye la forma más común de victimización, complementada por la pérdida o abandono de tierras, lo cual tiene implicaciones directas en los medios de vida y en la continuidad de las prácticas productivas de la comunidad.
+
+```{r}
+#| label: afectacion_conflicto_any
+#| fig-cap: Afectación por el conflicto armado (alguna)
+survey$afectacion_conflicto |>
+  checkbox_to_dummies() |>
+  dummies_to_any() |>
+  tibble(x = _) |>
+  ggplot(aes(x = x)) +
+  geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_percent() +
+  scale_fill_discrete(drop = FALSE) +
+  scale_x_discrete(drop = FALSE) +
+  labs(y = "Frecuencia", x = "Ha vivido alguna afectación por el conflicto armado")
+```
+
+```{r}
+#| label: afectacion_conflicto_which
+#| fig-cap: Tipo de afectación por el conflicto armado
+survey$afectacion_conflicto |>
+  checkbox_to_dummies() |>
+  mutate(tot = 1) |>
+  summarise(across(everything(), sum)) |>
+  pivot_longer(-tot) |>
+  mutate(perc = value / tot) |>
+  ggplot(aes(y = name |> forcats::fct_reorder(value), x = value)) +
+  geom_col(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_text(
+    aes(
+      label = scales::percent(perc, 0.1)
+    ),
+    hjust = "inward",
+    fontface = "bold"
+  ) +
+  scale_fill_discrete(drop = FALSE) +
+  scale_y_discrete(drop = FALSE) +
+  labs(x = "Frecuencia", y = "Tipo de afectación por el conflicto armado")
+```
+
+## Seguridad social
+
+En relación con la protección social, la mayoría de las participantes (85,7 %) manifestó estar afiliada a una EPS dentro del sistema de salud, mientras que un 9,5 % no lo está y un 4,8 % no informó o no supo responder. En contraste, la cobertura pensional es muy limitada: solo el 9,5 % cotiza a pensiones, frente al 90,5 % que no lo hace. La situación es similar en el caso de la afiliación a una Administradora de Riesgos Laborales (ARL), donde únicamente el 28,6 % declaró estar vinculada, mientras que el 71,4 % no cuenta con esta cobertura. No obstante, aunque la cobertura en riesgos laborales en términos absolutos se puede considerar baja, para el contexto de estas comunidades y de otros proyectos, es nada despreciable y un punto a destacar. Estos datos reflejan que, aunque existe una cobertura amplia en salud, persisten grandes brechas en protección económica y laboral, lo que deja en evidencia la vulnerabilidad social de esta población en términos de seguridad laboral y acceso a mecanismos de protección a largo plazo.
+
+```{r}
+#| label: salud
+#| fig-cap: Salud
+ggplot(survey) +
+  aes(x = afiliado_salud) +
+  geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_percent() +
+  labs(y = "Frecuencia")
+```
+
+```{r}
+#| label: pension
+#| fig-cap: Pensión
+ggplot(survey) +
+  aes(x = cotiza_pension) +
+  geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_percent() +
+  labs(y = "Frecuencia")
+```
+
+```{r}
+#| label: riesgos
+#| fig-cap: Riesgos
+ggplot(survey) +
+  aes(x = afiliado_riesgos_laborales) +
+  geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_percent() +
+  labs(y = "Frecuencia")
+```
+
+
+## Ocupación
+
+En el proyecto Sirenas, la mayoría de las participantes se encuentran ocupadas (76,2%), aunque persiste un grupo de mujeres en situación de desempleo (19,0%) y una proporción menor no activa laboralmente (4,8%). Entre las ocupaciones predominan actividades tradicionales como el piangüe (18,8%), la agricultura (12,5%), la pesca (12,5%) y los oficios del hogar, junto con otras vinculadas a servicios comunitarios, educación inicial, gastronomía y artesanías. Además, un 33,3% de las mujeres combinan su actividad principal con otros trabajos o negocios que generan ingresos, lo que refleja estrategias de diversificación económica frente a la inestabilidad laboral.
+
+```{r}
+#| label: mcdo_laboral
+#| fig-cap: Participación en el mercado laboral
+ggplot(survey) +
+  aes(x = mcdo_laboral) +
+  geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_percent() +
+  labs(y = "Frecuencia")
+```
+
+```{r}
+#| label: ocupacion
+#| fig-cap: Ocupación
+survey |>
+  filter(!is.na(ocupacion)) |>
+  ggplot(aes(y = ocupacion |> forcats::fct_infreq() |> forcats::fct_rev())) +
+  geom_bar(fill = "steelblue", color = "white", alpha = 0.7, na.rm = TRUE) +
+  geom_percent_h() +
+  labs(y = "Ocupación", x = "Frecuencia")
+```
+
+```{r}
+#| label: otros_trabajos
+#| fig-cap: Participación en el mercado laboral
+ggplot(survey) +
+  aes(x = otros_trabajos) +
+  geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_percent() +
+  labs(y = "Frecuencia")
+```
+
+## Apoyos gubernamentales y no gubernamentales
+
+La mayoría de las participantes del proyecto no reciben ayudas o subsidios gubernamentales (81%), mientras que una minoría (19%) sí accede a estos apoyos, principalmente a través de programas como Colombia Mayor (9,5%), Ingreso Solidario o Renta Ciudadana (4,8%) y otros programas (4,8%). Asimismo, se observa que una parte de las beneficiarias (23,8%) ha recibido apoyos de entidades no gubernamentales, aunque la mayoría (76,2%) no cuenta con este tipo de respaldo. Estos resultados evidencian una baja cobertura institucional de programas de apoyo económico en la comunidad, tanto desde el ámbito estatal como desde organizaciones externas.
+
+
+```{r}
+#| label: ayudas_gobierno_any
+#| fig-cap: Recibió durante los últimos 12 meses alguna ayuda o subsidio de entidades gubernamentales
+survey$ayudas_gobierno |>
+  checkbox_to_dummies() |>
+  dummies_to_any() |>
+  tibble(x = _) |>
+  ggplot(aes(x = x)) +
+  geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_percent() +
+  scale_fill_discrete(drop = FALSE) +
+  scale_x_discrete(drop = FALSE) +
+  labs(y = "Frecuencia", x = "Recibe ayudas o subsidios de entidades gubernamentales")
+```
+
+```{r}
+#| label: ayudas_gobierno_which
+#| fig-cap: Programas de los cuales recibió ayudas o subsidios
+survey$ayudas_gobierno |>
+  checkbox_to_dummies() |>
+  mutate(tot = 1) |>
+  summarise(across(everything(), sum)) |>
+  pivot_longer(-tot) |>
+  mutate(perc = value / tot) |>
+  ggplot(aes(y = name |> forcats::fct_reorder(value), x = value)) +
+  geom_col(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_text(
+    aes(
+      label = scales::percent(perc, 0.1)
+    ),
+    hjust = "inward",
+    fontface = "bold"
+  ) +
+  scale_fill_discrete(drop = FALSE) +
+  scale_y_discrete(drop = FALSE) +
+  labs(x = "Frecuencia", y = "Programas de los cuales recibió ayudas o subsidios")
+```
+
+
+```{r}
+#| label: ayudas_no_gubernamentales
+#| fig-cap: Recibió durante los últimos 12 meses alguna ayuda o subsidio de entidades no gubernamentales
+ggplot(survey) +
+  aes(x = ayudas_no_gubernamentales) +
+  geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_percent() +
+  labs(y = "Frecuencia")
+```
+
+
+## Participación comunitaria
+
+Se evidencia una fuerte vinculación de las personas encuestadas con procesos de participación comunitaria. Todas pertenecen a alguna organización, destacándose la pertenencia a organizaciones comunitarias (85,7%) y a asociaciones campesinas o agropecuarias (71,4%), mientras que una proporción menor participa en organizaciones étnicas (9,5%). Además, el 85,7% reporta haber tenido contacto con organizaciones en el último año, principalmente a través de asociaciones campesinas (71,4%) y consejos comunitarios (52,4%). En cuanto al liderazgo, aunque la mayoría no ocupa estos roles (76,2%), cerca de una cuarta parte (23,8%) sí lo hace, siendo las asociaciones campesinas y agropecuarias el espacio más frecuente de liderazgo. Estos hallazgos reflejan un alto nivel de organización comunitaria, coherente con el enfoque del proyecto orientado a fortalecer la participación social en el territorio.
+
+
+```{r}
+#| label: pertenencia_organizaciones_any
+#| fig-cap: Pertenece a alguna organización
+survey$pertenencia_organizaciones |>
+  checkbox_to_dummies() |>
+  dummies_to_any() |>
+  tibble(x = _) |>
+  ggplot(aes(x = x)) +
+  geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_percent() +
+  scale_fill_discrete(drop = FALSE) +
+  scale_x_discrete(drop = FALSE) +
+  labs(y = "Frecuencia", x = "Pertenece a alguna organización")
+```
+
+```{r}
+#| label: pertenencia_organizaciones_which
+#| fig-cap: Organizaciones a las que pertenece
+survey$pertenencia_organizaciones |>
+  checkbox_to_dummies() |>
+  mutate(tot = 1) |>
+  summarise(across(everything(), sum)) |>
+  pivot_longer(-tot) |>
+  mutate(perc = value / tot) |>
+  filter(value > 0) |>
+  ggplot(aes(y = name |> forcats::fct_reorder(value), x = value)) +
+  geom_col(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_text(
+    aes(
+      label = scales::percent(perc, 0.1)
+    ),
+    hjust = "inward",
+    fontface = "bold"
+  ) +
+  scale_fill_discrete(drop = FALSE) +
+  scale_y_discrete(
+    drop = FALSE,
+    guide = guide_axis(check.overlap = TRUE, n.dodge = 1),
+    labels = \(x) x |>
+      stringr::str_trunc(50) |>
+      stringr::str_wrap(25)
+  ) +
+  # scale_x_continuous(expand = expansion(0, 1))+
+  labs(x = "Frecuencia", y = "Organizaciones a las que pertenece")
+```
+
+
+
+
+```{r}
+#| label: contacto_organizaciones_any
+#| fig-cap: En el último año, tuvo contacto con alguna organización
+survey$contacto_organizaciones |>
+  checkbox_to_dummies() |>
+  dummies_to_any() |>
+  tibble(x = _) |>
+  ggplot(aes(x = x)) +
+  geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_percent() +
+  scale_fill_discrete(drop = FALSE) +
+  scale_x_discrete(drop = FALSE) +
+  labs(y = "Frecuencia", x = "En el último año, tuvo contacto con alguna organización")
+```
+
+```{r}
+#| label: contacto_organizaciones_which
+#| fig-cap: Organizaciones con las que tuvo contacto el último año
+survey$contacto_organizaciones |>
+  checkbox_to_dummies() |>
+  mutate(tot = 1) |>
+  summarise(across(everything(), sum)) |>
+  pivot_longer(-tot) |>
+  mutate(perc = value / tot) |>
+  filter(value > 0) |>
+  ggplot(aes(y = name |> forcats::fct_reorder(value), x = value)) +
+  geom_col(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_text(
+    aes(
+      label = scales::percent(perc, 0.1)
+    ),
+    hjust = "inward",
+    fontface = "bold"
+  ) +
+  scale_fill_discrete(drop = FALSE) +
+  scale_y_discrete(
+    drop = FALSE,
+    guide = guide_axis(check.overlap = TRUE, n.dodge = 1),
+    labels = \(x) x |>
+      stringr::str_trunc(50) |>
+      stringr::str_wrap(25)
+  ) +
+  labs(x = "Frecuencia", y = "Organizaciones a las que pertenece")
+```
+
+
+
+```{r}
+#| label: liderazgo_organizaciones_any
+#| fig-cap: Lidera organizaciones
+survey$liderazgo_organizaciones |>
+  checkbox_to_dummies() |>
+  dummies_to_any() |>
+  tibble(x = _) |>
+  ggplot(aes(x = x)) +
+  geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_percent() +
+  scale_fill_discrete(drop = FALSE) +
+  scale_x_discrete(drop = FALSE) +
+  labs(y = "Frecuencia", x = "Lidera organizaciones")
+```
+
+```{r}
+#| label: liderazgo_organizaciones_which
+#| fig-cap: Organizaciones que lidera
+survey$liderazgo_organizaciones |>
+  checkbox_to_dummies() |>
+  mutate(tot = 1) |>
+  summarise(across(everything(), sum)) |>
+  pivot_longer(-tot) |>
+  mutate(perc = value / tot) |>
+  filter(value > 0) |>
+  ggplot(aes(y = name |> forcats::fct_reorder(value), x = value)) +
+  geom_col(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_text(
+    aes(
+      label = scales::percent(perc, 0.1)
+    ),
+    hjust = "inward",
+    fontface = "bold"
+  ) +
+  scale_fill_discrete(drop = FALSE) +
+  scale_y_discrete(
+    drop = FALSE,
+    guide = guide_axis(check.overlap = TRUE, n.dodge = 1),
+    labels = \(x) x |>
+      stringr::str_trunc(50) |>
+      stringr::str_wrap(25)
+  ) +
+  labs(x = "Frecuencia", y = "Organizaciones que lidera")
+```
+
+## Síntesis de la caracterización
+
+La caracterización de las personas beneficiarias del proyecto Sirenas muestra un grupo conformado en su totalidad por mujeres afrocolombianas, con edades principalmente entre los 30 y 50 años, aunque también se encuentran participantes mayores de 60. Todas se reconocen como mujeres y se identifican con el grupo étnico afrocolombiano, con orientación sexual mayoritariamente heterosexual. En el ámbito educativo, la mayoría sabe leer y escribir, con niveles de formación que van desde básica primaria y secundaria hasta media, siendo minoritaria la presencia de estudios técnicos o universitarios. Ninguna persona reporta situaciones de discapacidad.
+
+En términos de condiciones sociales, una proporción significativa ha sido afectada por el conflicto armado, principalmente a través del desplazamiento forzado y el abandono o despojo de tierras. Aunque la mayoría cuenta con afiliación al sistema de salud, son muy bajas las coberturas en pensiones y riesgos laborales, lo que refleja la alta informalidad del trabajo. En el mercado laboral, el 76% de las beneficiarias se encuentra ocupada, con predominio de actividades propias de la economía local como pianguar, pesca, agricultura (incluido el cultivo de coco), artesanías y gastronomía, además de servicios comunitarios como madres comunitarias y labores de educación infantil. Una parte relevante complementa ingresos con otros trabajos o pequeños negocios, lo que evidencia la diversificación como estrategia de sustento.
+
+Respecto al acceso a apoyos institucionales, la mayoría no recibe ayudas o subsidios gubernamentales, y solo algunas han accedido a programas como Colombia Mayor o renta ciudadana. Sin embargo, cerca de una cuarta parte reporta apoyos de entidades no gubernamentales, lo que sugiere la importancia de estas redes en el territorio. Finalmente, la participación comunitaria es un rasgo central: todas las beneficiarias pertenecen a organizaciones, principalmente consejos comunitarios y asociaciones campesinas o agropecuarias, y la mayoría ha mantenido contacto con ellas en el último año. Aunque el liderazgo no es mayoritario, alrededor de una cuarta parte ejerce cargos en asociaciones, especialmente las campesinas.
+
+En conjunto, esta caracterización evidencia que las beneficiarias del proyecto Sirenas son mujeres afrocolombianas con una fuerte base organizativa y comunitaria, insertas en dinámicas productivas tradicionales y de subsistencia, con altos niveles de vulnerabilidad social y económica derivados tanto de la informalidad laboral como de las afectaciones del conflicto armado, pero con importantes capacidades de resiliencia y organización colectiva.
