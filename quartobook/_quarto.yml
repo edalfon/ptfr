@@ -22,6 +22,9 @@ book:
       - caracteriza_siviru.qmd
       - caracteriza_usaraga.qmd
       - caracteriza_sirenas.qmd
+      #- caracteriza_saija.qmd
+      #- caracteriza_acapa.qmd
+      - caracteriza_raices.qmd
     - part: "Comparación entre grupos"
       chapters:
         - compare_siviru.qmd

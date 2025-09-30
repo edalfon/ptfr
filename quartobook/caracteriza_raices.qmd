@@ -1,18 +1,18 @@
 ---
-title: "Sirenas"
+title: "Raíces del Manglar"
 fig-cap-location: top
 ---
 
 ```{r}
 #| eval: true
-survey <- tar_read(sirenas_survey) |> filter(startsWith(beneficia, "Beneficia"))
+survey <- tar_read(raices_survey) |> filter(startsWith(as.character(beneficia), "Beneficia"))
 ```
 
-El diseño del proyecto define que la población directamente beneficiaria está conformada por 25 mujeres, todas ellas descritas como mujeres negras rurales residentes de la vereda de Quiroga, perteneciente al Consejo Comunitario Río Guajuí en la zona rural de Guapi, Cauca. En cuanto a sus características demográficas, el diseño del proyecto especifica que el 100% son mujeres de etnia afrocolombiana, con edades comprendidas entre los 40 y 70 años. La selección de este grupo se basó en que son mujeres que ya tienen experiencia previa en agricultura, particularmente con el cultivo de plátano, y el proyecto les brindaría la oportunidad de diversificar sus siembras. El diseño del proyecto también las caracteriza desde una perspectiva interseccional, reconociendo sus experiencias como mujeres que desempeñan labores de cuidado, como campesinas que han enfrentado el abandono estatal, y como mujeres negras que son portadoras de saberes y tradiciones comunitarias. @diseno_sirenas
+A partir de los documentos de diseño del proyecto, la población directamente beneficiaria está compuesta por 45 asociadas de la Asociación de Mujeres Concheras Raíces del Manglar. Estas beneficiarias son descritas como parte de las comunidades costeras de San Andrés de Tumaco que habitan cerca de los manglares y dependen directamente de sus recursos naturales para su subsistencia. El perfil del grupo se caracteriza específicamente por ser mujeres concheras, cabezas de familia, víctimas de la violencia y del conflicto armado, incluyendo personas desplazadas. La población incluye personas de diversos grupos étnicos, como afrodescendientes o indígenas, y abarca un amplio rango de edades, desde la infancia hasta la vejez. La elección de este grupo se fundamenta en su compromiso y en el objetivo del proyecto de empoderar a las mujeres, reconociendo su papel clave en la recolección de recursos naturales y las barreras que enfrentan para participar plenamente en los procesos de toma de decisiones y acceder a los beneficios económicos @diseno_raices
 
-De acuerdo con los documentos del proyecto, la población que se beneficia indirectamente del proyecto ejecutado por la Asociación GAADE LAS SIRENAS está compuesta por tres grupos principales. El primero son aproximadamente 200 personas de la comunidad de Quiroga. El segundo grupo corresponde a unas 100 personas que son familiares de las 25 mujeres que participan directamente en la asociación. Finalmente, el tercer grupo lo conforman cerca de 20 personas de veredas aledañas. El beneficio para estas poblaciones se genera a través de la consolidación de ciclos de autoabastecimiento y de redes cortas de comercialización de los productos cosechados. Para las veredas vecinas, el proyecto contempla la venta de productos y el intercambio de semillas, plántulas y saberes. Para la comunidad de Quiroga y las familias de las participantes, el impacto indirecto se materializa en un mayor acceso y diversidad de alimentos para el consumo y la compra local. Esto es significativo, ya que el proyecto identifica que la comunidad enfrenta dificultades para abastecerse de alimentos debido a sus altos precios y a las complicaciones del transporte desde la cabecera municipal. Al fortalecer la producción local, se espera aportar a la soberanía alimentaria, mejorar la economía familiar y la de la comunidad en su conjunto. @diseno_sirenas
+TODO: beneficiarios indirectos. El doc menciona lo de 300 
 
-TODO: detalles selección. @entrevistas_sirenas
+En la práctica, la selección de los beneficiarios en el proyecto de Raíces del Manglar se realizó a través de un proceso estratégico y colaborativo. La organización Raíces del Manglar, compuesta por 45 mujeres, decidió que solo algunas de sus propias socias participarían como beneficiarias directas para dar la oportunidad a otras organizaciones de base del territorio. La razón principal fue compartir el conocimiento sobre el cuidado del ecosistema del manglar y romper con la costumbre de que las capacitaciones siempre provengan de entidades externas, permitiendo que mujeres de la comunidad capacitaran a otras. El proceso consistió en ir a las otras organizaciones, como Fortaleza del Manglar, Las Comadres y Fuerzas del Mar, y reunirse con sus juntas directivas o con la asamblea general para presentarles el proyecto y ofrecerles la oportunidad de participar. La selección de estas organizaciones se basó en criterios como que estuvieran conformadas por mujeres afrodescendientes que tuvieran acceso al manglar. @entrevistas_raices
 
 A continuación se presenta una caracterización de los beneficiarios del proyecto, a partir de los datos recopilados en campo durante la encuesta para la evaluación del proyecto.
 
@@ -47,11 +47,13 @@ leaflet::leaflet(height = "700px") |>
   )
 ```
 
-TODO: perhaps zoom out?
+TODO: inlets?
 
 ## Edad y sexo asignado al nacer
 
-La población beneficiaria presenta un rango amplio de edades, que va desde los 25 hasta los 70 años. Se observa una concentración importante en los grupos de 30 a 40 años y entre los 45 y 50 años, mientras que la participación disminuye en los grupos de mayor edad. Esto sugiere que el proyecto reúne tanto a mujeres jóvenes adultas como a adultas mayores, lo que puede aportar diversidad de experiencias. La totalidad de las participantes reportan Femenino como el sex oasignado al nacer. Este dato es consistente con la definición de la población objetivo del proyecto Sirenas.
+En el marco del proyecto Raíces del Manglar, los beneficiarios presentan una amplia diversidad etaria, con mayor concentración en los rangos de 40 a 60 años, lo que refleja la participación activa de adultos en edad productiva con experiencia comunitaria. Asimismo, se observa una clara mayoría femenina (94,3%), lo que indica que las mujeres son las principales impulsoras y participantes de las iniciativas de conservación y fortalecimiento del manglar. 
+
+TODO: validar por qué hombres y decir algo al respecto
 
 ```{r}
 #| label: edad
@@ -84,7 +86,7 @@ ggplot(survey) +
 
 ## Orientación sexual e identidad de género
 
-La orientación sexual de las participantes indica que la gran mayoría (95,2%) manifestó sentir atracción por los hombres, mientras que solo un 4,8% indicó atracción por mujeres. No se registraron respuestas en las categorías de atracción hacia ambos sexos, otras opciones o preferencia por no responder. La caracterización de las participantes en términos de identidad de género muestra que todas (100%) se identificaron como mujeres, sin reportarse casos en las demás categorías (hombre, hombre trans, mujer trans, otro o no responde).
+La mayoría de las personas beneficiarias del proyecto Raíces del Manglar se reconocen como mujeres (94,3%) y un pequeño grupo como hombres (5,7%). En cuanto a la orientación sexual o romántica, un 62,9% manifestó sentir atracción por hombres, mientras que un 34,3% indicó atracción por mujeres, y un 2,9% prefirió no responder. Esto refleja una composición mayoritariamente femenina heterosexual.
 
 ```{r}
 #| label: orientacion_sexual
@@ -113,7 +115,7 @@ ggplot(survey) +
 
 ## Autoreconocimiento étnico
 
-La gráfica muestra la autoadscripción étnica de las participantes del proyecto Sirenas. En su totalidad (100%), las mujeres encuestadas se reconocen como afrocolombianas, negras, mulatas o afrodescendientes. No se reportaron casos en otros grupos étnicos como indígenas, gitanos, raizales, palenqueros ni en la categoría de quienes no se reconocen dentro de un grupo étnico.
+La caracterización de las beneficiarias del proyecto Raíces del Manglar muestra una pertenencia exclusiva a la población negra, mulata, afrodescendiente o afrocolombiana (100%). No se registraron participantes de otros grupos étnicos como indígenas, raizales, gitanos, palenqueros ni personas que no se reconocieran en ningún grupo étnico, lo que evidencia la homogeneidad cultural y étnica de la comunidad vinculada al proyecto.
 
 ```{r}
 #| label: etnia
@@ -133,7 +135,7 @@ ggplot(survey) +
 
 ## Educación
 
-Aquí se presentan los resultados frente a logro educativo y las capacidades básicas de lectoescritura en el grupo de beneficiarias del proyecto Sirenas. La primera evidencia que la gran mayoría de las participantes (71,4 %) sabe leer y escribir, aunque un 28,6 % aún no ha desarrollado estas competencias, mostrando un reto importante en esta dimensión. La segunda gráfica indica que, en términos de nivel educativo, predomina la educación básica primaria (33,3 %), seguida por la media (23,8 %) y la secundaria (19,0 %). También aparecen casos de formación técnica y universitaria sin título (cada uno con 4,8 %), así como un 9,5 % sin ningún nivel educativo formal. En conjunto, los datos reflejan que, si bien la alfabetización está presente en la mayoría, la formación académica de las participantes se concentra en niveles básicos, con pocos avances hacia educación técnica o superior. Esto resulta coherente con el perfil comunitario del proyecto, que está centrado en mujeres afrocolombianas vinculadas a actividades tradicionales, y refuerza la pertinencia de fortalecer procesos de capacitación complementaria para apoyar sus iniciativas organizativas y productivas.
+En el proyecto Raíces del Manglar, la mayoría de las personas beneficiarias saben leer y escribir (94,3%), mientras que un pequeño grupo (5,7%) no cuenta con esta habilidad. En cuanto al nivel educativo, la mayor proporción alcanzó la educación media (37,1%), seguida por la básica primaria (25,7%) y la formación técnica con título (14,3%). También se identifican personas con estudios universitarios sin culminar (8,6%) y con formación tecnológica o universitaria completa (5,7% cada uno). En contraste, una minoría reporta no tener ningún nivel educativo (5,7%) o solo haber cursado la básica secundaria (2,9%).
 
 ```{r}
 #| label: alfabetismo
@@ -168,7 +170,7 @@ ggplot(survey) +
 
 ## Situaciones de discapacidad
 
-Ninguno de los beneficiarios encuestados reporta limitaciones funcionales ni condiciones de discapacidad. El 100 % indicó no presentar situaciones de discapacidad, y por lo tanto el número de limitaciones registradas es nulo en todos los casos. Este hallazgo es consistente con una población mayoritariamente activa en términos físicos y funcionales, lo cual facilita su participación en actividades comunitarias, productivas y organizativas. Además, contrasta con otras comunidades del Pacífico donde suelen encontrarse porcentajes, aunque bajos, de algún tipo de limitación. Aquí la ausencia total de reportes de discapacidad refuerza la idea de un grupo en condiciones de salud que posibilitan el involucramiento en procesos colectivos y en la implementación del proyecto.
+La gran mayoría de las personas beneficiarias del proyecto Raíces del Manglar no presenta situaciones de discapacidad (94,3%), mientras que solo un 5,7% reporta alguna limitación. En estos casos, la discapacidad se relaciona con dificultades para moverse, caminar o subir y bajar escaleras, siendo esta la única limitación mencionada. Esto refleja que la población vinculada al proyecto se caracteriza por tener, en general, plena capacidad física y funcional, lo que facilita su participación activa en las actividades comunitarias y productivas que promueve la iniciativa.
 
 
 ```{r}
@@ -236,7 +238,7 @@ survey |>
 
 ## Afectaciones por el conflicto armado
 
-En el caso del proyecto Sirenas, los datos muestran una fuerte incidencia del conflicto armado en la población participante. La primera gráfica indica que el 81 % de las personas encuestadas ha vivido algún tipo de afectación por el conflicto armado, mientras que solo el 19 % no reporta experiencias directas. La segunda gráfica detalla los tipos de afectación: El desplazamiento forzado es la más recurrente, con un 81 % de los casos; un 42,9 % señala abandono forzado de tierras; un 33,3 % ha sufrido despojo de tierras. Adicionalmente, un 9,5 % menciona otras formas de afectación. Este patrón refleja una experiencia marcada por la violencia y el desarraigo, donde el desplazamiento constituye la forma más común de victimización, complementada por la pérdida o abandono de tierras, lo cual tiene implicaciones directas en los medios de vida y en la continuidad de las prácticas productivas de la comunidad.
+La gran mayoría de las personas beneficiarias del proyecto Raíces del Manglar (91,4%) ha vivido alguna afectación derivada del conflicto armado, siendo el desplazamiento forzado la principal forma de victimización (88,6%). Además, un 22,9% reportó abandono forzado de tierras, un 20% mencionó otras afectaciones y un 8,6% señaló haber sufrido despojo de tierras. Estos resultados reflejan la alta vulnerabilidad de la población frente al conflicto y resaltan la pertinencia de iniciativas como este proyecto, que buscan fortalecer sus medios de vida y resiliencia comunitaria.
 
 ```{r}
 #| label: afectacion_conflicto_any
@@ -278,7 +280,7 @@ survey$afectacion_conflicto |>
 
 ## Seguridad social
 
-En relación con la protección social, la mayoría de las participantes (85,7 %) manifestó estar afiliada a una EPS dentro del sistema de salud, mientras que un 9,5 % no lo está y un 4,8 % no informó o no supo responder. En contraste, la cobertura pensional es muy limitada: solo el 9,5 % cotiza a pensiones, frente al 90,5 % que no lo hace. La situación es similar en el caso de la afiliación a una Administradora de Riesgos Laborales (ARL), donde únicamente el 28,6 % declaró estar vinculada, mientras que el 71,4 % no cuenta con esta cobertura. No obstante, aunque la cobertura en riesgos laborales en términos absolutos se puede considerar baja, para el contexto de estas comunidades y de otros proyectos, es nada despreciable y un punto a destacar. Estos datos reflejan que, aunque existe una cobertura amplia en salud, persisten grandes brechas en protección económica y laboral, lo que deja en evidencia la vulnerabilidad social de esta población en términos de seguridad laboral y acceso a mecanismos de protección a largo plazo.
+En relación con la afiliación al sistema de protección social, se observa que la totalidad de las personas beneficiarias del proyecto Raíces del Manglar está vinculada a una EPS. Sin embargo, la cobertura en pensiones es muy limitada, ya que solo el 8,6 % realiza cotizaciones, mientras que la gran mayoría (91,4 %) no lo hace, lo que refleja una alta vulnerabilidad frente a la seguridad en la vejez. Adicionalmente, ninguna de las personas encuestadas está afiliada a una Administradora de Riesgos Laborales (ARL), lo que pone de manifiesto la desprotección en materia de seguridad y salud en el trabajo, especialmente considerando que muchas de sus actividades productivas implican riesgos físicos y ambientales.
 
 ```{r}
 #| label: salud
@@ -313,7 +315,10 @@ ggplot(survey) +
 
 ## Ocupación
 
-En el proyecto Sirenas, la mayoría de las participantes se encuentran ocupadas (76,2%), aunque persiste un grupo de mujeres en situación de desempleo (19,0%) y una proporción menor no activa laboralmente (4,8%). Entre las ocupaciones predominan actividades tradicionales como el piangüe (18,8%), la agricultura (12,5%), la pesca (12,5%) y los oficios del hogar, junto con otras vinculadas a servicios comunitarios, educación inicial, gastronomía y artesanías. Además, un 33,3% de las mujeres combinan su actividad principal con otros trabajos o negocios que generan ingresos, lo que refleja estrategias de diversificación económica frente a la inestabilidad laboral.
+En el proyecto Raíces del Manglar, la mayoría de las personas beneficiarias se encuentran activamente vinculadas al mercado laboral (88,6%), mientras que un 8,6% se reporta en condición de desempleo y un 2,9% no participa en actividades económicas. Entre las ocupaciones más comunes destaca el concheo, seguido por gastronomía y alimentos (9,7%) y procesamiento de pescado (6,5%), lo que refleja la estrecha relación de la comunidad con el ecosistema marino y las actividades derivadas de este. En menor proporción, se encuentran empleos en comercio, oficios domésticos, servicios comunitarios y labores auxiliares. Además, más de la mitad de las personas (54,3%) complementan sus ingresos con otros trabajos o negocios, mientras que un 34,3% depende exclusivamente de su actividad principal y un 11,4% no reporta tener actividad económica estable. Estos datos resaltan la importancia de la diversificación de ingresos en los hogares, aunque con un claro predominio de actividades ligadas al aprovechamiento del manglar.
+
+TODO: revisar clasificación
+
 
 ```{r}
 #| label: mcdo_laboral
@@ -348,7 +353,7 @@ ggplot(survey) +
 
 ## Apoyos gubernamentales y no gubernamentales
 
-La mayoría de las participantes del proyecto no reciben ayudas o subsidios gubernamentales (81%), mientras que una minoría (19%) sí accede a estos apoyos, principalmente a través de programas como Colombia Mayor (9,5%), Ingreso Solidario o Renta Ciudadana (4,8%) y otros programas (4,8%). Asimismo, se observa que una parte de las beneficiarias (23,8%) ha recibido apoyos de entidades no gubernamentales, aunque la mayoría (76,2%) no cuenta con este tipo de respaldo. Estos resultados evidencian una baja cobertura institucional de programas de apoyo económico en la comunidad, tanto desde el ámbito estatal como desde organizaciones externas.
+Se observa que el 40% de los beneficiarios recibe apoyos o subsidios de entidades gubernamentales, principalmente a través del programa Colombia Mayor (22,9%), seguido de Familias en Acción y otras ayudas, mientras que un 2,9% accede a la renta ciudadana o ingreso solidario. No obstante, la mayoría (60%) no recibe ningún tipo de subsidio estatal. En cuanto a entidades no gubernamentales, apenas un 5,7% reporta haber recibido algún apoyo, lo que sugiere una baja articulación de ayudas externas en estas comunidades.
 
 
 ```{r}
@@ -403,7 +408,7 @@ ggplot(survey) +
 
 ## Participación comunitaria
 
-Se evidencia una fuerte vinculación de las personas encuestadas con procesos de participación comunitaria. Todas pertenecen a alguna organización, destacándose la pertenencia a organizaciones comunitarias (85,7%) y a asociaciones campesinas o agropecuarias (71,4%), mientras que una proporción menor participa en organizaciones étnicas (9,5%). Además, el 85,7% reporta haber tenido contacto con organizaciones en el último año, principalmente a través de asociaciones campesinas (71,4%) y consejos comunitarios (52,4%). En cuanto al liderazgo, aunque la mayoría no ocupa estos roles (76,2%), cerca de una cuarta parte (23,8%) sí lo hace, siendo las asociaciones campesinas y agropecuarias el espacio más frecuente de liderazgo. Estos hallazgos reflejan un alto nivel de organización comunitaria, coherente con el enfoque del proyecto orientado a fortalecer la participación social en el territorio.
+La participación comunitaria de las personas beneficiarias del proyecto Raíces del Manglar es muy activa. Casi la totalidad (94,3%) pertenece a alguna organización, con una alta representación en organizaciones de conservación del medio ambiente (54,3%) y en asociaciones campesinas o agropecuarias (37,1%). Esto, no sorprende, y refleja la aproximación para la selección de los beneficiarios a través de organizaciones como la misma Raíces del Manglar y otras mencionadas anteriormente. También destacan las vinculaciones a organizaciones étnicas afrocolombianas (25,7%) y a organizaciones comunitarias como los consejos comunitarios (22,9%), aunque en menor medida se reporta participación en grupos religiosos (11,4%) o en veedurías ciudadanas (2,9%). Además, el 94,3% de los participantes tuvo contacto con alguna organización en el último año, lo que evidencia una interacción activa con estos espacios. En términos de liderazgo, el 77,1% reportó desempeñar algún rol directivo, especialmente en organizaciones ambientales (45,7%), campesinas (25,7%) y étnicas (17,1%), lo que resalta la fuerte presencia de liderazgo comunitario y la relevancia de las organizaciones ambientales en la dinámica social del territorio.
 
 
 ```{r}
@@ -549,10 +554,8 @@ survey$liderazgo_organizaciones |>
 
 ## Síntesis de la caracterización
 
-La caracterización de las personas beneficiarias del proyecto Sirenas muestra un grupo conformado en su totalidad por mujeres afrocolombianas, con edades principalmente entre los 30 y 50 años, aunque también se encuentran participantes mayores de 60. Todas se reconocen como mujeres y se identifican con el grupo étnico afrocolombiano, con orientación sexual mayoritariamente heterosexual. En el ámbito educativo, la mayoría sabe leer y escribir, con niveles de formación que van desde básica primaria y secundaria hasta media, siendo minoritaria la presencia de estudios técnicos o universitarios. Ninguna persona reporta situaciones de discapacidad.
+En síntesis, la caracterización de los beneficiarios del proyecto Raíces del Manglar muestra que se trata de una población mayoritariamente femenina, con edades que oscilan entre los 20 y 70 años, y con una concentración importante en personas de mediana edad. La totalidad de los participantes se reconoce como afrodescendiente, reflejando la identidad étnica propia de las comunidades donde se desarrolla el proyecto. En términos de educación, la gran mayoría sabe leer y escribir, con niveles de formación que predominan en la secundaria media y la básica primaria, aunque también se reportan algunos casos con estudios técnicos y universitarios. La presencia de personas con discapacidad es baja (5,7%), y los tipos de limitaciones reportados se asocian principalmente a movilidad.
 
-En términos de condiciones sociales, una proporción significativa ha sido afectada por el conflicto armado, principalmente a través del desplazamiento forzado y el abandono o despojo de tierras. Aunque la mayoría cuenta con afiliación al sistema de salud, son muy bajas las coberturas en pensiones y riesgos laborales, lo que refleja la alta informalidad del trabajo. En el mercado laboral, el 76% de las beneficiarias se encuentra ocupada, con predominio de actividades propias de la economía local como pianguar, pesca, agricultura (incluido el cultivo de coco), artesanías y gastronomía, además de servicios comunitarios como madres comunitarias y labores de educación infantil. Una parte relevante complementa ingresos con otros trabajos o pequeños negocios, lo que evidencia la diversificación como estrategia de sustento.
+La población ha estado fuertemente impactada por el conflicto armado: más del 90% de los beneficiarios ha vivido alguna afectación, en especial desplazamiento forzado, abandono de tierras y otras formas de despojo. Pese a ello, todos los participantes están afiliados al sistema de salud, aunque la mayoría no cuenta con cotizaciones en pensiones ni con afiliación a riesgos laborales, lo que evidencia una situación de alta vulnerabilidad en términos de seguridad social e informalidad laboral. La participación en el mercado laboral es muy alta (88,6%), con predominio de actividades tradicionales como la recolección de moluscos (conchar), complementadas con oficios en gastronomía, procesamiento de pescado y comercio, además de la diversificación hacia otros pequeños negocios o trabajos.
 
-Respecto al acceso a apoyos institucionales, la mayoría no recibe ayudas o subsidios gubernamentales, y solo algunas han accedido a programas como Colombia Mayor o renta ciudadana. Sin embargo, cerca de una cuarta parte reporta apoyos de entidades no gubernamentales, lo que sugiere relevancia de estas redes en el territorio. Finalmente, la participación comunitaria es un rasgo central: todas las beneficiarias pertenecen a organizaciones, principalmente consejos comunitarios y asociaciones campesinas o agropecuarias, y la mayoría ha mantenido contacto con ellas en el último año. Aunque el liderazgo no es mayoritario, alrededor de una cuarta parte ejerce cargos en asociaciones, especialmente las campesinas.
-
-En conjunto, esta caracterización evidencia que las beneficiarias del proyecto Sirenas son mujeres afrocolombianas con una fuerte base organizativa y comunitaria, insertas en dinámicas productivas tradicionales, con altos niveles de vulnerabilidad social y económica derivados tanto de la informalidad laboral como de las afectaciones del conflicto armado, pero con importantes capacidades de resiliencia y organización colectiva.
+En cuanto a apoyos externos, el 40% recibe ayudas o subsidios gubernamentales, principalmente a través de programas como Colombia Mayor y Familias en Acción, mientras que el apoyo de entidades no gubernamentales es mínimo. Finalmente, la dimensión comunitaria es uno de los rasgos más destacados: casi todas las personas pertenecen a organizaciones sociales, especialmente ambientales, campesinas y étnicas, y más de tres cuartas partes ejercen algún tipo de liderazgo. Esto refleja no solo el arraigo cultural y territorial, sino también una sólida base organizativa que constituye un activo fundamental para el éxito del proyecto.
