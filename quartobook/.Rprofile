@@ -35,7 +35,7 @@ if (rlang::is_interactive()) {
   ))
 }
 
-#ggplot2::theme_set(vca_theme())
+ggplot2::theme_set(vca_theme())
 options(
   ggplot2.discrete.colour = discrete_palette(),
   ggplot2.discrete.fill = discrete_palette()

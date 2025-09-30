@@ -18,9 +18,9 @@
 # Add a logo
 # https://rpubs.com/mclaire19/ggplot2-custom-themes
 vca_theme <- function(
-  base_family = "Roboto",
+  base_family = "sans",
   base_size = 9,
-  plot_title_family = "Merriweather Black",
+  plot_title_family = "serif",
   plot_title_size = 20,
   plot_title_color = "#39916C",
   grid_col = "#dadada"
