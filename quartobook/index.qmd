@@ -4,6 +4,5 @@ VCA
 
 PTF
 
-To learn more about Quarto books visit <https://quarto.org/docs/books>.
 
 {{< embed caracteriza_siviru.qmd#edad >}}

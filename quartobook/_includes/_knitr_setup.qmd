@@ -1,9 +1,9 @@
 ```{r}
-library(knitr)
+# library(knitr)
 ```
 
 ```{r}
-#| eval: false
+#| eval: true
 
 options(
   digits = 3, # significant digits when R prints numbers

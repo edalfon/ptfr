@@ -96,7 +96,7 @@ ptf_assign_labels <- function(df) {
     # ayudas_no_gub_cuales_1 = "73_Otro_cul",
     # ayudas_no_gub_cuales_2 = "74_Otro_cul",
 
-    # pertenencia_organizaciones = "75_47_Pertenece_a_al",
+    pertenencia_organizaciones = "Pertenece a alguno de los siguientes grupos, organizaciones o instancias",
     # contacto_organizaciones = "76_48_En_el_ltimo_ao",
     # liderazgo_organizaciones = "77_49_Usted_lidera_p",
     # respeto_inclusion_puntaje = "78_50_Indique_su_niv",

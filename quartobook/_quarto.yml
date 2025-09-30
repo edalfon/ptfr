@@ -14,6 +14,7 @@ execute:
 book:
   title: "Evaluación PTF"
   author: "VCA"
+  # downloads: [pdf, epub, docx] # just put the links; make sure to render
   chapters:
     - index.qmd
     - part: "Caracterización de beneficiarias y beneficiarios"
