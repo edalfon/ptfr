@@ -54,10 +54,10 @@ format:
       - brand
     lightbox: true
     resources: _book
-  # pdf:
-  #   documentclass: scrreprt
-  # docx:
-  #   toc: true
-  #   number-sections: true
+  pdf:
+    documentclass: scrreprt
+  docx:
+    toc: true
+    number-sections: true
 
 

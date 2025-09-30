@@ -1,8 +1,6 @@
-# Preface {.unnumbered}
+# Introducción {.unnumbered}
 
 VCA
 
 PTF
 
-
-{{< embed caracteriza_siviru.qmd#edad >}}
