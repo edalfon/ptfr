@@ -104,11 +104,12 @@ leaflet::leaflet(height = "700px") |>
 
 La distribución por edades de las personas beneficiarias muestra un rango amplio que va de los 20 a los 70 años, con mayor concentración entre los 30 y 40 años, así como en el grupo de 60 años. Esto refleja la participación tanto de personas jóvenes como adultas mayores en las actividades del proyecto, lo que estaría en línea con un propósito del mismo como es favorecer la transmisión intergeneracional de conocimientos y prácticas comunitarias.
 
-TODO: ¿Por qué hay un par de hombres ahí, si se supone que en los criterios dijeron que solamente mujeres?. Validar con Claudio lo del criterio, y validar con campo para ver si pudo ser problema de registro. Las 40 en el listado de beneficiarios, todas parecían tener nombre de mujeres (no había variable sexo). También ver si es un tema de reconocimiento. Ok, después de mirar, también tienen nombre, aparentemente, de mujer. Puede ser solamente un tema de recolección. TODO, recode it.
-
 En cuanto al sexo, se observa una clara mayoría de mujeres (97,4%), mientras que los hombres representan solo el 2,6% de los beneficiarios. Esta alta participación femenina confirma el enfoque del proyecto en el fortalecimiento de mujeres cabeza de hogar como actoras centrales en la implementación de sistemas productivos tradicionales de azoteas, en concordancia con los objetivos de generación de ingresos, soberanía alimentaria y liderazgo comunitario.
 
-TODO: tenemos datos de la población del consejo comunitario?
+TODO: ¿Por qué hay un par de hombres ahí, si se supone que en los criterios dijeron que solamente mujeres?. Validar con Claudio lo del criterio, y validar con campo para ver si pudo ser problema de registro. Las 40 en el listado de beneficiarios, todas parecían tener nombre de mujeres (no había variable sexo). También ver si es un tema de reconocimiento. Ok, después de mirar, también tienen nombre, aparentemente, de mujer. Puede ser solamente un tema de recolección. TODO, recode it.
+
+
+TODO: datos consejo comunitario
 
 ```{r}
 #| label: edad
@@ -618,3 +619,7 @@ survey$liderazgo_organizaciones |>
   ) +
   labs(x = "Frecuencia", y = "Organizaciones que lidera")
 ```
+
+## Síntesis de la caracterización
+
+En síntesis, la caracterización de las personas beneficiarias en Sivirú muestra una población mayoritariamente femenina, afrodescendiente y con fuerte vinculación comunitaria, que combina actividades tradicionales como la gastronomía, el viche y el piangüeo con otros oficios, aunque enfrenta altos niveles de desempleo, baja cobertura en seguridad social y limitadas oportunidades de logro educativo avanzado. Asimismo, más de la mitad ha sufrido afectaciones por el conflicto armado, lo que incrementa su situación de vulnerabilidad. Al mismo tiempo, se trata de una población socialmente activa, que participa en las instancias comunitarias y, en particular, en procesos de organización y producción agrícola. Estos hallazgos sugieren una alineación de las características de las población con el diseño del proyecto, enfocado en el fortalecimiento de mujeres cabeza de hogar, la generación de ingresos a través de prácticas productivas tradicionales y la consolidación de capacidades organizativas, contribuyendo así a mejorar la seguridad alimentaria, la autonomía económica y la resiliencia comunitaria en un territorio históricamente golpeado por la exclusión y la violencia.

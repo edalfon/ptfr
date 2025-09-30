@@ -74,12 +74,12 @@ recode_beneficia_siviru <- function(siviru_survey) {
     "b14bd899-8c1b-46b6-b190-92ff8f0be7a6"
   )
 
-  siviru_survey |>
-    filter(beneficia == "No") |>
-    select(ec5_uuid, nombre) |>
-    efun::clipboard_writeto()
+  # siviru_survey |>
+  #   filter(beneficia == "No") |>
+  #   select(ec5_uuid, nombre) |>
+  #   efun::clipboard_writeto()
 
-  siviru_survey |> filter(beneficia == "No") |> pull(ec5_uuid) |> dput()
+  # siviru_survey |> filter(beneficia == "No") |> pull(ec5_uuid) |> dput()
 
   siviru_survey |>
     mutate(

@@ -28,6 +28,7 @@ plan_siviru <- function() {
       ptf_rename_vars_siviru() |>
       dplyr::filter(title != "Prueba 1") |>
       ptf_clean_vars() |>
+      ptf_clean_vars_siviru() |>
       ptf_assign_labels() |>
       recode_beneficia_siviru() |>
       identity()
