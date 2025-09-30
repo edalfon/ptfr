@@ -27,7 +27,7 @@ cat_var <- "sexo"
 cat_lbl <- "Sexo asignado al nacer"
 ```
 
-{{< include _includes/_var_cat_grp.qmd >}}
+
 
 ## Orientación sexual
 ```{r}
@@ -45,7 +45,7 @@ cat_var <- "identidad_genero"
 cat_lbl <- "Identidad de género"
 ```
 
-{{< include _includes/_var_cat_grp.qmd >}}
+
 
 ## Autoreconocimiento étnico
 ```{r}
