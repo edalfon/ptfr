@@ -58,4 +58,5 @@ Imports:
     writexl,
     quarto,
     flexdashboard,
-    forcats
+    forcats,
+    webshot2
