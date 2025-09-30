@@ -1,0 +1,358 @@
+---
+title: "Pueto Saíja"
+fig-cap-location: top
+---
+
+```{r}
+#| eval: true
+survey <- tar_read(saija_survey) |> filter(startsWith(beneficia, "Beneficia"))
+```
+
+Según el diseño del proyecto, la población directamente beneficiaria está compuesta por estudiantes de la Institución Educativa Etnoeducativo Puerto Saija. Estos estudiantes cursan los grados de 6.º a 9.º de bachillerato y sus edades oscilan entre los 11 y 18 años. La caracterización étnica del grupo es diversa, incluyendo a negros/afros -quienes son la mayoría-, pero también indígenas y mestizos. Provienen de diversas localidades, como veredas, corregimientos y resguardos indígenas tanto aledaños como lejanos a Puerto Saija, e incluso de otras ciudades del país y del extranjero, como Venezuela y Ecuador. Las razones para enfocarse en este grupo como beneficiarios se basan en que son niños, niñas, adolescentes y jóvenes en proceso de formación y aprendizaje, lo que los hace receptivos a ser guiados y concientizados sobre el medio ambiente. @diseno_saija
+
+La selección de los beneficiarios en el proyecto de Puerto Saija se centró en la población estudiantil de la Institución Educativa Etnoeducativo Puerto Saija, con un proceso que combinó la participación voluntaria y la selección guiada para asegurar la representatividad. La decisión de trabajar con estudiantes fue estratégica: se los consideró el grupo ideal porque están en pleno proceso de formación, pueden actuar como replicadores del conocimiento en sus casas y comunidades, y al mismo tiempo, fueron identificados como una de las principales fuentes de generación de residuos sólidos en el corregimiento. El proceso práctico comenzó con la socialización del proyecto a los estudiantes, donde se les preguntó quiénes querían participar voluntariamente. Para la selección final de los 50 estudiantes de los grados 6.º a 9.º, se consultó a los directores de grupo ("titulares"), ya que ellos conocían mejor a sus alumnos. Los docentes ayudaron a identificar a estudiantes que mostraban interés en el tema ambiental o, por el contrario, a aquellos que estaban más "desaplicados", como una forma de motivarlos e involucrarlos. Un criterio clave en la selección fue garantizar la representatividad de las diversas comunidades y etnias del territorio (indígenas, mestizos y afros), con la idea de que estos estudiantes pudieran llevar y multiplicar lo aprendido en sus respectivas veredas. @entrevistas_saija
+
+Como beneficiarios indirectos, se identifican a las familias de los estudiantes que participan directamente en la iniciativa. El proyecto, sin embargo, tiene un alcance más amplio, buscando impactar positivamente a toda la comunidad en general de Puerto Saija, que es de aproximadamente 4,000 habitantes. El principal beneficio indirecto que persigue es la mejora de la calidad de vida y la salud de los habitantes a través de la reducción de la contaminación por residuos sólidos, lo que permite disfrutar de un ambiente sano y limpio. Este impacto se logra en gran medida porque los estudiantes actúan como replicadores de conocimiento en sus casas, compartiendo lo aprendido con sus padres, amigos y las personas con quienes conviven. @diseno_saija Además de las familias, el proyecto involucró y benefició a otros sectores de la comunidad, como los comerciantes (tenderos), las vendedoras de pescado, la iglesia, el consejo comunitario y los resguardos indígenas. Asimismo, las acciones de sensibilización se extendieron a veredas aledañas como La Nueva Esperanza y San Antonio de los Brazos, cuyos habitantes también se consideran beneficiarios indirectos. @entrevistas_saija
+
+A continuación se presenta una caracterización de los beneficiarios del proyecto, a partir de los datos recopilados en campo durante la encuesta para la evaluación del proyecto.
+
+
+## Ubicación geográfica
+
+A continuación se presenta la distribución geográfica, del lugar donde se lograron realizar las encuestas de los beneficiarios del proyecto.
+
+TODO: validar con campo esos que aparecen en San Bernardo
+
+```{r}
+#| label: map_all
+#| fig-cap: Ubicación de entrevista de los beneficiarios
+leaflet::leaflet(height = "700px") |>
+  leaflet::addProviderTiles(leaflet::providers$OpenStreetMap, group = "Street View") |>
+  leaflet::addProviderTiles(leaflet::providers$Esri.WorldImagery, group = "Satellite") |>
+  leaflet::addLayersControl(
+    baseGroups = c("Street View", "Satellite"),
+    options = leaflet::layersControlOptions(collapsed = FALSE)
+  ) |>
+  # leaflet::addTiles() |> # Add OpenStreetMap tiles
+  leaflet::addAwesomeMarkers(
+    lng = survey$longitud,
+    lat = survey$latitud,
+    icon = leaflet::awesomeIcons(
+      icon = "user",
+      library = "fa",
+      markerColor = "lightblue",
+      squareMarker = TRUE,
+      iconColor = "black",
+      spin = FALSE
+    ),
+    options = leaflet::markerOptions(opacity = 0.7)
+  )
+```
+
+
+## Edad y sexo asignado al nacer
+
+En el proyecto de Puerto Saija, la población participante está conformada principalmente por adolescentes, con edades que se concentran entre los 13 y 16 años. Esta distribución evidencia que el proyecto se desarrolla con jóvenes en una etapa clave de formación. En cuanto al sexo asignado al nacer, se observa una mayor participación de mujeres (63,6%) frente a hombres (36,4%), lo que refleja una presencia femenina predominante en las actividades del proyecto.
+
+```{r}
+#| label: edad
+#| fig-cap: Edad
+ggplot(survey) +
+  aes(x = edad) +
+  geom_histogram(bins = 10, fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_rug() +
+  labs(y = "Frecuencia")
+```
+
+```{r}
+#| tbl-cap: Cuantiles
+quantile(survey$edad, na.rm = TRUE) |>
+  t() |>
+  knitr::kable()
+```
+
+
+```{r}
+#| label: sexo
+#| fig-cap: Sexo
+ggplot(survey) +
+  aes(x = sexo) +
+  geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_percent() +
+  labs(y = "Frecuencia")
+```
+
+
+## Autoreconocimiento étnico
+
+En el proyecto de Puerto Saija, la mayoría de los beneficiarios se autorreconoce como parte de comunidades negras, afrodescendientes o afrocolombianas (88,6%), mientras que una proporción menor se identifica como indígena (11,4%). Esta composición étnica refleja la diversidad cultural del territorio, donde predominan las comunidades afrodescendientes pero también coexisten poblaciones indígenas, lo cual es relevante para orientar las actividades del proyecto con un enfoque diferencial y respetuoso de las identidades presentes. Así mismo, es consistente con los criterios de selección del proyecto, que buscaba representar estas poblaciones predominantes en el territorio.
+
+```{r}
+#| label: etnia
+#| fig-cap: Autoreconocimiento étnico
+ggplot(survey) +
+  aes(y = etnia |> forcats::fct_infreq() |> forcats::fct_rev()) +
+  geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_percent_h() +
+  scale_fill_discrete(drop = FALSE) +
+  scale_y_discrete(
+    drop = FALSE,
+    guide = guide_axis(check.overlap = TRUE, n.dodge = 1),
+    labels = \(x) stringr::str_wrap(x, 20)
+  ) +
+  labs(x = "Frecuencia", y = NULL) # title = attr(survey$etnia, "label")
+```
+
+## Educación
+
+En relación con el nivel educativo de los beneficiarios en Puerto Saija, se observa que la gran mayoría (81,8%) cuenta con estudios de básica secundaria (6.° a 9.°), mientras que un 18,2% alcanzó el nivel de media (10.° a 13.°). Dada la edad de los beneficiarios, por supuesto no se registran participantes con formación técnica, tecnológica o universitaria. Además, todos los beneficiarios reportaron saber leer y escribir (100%), lo que garantiza competencias básicas de alfabetización, fundamentales para su participación activa en los procesos del proyecto.
+
+```{r}
+#| label: alfabetismo
+#| fig-cap: Sabe leer y escribir
+ggplot(survey) +
+  aes(x = alfabetismo) +
+  geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_percent() +
+  scale_fill_discrete(drop = FALSE) +
+  scale_x_discrete(
+    drop = FALSE,
+    guide = guide_axis(check.overlap = TRUE, n.dodge = 1)
+  ) +
+  labs(y = "Frecuencia")
+```
+
+
+```{r}
+#| label: educacion
+#| fig-cap: Nivel educativo más alto alcanzado
+ggplot(survey) +
+  aes(y = educacion) +
+  geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_percent_h() +
+  scale_fill_discrete(drop = FALSE) +
+  scale_y_discrete(
+    drop = FALSE,
+    guide = guide_axis(check.overlap = TRUE, n.dodge = 1)
+  ) +
+  labs(x = "Frecuencia", y = NULL)
+```
+
+## Situaciones de discapacidad
+
+La gran mayoría de los beneficiarios en Puerto Saija no presenta ninguna situación de discapacidad (97,7%), mientras que un 2,3% sí reporta al menos una. En cuanto al número de limitaciones, casi todos declararon no tener ninguna, y solo un caso indicó una dificultad específica. El tipo de discapacidad reportado corresponde a problemas para relacionarse o interactuar con otras personas (2,3%), sin registrarse afectaciones en otras dimensiones como movilidad, visión, audición o actividades cotidianas. Estos resultados reflejan que la población beneficiaria es mayoritariamente autónoma en sus capacidades funcionales, con muy baja incidencia de discapacidades.
+
+
+```{r}
+#| label: discapacidad_any
+ggplot(survey) +
+  aes(x = discapacidad_any) +
+  geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_percent() +
+  scale_fill_discrete(drop = FALSE) +
+  scale_x_discrete(drop = FALSE) +
+  labs(y = "Frecuencia")
+```
+
+```{r}
+#| label: discapacidad_cnt
+ggplot(survey) +
+  aes(x = discapacidad_cnt) +
+  geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_percent() +
+  scale_fill_discrete(drop = FALSE) +
+  scale_x_discrete(drop = FALSE) +
+  labs(y = "Frecuencia")
+```
+
+```{r}
+#| label: discapacidad_which
+dicapacidad_vars <- c(
+  "oir",
+  "hablar",
+  "ver",
+  "moverse",
+  "manos",
+  "cognitiva",
+  "autocuidado",
+  "interaccion"
+)
+dicapacidad_dummy_vars <- paste0(dicapacidad_vars, "_dummy")
+labelsvars <- purrr::map_chr(dicapacidad_vars, \(x) attr(survey[[x]], "label"))
+rename_map <- setNames(dicapacidad_dummy_vars, labelsvars)
+survey |>
+  select(any_of(dicapacidad_dummy_vars)) |>
+  rename(!!!rename_map) |>
+  mutate(tot = 1) |>
+  summarise(across(everything(), sum)) |>
+  pivot_longer(-tot) |>
+  mutate(perc = value / tot) |>
+  ggplot(aes(y = name, x = value)) +
+  geom_col(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_text(
+    aes(
+      label = scales::percent(perc, 0.1)
+    ),
+    hjust = "inward",
+    fontface = "bold"
+  ) +
+  scale_fill_discrete(drop = FALSE) +
+  scale_y_discrete(
+    drop = FALSE,
+    guide = guide_axis(check.overlap = TRUE, n.dodge = 1),
+    labels = \(x) stringr::str_wrap(x, 20)
+  ) +
+  labs(x = "Frecuencia", y = "Tipo de discapacidad")
+```
+
+
+
+## Participación comunitaria
+
+En Puerto Saija, la gran mayoría de los beneficiarios manifiestan pertenecer a alguna organización (75%), lo que refleja un alto grado de articulación comunitaria. Predominan las organizaciones comunitarias como los consejos comunitarios (70,5%), seguidas por colectivos de conservación ambiental (18,2%) y, en menor medida, organizaciones culturales o deportivas (6,8%). Sin embargo, solo un poco más de la mitad (52,3%) reporta haber tenido contacto reciente con alguna organización en el último año, lo que indica que, aunque la pertenencia formal es alta, la interacción sostenida puede no ser tan activa. El liderazgo comunitario se concentra en pocos casos: apenas el 11,4% de los beneficiarios lidera organizaciones, principalmente en ámbitos de conservación ambiental (9,1%) y culturales o deportivos (4,5%). Estos hallazgos muestran un capital social basado en la pertenencia a estructuras comunitarias, pero con desafíos en la continuidad del involucramiento y en la promoción de liderazgos más amplios.
+
+
+```{r}
+#| label: pertenencia_organizaciones_any
+#| fig-cap: Pertenece a alguna organización
+survey$pertenencia_organizaciones |>
+  checkbox_to_dummies() |>
+  dummies_to_any() |>
+  tibble(x = _) |>
+  ggplot(aes(x = x)) +
+  geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_percent() +
+  scale_fill_discrete(drop = FALSE) +
+  scale_x_discrete(drop = FALSE) +
+  labs(y = "Frecuencia", x = "Pertenece a alguna organización")
+```
+
+```{r}
+#| label: pertenencia_organizaciones_which
+#| fig-cap: Organizaciones a las que pertenece
+survey$pertenencia_organizaciones |>
+  checkbox_to_dummies() |>
+  mutate(tot = 1) |>
+  summarise(across(everything(), sum)) |>
+  pivot_longer(-tot) |>
+  mutate(perc = value / tot) |>
+  filter(value > 0) |>
+  ggplot(aes(y = name |> forcats::fct_reorder(value), x = value)) +
+  geom_col(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_text(
+    aes(
+      label = scales::percent(perc, 0.1)
+    ),
+    hjust = "inward",
+    fontface = "bold"
+  ) +
+  scale_fill_discrete(drop = FALSE) +
+  scale_y_discrete(
+    drop = FALSE,
+    guide = guide_axis(check.overlap = TRUE, n.dodge = 1),
+    labels = \(x) x |>
+      stringr::str_trunc(50) |>
+      stringr::str_wrap(25)
+  ) +
+  # scale_x_continuous(expand = expansion(0, 1))+
+  labs(x = "Frecuencia", y = "Organizaciones a las que pertenece")
+```
+
+
+
+
+```{r}
+#| label: contacto_organizaciones_any
+#| fig-cap: En el último año, tuvo contacto con alguna organización
+survey$contacto_organizaciones |>
+  checkbox_to_dummies() |>
+  dummies_to_any() |>
+  tibble(x = _) |>
+  ggplot(aes(x = x)) +
+  geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_percent() +
+  scale_fill_discrete(drop = FALSE) +
+  scale_x_discrete(drop = FALSE) +
+  labs(y = "Frecuencia", x = "En el último año, tuvo contacto con alguna organización")
+```
+
+```{r}
+#| label: contacto_organizaciones_which
+#| fig-cap: Organizaciones con las que tuvo contacto el último año
+survey$contacto_organizaciones |>
+  checkbox_to_dummies() |>
+  mutate(tot = 1) |>
+  summarise(across(everything(), sum)) |>
+  pivot_longer(-tot) |>
+  mutate(perc = value / tot) |>
+  filter(value > 0) |>
+  ggplot(aes(y = name |> forcats::fct_reorder(value), x = value)) +
+  geom_col(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_text(
+    aes(
+      label = scales::percent(perc, 0.1)
+    ),
+    hjust = "inward",
+    fontface = "bold"
+  ) +
+  scale_fill_discrete(drop = FALSE) +
+  scale_y_discrete(
+    drop = FALSE,
+    guide = guide_axis(check.overlap = TRUE, n.dodge = 1),
+    labels = \(x) x |>
+      stringr::str_trunc(50) |>
+      stringr::str_wrap(25)
+  ) +
+  labs(x = "Frecuencia", y = "Organizaciones a las que pertenece")
+```
+
+
+
+```{r}
+#| label: liderazgo_organizaciones_any
+#| fig-cap: Lidera organizaciones
+survey$liderazgo_organizaciones |>
+  checkbox_to_dummies() |>
+  dummies_to_any() |>
+  tibble(x = _) |>
+  ggplot(aes(x = x)) +
+  geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_percent() +
+  scale_fill_discrete(drop = FALSE) +
+  scale_x_discrete(drop = FALSE) +
+  labs(y = "Frecuencia", x = "Lidera organizaciones")
+```
+
+```{r}
+#| label: liderazgo_organizaciones_which
+#| fig-cap: Organizaciones que lidera
+survey$liderazgo_organizaciones |>
+  checkbox_to_dummies() |>
+  mutate(tot = 1) |>
+  summarise(across(everything(), sum)) |>
+  pivot_longer(-tot) |>
+  mutate(perc = value / tot) |>
+  filter(value > 0) |>
+  ggplot(aes(y = name |> forcats::fct_reorder(value), x = value)) +
+  geom_col(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_text(
+    aes(
+      label = scales::percent(perc, 0.1)
+    ),
+    hjust = "inward",
+    fontface = "bold"
+  ) +
+  scale_fill_discrete(drop = FALSE) +
+  scale_y_discrete(
+    drop = FALSE,
+    guide = guide_axis(check.overlap = TRUE, n.dodge = 1),
+    labels = \(x) x |>
+      stringr::str_trunc(50) |>
+      stringr::str_wrap(25)
+  ) +
+  labs(x = "Frecuencia", y = "Organizaciones que lidera")
+```
+
+## Síntesis de la caracterización
+
+En síntesis, la caracterización de los beneficiarios del proyecto en Puerto Saija muestra que se trata principalmente de adolescentes y jóvenes, con edades concentradas entre los 13 y 16 años, y con una mayoría femenina (63,6%). La población es mayoritariamente afrodescendiente (88,6%), con una minoría indígena (11,4%). En el ámbito educativo, la mayoría cursa la básica secundaria (81,8%), seguida de la media (18,2%), y todos saben leer y escribir. Casi la totalidad no presenta situaciones de discapacidad (97,7%), salvo un caso asociado a dificultades para relacionarse con otras personas. En cuanto a la participación social, tres de cada cuatro beneficiarios pertenecen a alguna organización, principalmente a consejos comunitarios, y un 52,3% ha tenido contacto con organizaciones en el último año. No obstante, el liderazgo comunitario se encuentra en una proporción reducida (11,4%), concentrado en iniciativas ambientales y culturales. En conjunto, se trata de una población joven, con alta pertenencia étnica afrodescendiente, niveles educativos en proceso de consolidación y fuerte vinculación comunitaria, aunque con un liderazgo aún limitado.

@@ -1,0 +1,360 @@
+---
+title: "Mariposas de Amor"
+fig-cap-location: top
+---
+
+```{r}
+#| eval: true
+survey <- tar_read(mariposas_survey) |> filter(startsWith(as.character(beneficia), "Beneficia"))
+```
+
+Según el diseño del proyecto, la población directamente beneficiaria está conformada por 50 personas. Este grupo incluye a niños, niñas, adolescentes, jóvenes y madres cabezas de hogar que residen en la comuna siete del Distrito Especial de Buenaventura. La caracterización del grupo indica que son, en su mayoría, personas afrodescendientes que han sido víctimas del conflicto armado, de la desigualdad social, racial y de violencias de género, y que se encuentran en condiciones de pobreza. La razón para seleccionar a esta población es que el proyecto busca, a través de espacios de educación no convencionales, fortalecer sus niveles de lectoescritura y la apropiación de prácticas étnico-territoriales y saberes ancestrales en un contexto afectado por la violencia y la desigualdad. @diseno_mariposas
+
+TODO: indirectos el doc dice solamente 180, pero no elabora nada más
+
+TODO: no tengo notas mías de selección en mariposas. Solo lo puntual que está en la matríz. Tal vez hablar con Claudio para expandir.
+Fozalización áreas (tres comunas) / Colegios fozcalizados en cada comuna / Selección docentes / autonominación / padres de familia y acudientes de los beneficiaros.
+
+A continuación se presenta una caracterización de los beneficiarios del proyecto, a partir de los datos recopilados en campo durante la encuesta para la evaluación del proyecto.
+
+
+## Ubicación geográfica
+
+A continuación se presenta la distribución geográfica, del lugar donde se lograron realizar las encuestas de los beneficiarios del proyecto.
+
+TODO: zoom?, más jitter?
+
+```{r}
+#| label: map_all
+#| fig-cap: Ubicación de entrevista de los beneficiarios
+leaflet::leaflet(height = "700px") |>
+  leaflet::addProviderTiles(leaflet::providers$OpenStreetMap, group = "Street View") |>
+  leaflet::addProviderTiles(leaflet::providers$Esri.WorldImagery, group = "Satellite") |>
+  leaflet::addLayersControl(
+    baseGroups = c("Street View", "Satellite"),
+    options = leaflet::layersControlOptions(collapsed = FALSE)
+  ) |>
+  # leaflet::addTiles() |> # Add OpenStreetMap tiles
+  leaflet::addAwesomeMarkers(
+    lng = survey$longitud,
+    lat = survey$latitud,
+    icon = leaflet::awesomeIcons(
+      icon = "user",
+      library = "fa",
+      markerColor = "lightblue",
+      squareMarker = TRUE,
+      iconColor = "black",
+      spin = FALSE
+    ),
+    options = leaflet::markerOptions(opacity = 0.7)
+  )
+```
+
+
+## Edad y sexo asignado al nacer
+
+En el proyecto las beneficiarias son exclusivamente mujeres adolescentes, con edades que oscilan entre los 11 y 18 años. La mayor concentración se encuentra en los grupos de 15 a 17 años, lo que refleja una participación significativa de jóvenes en etapa de educación secundaria. La totalidad de las participantes se reportan como mujeres según el sexo asignado al nacer, lo cual da cuenta de un enfoque claramente orientado al fortalecimiento y acompañamiento de adolescentes femeninas en su proceso de formación y empoderamiento comunitario.
+
+TODO: en el diseno no recuerdo haber visto esa prioridad
+
+```{r}
+#| label: edad
+#| fig-cap: Edad
+ggplot(survey) +
+  aes(x = edad) +
+  geom_histogram(bins = 10, fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_rug() +
+  labs(y = "Frecuencia")
+```
+
+```{r}
+#| tbl-cap: Cuantiles
+quantile(survey$edad, na.rm = TRUE) |>
+  t() |>
+  knitr::kable()
+```
+
+
+```{r}
+#| label: sexo
+#| fig-cap: Sexo
+ggplot(survey) +
+  aes(x = sexo) +
+  geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_percent() +
+  labs(y = "Frecuencia")
+```
+
+
+## Autoreconocimiento étnico
+
+La mayoría de las beneficiarias se reconocen como afrodescendientes, mulatas o afrocolombianas (91,7%), lo que evidencia la fuerte presencia de comunidades negras en el grupo participante. En menor proporción, un 5,6% no se adscribe a ningún grupo étnico y un 2,8% se identifica como parte de la población raizal del archipiélago de San Andrés, Providencia y Santa Catalina. No se registraron participantes indígenas, gitanas ni palenqueras.
+
+```{r}
+#| label: etnia
+#| fig-cap: Autoreconocimiento étnico
+ggplot(survey) +
+  aes(y = etnia |> forcats::fct_infreq() |> forcats::fct_rev()) +
+  geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_percent_h() +
+  scale_fill_discrete(drop = FALSE) +
+  scale_y_discrete(
+    drop = FALSE,
+    guide = guide_axis(check.overlap = TRUE, n.dodge = 1),
+    labels = \(x) stringr::str_wrap(x, 20)
+  ) +
+  labs(x = "Frecuencia", y = NULL) # title = attr(survey$etnia, "label")
+```
+
+## Educación
+
+Las beneficiarias del proyecto corresponden exclusivamente a mujeres adolescentes y jóvenes, todas en edad escolar entre los 11 y 18 años. En el ámbito educativo, todas las participantes saben leer y escribir; la mayoría cursa o ha cursado la básica secundaria (72,2%), seguida por quienes alcanzaron la media (25,0%), mientras que solo un 2,8% registra primaria como máximo nivel. Estos datos reflejan que el proyecto está orientado a un grupo homogéneo de adolescentes mujeres afrocolombianas, escolarizadas y con competencias básicas de lectoescritura, lo cual fortalece la pertinencia de las estrategias pedagógicas y comunitarias implementadas.
+
+
+```{r}
+#| label: alfabetismo
+#| fig-cap: Sabe leer y escribir
+ggplot(survey) +
+  aes(x = alfabetismo) +
+  geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_percent() +
+  scale_fill_discrete(drop = FALSE) +
+  scale_x_discrete(
+    drop = FALSE,
+    guide = guide_axis(check.overlap = TRUE, n.dodge = 1)
+  ) +
+  labs(y = "Frecuencia")
+```
+
+
+```{r}
+#| label: educacion
+#| fig-cap: Nivel educativo más alto alcanzado
+ggplot(survey) +
+  aes(y = educacion) +
+  geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_percent_h() +
+  scale_fill_discrete(drop = FALSE) +
+  scale_y_discrete(
+    drop = FALSE,
+    guide = guide_axis(check.overlap = TRUE, n.dodge = 1)
+  ) +
+  labs(x = "Frecuencia", y = NULL)
+```
+
+## Situaciones de discapacidad
+
+La mayoría de las participantes del proyecto no presentan situaciones de discapacidad (88,9%), aunque un 11,1% sí reporta alguna limitación. Entre quienes señalaron discapacidad, la totalidad indicó un solo tipo de dificultad, principalmente asociada a ver aun usando lentes (2,8%), oír con audífonos (2,8%), relacionarse con otras personas (2,8%) y mover objetos con las manos (2,8%). Estos datos muestran que, aunque la presencia de discapacidad es minoritaria, existe una diversidad en las áreas de funcionalidad que puede requerir apoyos diferenciados.
+
+```{r}
+#| label: discapacidad_any
+ggplot(survey) +
+  aes(x = discapacidad_any) +
+  geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_percent() +
+  scale_fill_discrete(drop = FALSE) +
+  scale_x_discrete(drop = FALSE) +
+  labs(y = "Frecuencia")
+```
+
+```{r}
+#| label: discapacidad_cnt
+ggplot(survey) +
+  aes(x = discapacidad_cnt) +
+  geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_percent() +
+  scale_fill_discrete(drop = FALSE) +
+  scale_x_discrete(drop = FALSE) +
+  labs(y = "Frecuencia")
+```
+
+```{r}
+#| label: discapacidad_which
+dicapacidad_vars <- c(
+  "oir",
+  "hablar",
+  "ver",
+  "moverse",
+  "manos",
+  "cognitiva",
+  "autocuidado",
+  "interaccion"
+)
+dicapacidad_dummy_vars <- paste0(dicapacidad_vars, "_dummy")
+labelsvars <- purrr::map_chr(dicapacidad_vars, \(x) attr(survey[[x]], "label"))
+rename_map <- setNames(dicapacidad_dummy_vars, labelsvars)
+survey |>
+  select(any_of(dicapacidad_dummy_vars)) |>
+  rename(!!!rename_map) |>
+  mutate(tot = 1) |>
+  summarise(across(everything(), sum)) |>
+  pivot_longer(-tot) |>
+  mutate(perc = value / tot) |>
+  ggplot(aes(y = name, x = value)) +
+  geom_col(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_text(
+    aes(
+      label = scales::percent(perc, 0.1)
+    ),
+    hjust = "inward",
+    fontface = "bold"
+  ) +
+  scale_fill_discrete(drop = FALSE) +
+  scale_y_discrete(
+    drop = FALSE,
+    guide = guide_axis(check.overlap = TRUE, n.dodge = 1),
+    labels = \(x) stringr::str_wrap(x, 20)
+  ) +
+  labs(x = "Frecuencia", y = "Tipo de discapacidad")
+```
+
+
+## Participación comunitaria
+
+En cuanto a su participación organizativa, la mayoría no pertenece a ninguna organización (72,2%), aunque un 27,8% sí lo hace, vinculándose sobre todo a organizaciones ambientales, religiosas, culturales y educativas. El contacto con organizaciones en el último año es bajo (25%) y la participación en roles de liderazgo es limitada (16,7%), con énfasis en organizaciones religiosas, culturales, ambientales y de veeduría ciudadana.
+
+
+```{r}
+#| label: pertenencia_organizaciones_any
+#| fig-cap: Pertenece a alguna organización
+survey$pertenencia_organizaciones |>
+  checkbox_to_dummies() |>
+  dummies_to_any() |>
+  tibble(x = _) |>
+  ggplot(aes(x = x)) +
+  geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_percent() +
+  scale_fill_discrete(drop = FALSE) +
+  scale_x_discrete(drop = FALSE) +
+  labs(y = "Frecuencia", x = "Pertenece a alguna organización")
+```
+
+```{r}
+#| label: pertenencia_organizaciones_which
+#| fig-cap: Organizaciones a las que pertenece
+survey$pertenencia_organizaciones |>
+  checkbox_to_dummies() |>
+  mutate(tot = 1) |>
+  summarise(across(everything(), sum)) |>
+  pivot_longer(-tot) |>
+  mutate(perc = value / tot) |>
+  filter(value > 0) |>
+  ggplot(aes(y = name |> forcats::fct_reorder(value), x = value)) +
+  geom_col(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_text(
+    aes(
+      label = scales::percent(perc, 0.1)
+    ),
+    hjust = "inward",
+    fontface = "bold"
+  ) +
+  scale_fill_discrete(drop = FALSE) +
+  scale_y_discrete(
+    drop = FALSE,
+    guide = guide_axis(check.overlap = TRUE, n.dodge = 1),
+    labels = \(x) x |>
+      stringr::str_trunc(50) |>
+      stringr::str_wrap(25)
+  ) +
+  # scale_x_continuous(expand = expansion(0, 1))+
+  labs(x = "Frecuencia", y = "Organizaciones a las que pertenece")
+```
+
+
+
+
+```{r}
+#| label: contacto_organizaciones_any
+#| fig-cap: En el último año, tuvo contacto con alguna organización
+survey$contacto_organizaciones |>
+  checkbox_to_dummies() |>
+  dummies_to_any() |>
+  tibble(x = _) |>
+  ggplot(aes(x = x)) +
+  geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_percent() +
+  scale_fill_discrete(drop = FALSE) +
+  scale_x_discrete(drop = FALSE) +
+  labs(y = "Frecuencia", x = "En el último año, tuvo contacto con alguna organización")
+```
+
+```{r}
+#| label: contacto_organizaciones_which
+#| fig-cap: Organizaciones con las que tuvo contacto el último año
+survey$contacto_organizaciones |>
+  checkbox_to_dummies() |>
+  mutate(tot = 1) |>
+  summarise(across(everything(), sum)) |>
+  pivot_longer(-tot) |>
+  mutate(perc = value / tot) |>
+  filter(value > 0) |>
+  ggplot(aes(y = name |> forcats::fct_reorder(value), x = value)) +
+  geom_col(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_text(
+    aes(
+      label = scales::percent(perc, 0.1)
+    ),
+    hjust = "inward",
+    fontface = "bold"
+  ) +
+  scale_fill_discrete(drop = FALSE) +
+  scale_y_discrete(
+    drop = FALSE,
+    guide = guide_axis(check.overlap = TRUE, n.dodge = 1),
+    labels = \(x) x |>
+      stringr::str_trunc(50) |>
+      stringr::str_wrap(25)
+  ) +
+  labs(x = "Frecuencia", y = "Organizaciones a las que pertenece")
+```
+
+
+
+```{r}
+#| label: liderazgo_organizaciones_any
+#| fig-cap: Lidera organizaciones
+survey$liderazgo_organizaciones |>
+  checkbox_to_dummies() |>
+  dummies_to_any() |>
+  tibble(x = _) |>
+  ggplot(aes(x = x)) +
+  geom_bar(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_percent() +
+  scale_fill_discrete(drop = FALSE) +
+  scale_x_discrete(drop = FALSE) +
+  labs(y = "Frecuencia", x = "Lidera organizaciones")
+```
+
+```{r}
+#| label: liderazgo_organizaciones_which
+#| fig-cap: Organizaciones que lidera
+survey$liderazgo_organizaciones |>
+  checkbox_to_dummies() |>
+  mutate(tot = 1) |>
+  summarise(across(everything(), sum)) |>
+  pivot_longer(-tot) |>
+  mutate(perc = value / tot) |>
+  filter(value > 0) |>
+  ggplot(aes(y = name |> forcats::fct_reorder(value), x = value)) +
+  geom_col(fill = "steelblue", color = "white", alpha = 0.7) +
+  geom_text(
+    aes(
+      label = scales::percent(perc, 0.1)
+    ),
+    hjust = "inward",
+    fontface = "bold"
+  ) +
+  scale_fill_discrete(drop = FALSE) +
+  scale_y_discrete(
+    drop = FALSE,
+    guide = guide_axis(check.overlap = TRUE, n.dodge = 1),
+    labels = \(x) x |>
+      stringr::str_trunc(50) |>
+      stringr::str_wrap(25)
+  ) +
+  labs(x = "Frecuencia", y = "Organizaciones que lidera")
+```
+
+## Síntesis de la caracterización
+
+En síntesis, la caracterización de las beneficiarias del proyecto muestra que se trata de un grupo conformado exclusivamente por mujeres adolescentes, en su mayoría entre los 13 y 17 años de edad. La población participante se reconoce principalmente como afrocolombiana (91,7%), con una minoría que no se adscribe a ningún grupo étnico (5,6%) o que se identifica como raizal (2,8%). Todas saben leer y escribir, y predominan los niveles educativos de básica secundaria (72,2%) y media (25%), mientras que la primaria solo alcanza al 2,8% de las participantes. En cuanto a condiciones de salud, el 11,1% reporta alguna discapacidad, principalmente relacionada con visión, audición, interacción social o movilidad de las manos, mientras que la gran mayoría no presenta limitaciones. La participación organizativa es baja: solo el 27,8% pertenece a alguna organización, principalmente de carácter ambiental, cultural, educativo o religioso; y en el último año, apenas una de cada cuatro tuvo contacto con organizaciones comunitarias o sociales. Finalmente, la proporción de adolescentes que asumen roles de liderazgo en estas instancias es reducida (16,7%), vinculada a espacios como grupos religiosos, culturales, ambientales o de veeduría ciudadana.

@@ -14,7 +14,7 @@ execute:
 book:
   title: "Evaluación PTF"
   author: "VCA"
-  # downloads: [pdf, epub, docx] # just put the links; make sure to render
+  downloads: [pdf, docx, epub] # just put the links; make sure to render
   chapters:
     - index.qmd
     - part: "Caracterización de beneficiarias y beneficiarios"
@@ -22,9 +22,11 @@ book:
       - caracteriza_siviru.qmd
       - caracteriza_usaraga.qmd
       - caracteriza_sirenas.qmd
-      #- caracteriza_saija.qmd
+      - caracteriza_saija.qmd
       #- caracteriza_acapa.qmd
       - caracteriza_raices.qmd
+      - caracteriza_mariposas.qmd
+      #- caracteriza_asogesampa.qmd
     - part: "Comparación entre grupos"
       chapters:
         - compare_siviru.qmd
