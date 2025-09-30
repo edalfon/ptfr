@@ -8,18 +8,16 @@ fig-cap-location: top
 survey <- tar_read(usaraga_survey) |> filter(startsWith(beneficia, "Beneficia"))
 ```
 
-La población objetivo directa del proyecto de fortalecimiento de sistemas productivos de azoteas fue originalmente definida como 40 familias afrocolombianas de las comunidades de Sivirú y Dotenedó, caracterizadas como una población vulnerable que en su mayoría ha sido víctima del conflicto armado. @diseno_siviru
+En el diseño del proyecto fortalecimiento de la cadena productiva del plátano, la población directamente beneficiaria está compuesta por 10 familias. Estas familias residen en las comunidades de Usaragá, Pampón y Puerto Viveros, todas pertenecientes al Consejo Comunitario San Andrés de Usaragá, en el municipio de Bajo Baudó, Chocó. El proyecto estableció que la selección de los beneficiarios se haría con base en criterios específicos, buscando a personas con vocación para la producción de plátano, que fueran del territorio y pertenecieran a familias vulnerables, de escasos recursos y que, en su mayoría, hubieran sufrido la violencia que afectó a la región. En términos de composición, el proyecto estipula que el 100% de los beneficiarios deben ser afrocolombianos o negros, al ser la única etnia que habita en dicho territorio colectivo. Además, el diseño incluye metas de género y edad, planeando que al menos el 30% de los beneficiarios fueran mujeres, todos mayores de edad. También se estableció como objetivo que al menos el 20% de los participantes fueran jóvenes con edades comprendidas entre los 18 y 28 años. @diseno_usaraga
 
-El proceso de selección de los beneficiarios para el proyecto de fortalecimiento de azoteas en Sivirú fue notablemente participativo, llevándose a cabo a través de una asamblea comunitaria. La junta directiva convocó a la comunidad, explicó el proyecto y sus requisitos, incluyendo los principios de interseccionalidad que exigían un porcentaje de participación femenina. Durante la asamblea, surgió una propuesta de la propia comunidad (en donde los informantes resaltan que la propuesta fue apoyada de manera generalizada por los hombres), para que el proyecto beneficiara exclusivamente a mujeres cabeza de familia, al considerarlas más dedicadas y cuidadosas. Una vez acordado este enfoque, se aplicaron criterios de selección concertados: pertenecer al censo del Consejo Comunitario, ser mujer cabeza de hogar, tener vocación para la agricultura en azoteas, participar activamente en los procesos del territorio y no haber sido sancionada por la comunidad. Con base en estos criterios, se seleccionaron 40 mujeres. Adicionalmente, y como muestra del alto interés generado, el propio Consejo Comunitario decidió financiar con recursos propios la participación de otras 14 familias que también cumplían los requisitos. @entrevistas_siviru
-
-Adicionalmente, el proyecto estima que beneficia de manera indirecta a aproximadamente 200 personas. Estos beneficiarios son principalmente los núcleos familiares de las 40 mujeres participantes, y sus habitantes cercanos. @diseno_siviru
+Según el diseño del proyecto la población que se beneficia indirectamente del proyecto en Usaragá es la comunidad en general de las veredas que conforman el Consejo Comunitario San Andrés de Usaragá (TODO: aunque el documento no define explícitamente a los beneficiarios indirectos, y de hecho repite la información de los beneficiarios directos), mediante efectos indirectos como beneficios económico vía mejorares precios del plátano, oportunidades de empleo temporal en los cultivos, entre otros. @diseno_usaraga Adicionalmente, teniendo en cuenta que se desarrolló un plan de formación que no se limitó a los 10 beneficiarios directos, sino que se extendió a la comunidad en general, la cual participó en talleres sobre temas relevantes como género y relaciones interpersonales, los beneficiarios indirectos del proyecto van maás allá de los solo beneficios ecnómisoc y podrían darse por estos otros mecanismos que podríasn generar mayor participación de los habitantes en los espacios comunitarios y motivar a involucrarse en futuras oportunidades. @entrevistas_usaraga
 
 A continuación se presenta una caracterización de los beneficiarios del proyecto, a partir de los datos recopilados en campo durante la encuesta para la evaluación del proyecto.
 
 
 ## Ubicación geográfica
 
-Los mapas presentados a continuación muestran la ubicación de los beneficiarios del proyecto implementado por el Consejo Comunitario de Sivirú. En ellos se identifican los lugares donde se realizaron las entrevistas, que en la mayoría de los casos corresponden a las viviendas y familias participantes en las comunidades de Sivirú y Dotenedó (Nota: para no viiolar la confidencialidad de los informantes de la encuesta, pero aún así poder ilustrar su distribución geográfica, se ha introducido un componente aleatorio en la ubicación, para no revelar de manera pública el lugar puntual de la entrevista). La georreferenciación de los hogares permite visualizar la distribución territorial de las 40 familias beneficiarias, resaltando su localización a lo largo de la zona ribereña y dentro del territorio colectivo adjudicado al Consejo Comunitario.
+A continuación se presenta la distribución geográfica, del lugar donde se lograron realizar las encuestas de los beneficiarios del proyecto.
 
 ```{r}
 #| label: map_all
@@ -59,8 +57,8 @@ leaflet::leaflet(height = "700px") |>
   ) |>
   # leaflet::addTiles() |> # Add OpenStreetMap tiles
   leaflet::addAwesomeMarkers(
-    lng = survey |> filter(latitud <= 4.806288) |> pull(longitud),
-    lat = survey |> filter(latitud <= 4.806288) |> pull(latitud),
+    lng = survey |> filter(latitud <= 4.950081) |> pull(longitud),
+    lat = survey |> filter(latitud <= 4.950081) |> pull(latitud),
     icon = leaflet::awesomeIcons(
       icon = "user",
       library = "fa",
@@ -85,8 +83,8 @@ leaflet::leaflet(height = "700px") |>
   ) |>
   # leaflet::addTiles() |> # Add OpenStreetMap tiles
   leaflet::addAwesomeMarkers(
-    lng = survey |> filter(latitud >= 4.861149 & latitud <= 4.862274) |> pull(longitud),
-    lat = survey |> filter(latitud >= 4.861149 & latitud <= 4.862274) |> pull(latitud),
+    lng = survey |> filter(latitud >= 4.950081) |> pull(longitud),
+    lat = survey |> filter(latitud >= 4.950081) |> pull(latitud),
     icon = leaflet::awesomeIcons(
       icon = "user",
       library = "fa",
@@ -102,14 +100,7 @@ leaflet::leaflet(height = "700px") |>
 
 ## Edad y sexo asignado al nacer
 
-La distribución por edades de las personas beneficiarias muestra un rango amplio que va de los 20 a los 70 años, con mayor concentración entre los 30 y 40 años, así como en el grupo de 60 años. Esto refleja la participación tanto de personas jóvenes como adultas mayores en las actividades del proyecto, lo que estaría en línea con un propósito del mismo como es favorecer la transmisión intergeneracional de conocimientos y prácticas comunitarias.
-
-En cuanto al sexo, se observa una clara mayoría de mujeres (97,4%), mientras que los hombres representan solo el 2,6% de los beneficiarios. Esta alta participación femenina confirma el enfoque del proyecto en el fortalecimiento de mujeres cabeza de hogar como actoras centrales en la implementación de sistemas productivos tradicionales de azoteas, en concordancia con los objetivos de generación de ingresos, soberanía alimentaria y liderazgo comunitario.
-
-TODO: ¿Por qué hay un par de hombres ahí, si se supone que en los criterios dijeron que solamente mujeres?. Validar con Claudio lo del criterio, y validar con campo para ver si pudo ser problema de registro. Las 40 en el listado de beneficiarios, todas parecían tener nombre de mujeres (no había variable sexo). También ver si es un tema de reconocimiento. Ok, después de mirar, también tienen nombre, aparentemente, de mujer. Puede ser solamente un tema de recolección. TODO, recode it.
-
-
-TODO: datos consejo comunitario
+Las gráficas de edad y sexo de los beneficiarios de Usaragá muestran una población principalmente adulta, con concentración entre los 40 y 60 años, lo que refleja la participación de personas en edad productiva y con experiencia comunitaria. En cuanto al sexo, se observa una mayor proporción de hombres (66,7%) frente a mujeres (33,3%). Esta composición, si bien está en línea con los criterios definidos para el proyecto, resalta las dinámicas de género diferenciadas en la comunidad.
 
 ```{r}
 #| label: edad
@@ -142,8 +133,10 @@ ggplot(survey) +
 
 ## Orientación sexual e identidad de género
 
-En cuanto a la identidad de género, el 100% de las personas beneficiarias se reconocen como mujeres. Respecto a la orientación sexual, la mayoría de las beneficiarias (94,7%) manifestó sentir atracción sexual o romántica por hombres, mientras que un 2,6% expresó atracción por ambos sexos y otro 2,6% prefirió no responder. Esta información, aunque limitada en diversidad, aporta a la comprensión de la composición de las participantes y ofrece elementos para asegurar que el proyecto continúe promoviendo espacios de inclusión y respeto por la diversidad sexual.
+Las gráficas sobre orientación sexual e identidad de género en Usaragá muestran que la mayoría de las personas beneficiarias (66,7%) manifestó sentir atracción hacia mujeres, mientras que el 33,3% reportó atracción hacia hombres. En cuanto al reconocimiento de género, el 55,6% se identifica como hombres y el 44,4% como mujeres.
 
+TODO: dejar los mosaic plots?, y en general resaltar los cruces?, o no?
+TODO: validar campo, el que cambia e lporcentaje de identidad de género
 
 ```{r}
 #| label: orientacion_sexual
@@ -172,7 +165,7 @@ ggplot(survey) +
 
 ## Autoreconocimiento étnico
 
-La totalidad de las personas beneficiarias del proyecto en Sivirú se autorreconocen como negras, mulatas, afrodescendientes o afrocolombianas. Este resultado es consistente con la identidad étnica del territorio colectivo del Consejo Comunitario de Sivirú, en el municipio de Bajo Baudó (Chocó), y pone de relieve el carácter afrodescendiente de la comunidad participante. Y aunque no sorprende el resultado, sí está alineado con los objetivos de PTF y confirma la pertinencia de las acciones del proyecto en un contexto donde la cultura, la organización social y las prácticas productivas están profundamente vinculadas a la tradición afrocolombiana.
+El 100% de las personas beneficiarias en Usaragá se reconoce como negra, afrodescendiente o afrocolombiana. Este resultado es consistente con la composición étnica del consejo comunitario de San Andrés de Usaragá, donde la identidad afro es un elemento central de la vida social, cultural y productiva. Es igualmente alineado con la definición de la población objetivo del proyecto.
 
 ```{r}
 #| label: etnia
@@ -192,7 +185,7 @@ ggplot(survey) +
 
 ## Educación
 
-Los resultados sobre alfabetismo y logro educativo muestran que la gran mayoría de las personas beneficiarias (92,1%) sabe leer y escribir, mientras que un 7,9% no cuenta con esta habilidad básica. En relación con el nivel educativo alcanzado, el 34,2% logró finalizar la básica primaria, el 31,6% alcanzó la educación media y el 18,4% llegó hasta la secundaria. Un porcentaje menor obtuvo formación técnica (7,9%) o tecnológica (2,6%), y solo una fracción muy reducida alcanzó educación superior. Estos resultados reflejan que, aunque la alfabetización está ampliamente extendida, los niveles de logro educativo superiores siguen siendo limitados, lo que evidencia los retos en la comunidad frente a las oportunidades de acceso y permanencia en la educación postsecundaria.
+La gran mayoría de los beneficiarios (88,9%) sabe leer y escribir, aunque persiste un 11,1% que no. En cuanto al logro educativo, predomina ampliamente la básica primaria (77,8%), seguida por quienes alcanzaron la educación media (11,1%), mientras que otro 11,1% no cuenta con ningún nivel educativo formal. No se registran casos de formación técnica, tecnológica o universitaria. Estos resultados reflejan una población con acceso limitado a niveles educativos superiores, lo cual coincide con la definición de la población objetivo del proyecto, centrada en familias agricultoras cuya principal fuente de sustento es el cultivo de plátano, y que encuentran en esta iniciativa una oportunidad de fortalecer sus capacidades productivas a pesar de los rezagos en formación académica formal.
 
 ```{r}
 #| label: alfabetismo
@@ -227,7 +220,8 @@ ggplot(survey) +
 
 ## Situaciones de discapacidad
 
-Los resultados sobre discapacidad muestran que el 7,9% de las personas beneficiarias reporta encontrarse en alguna situación de discapacidad, mientras que la gran mayoría (92,1%) no presenta ninguna condición. En cuanto al número de situaciones reportadas, todas corresponden a un único tipo de discapacidad (dificultades para ver), lo que indica que no se registran casos de personas con múltiples situaciones de discapacidad. Estos resultados, aunque reflejan una presencia minoritaria, resaltan la importancia de incorporar un enfoque inclusivo en el diseño y la ejecución de los proyectos, asegurando que quienes viven con discapacidad cuenten con condiciones adecuadas de participación y acceso a los beneficios de la iniciativa.
+Ninguno de los beneficiarios encuestados reporta limitaciones funcionales ni condiciones de discapacidad. El 100 % indicó no presentar situaciones de discapacidad, y por lo tanto el número de limitaciones registradas es nulo en todos los casos. En Usaragá, el hecho de no registrar ninguna discapacidad puede relacionarse con la composición etaria relativamente madura, pero no envejecida, y con el hecho de que la población objetivo del proyecto se encuentra en edad productiva y en condiciones físicas que les permiten desempeñar actividades agrícolas, núcleo central de las acciones del proyecto. Aunque también, podría ser meramente un efecto del bajo tamaño de muestra, en la medida en que el proyecto es pequeño y solamente se propone beneficiar de manera directa a 10 familias.
+
 
 ```{r}
 #| label: discapacidad_any
@@ -305,7 +299,7 @@ ggplot(survey) +
 
 ## Afectaciones por el conflicto armado
 
-Más de la mitad de las personas beneficiarias (57,9%) ha vivido alguna afectación derivada del conflicto armado, mientras que el 42,1% no reporta haber sido víctima. Entre los tipos de afectaciones mencionadas, el desplazamiento forzado es el más frecuente, con un 52,6% de los casos, seguido por el despojo de tierras (7,9%), el abandono forzado de tierras (5,3%) y otras formas de afectación (5,3%). Estos resultados ponen de relieve la fuerte huella que la violencia ha dejado en la comunidad, lo cual constituye un elemento central para comprender la vulnerabilidad social y económica de Sivirú.
+En el proyecto Usaragá la gran mayoría de participantes (88,9%) ha vivido algún tipo de afectación por el conflicto armado, mientras que solo un 11,1% manifiesta no haberla experimentado. Al desagregar por tipo de afectación, se observa que la totalidad de los casos corresponde al desplazamiento forzado, lo cual refleja un patrón homogéneo en la experiencia del conflicto dentro de esta población. Este hallazgo no solo permite dimensionar la magnitud de la victimización, sino que también ayuda a entender la alta vulnerabilidad social y económica que atraviesa el grupo, aspecto que debe considerarse de manera central en la valoración del proyecto.
 
 ```{r}
 #| label: afectacion_conflicto_any
@@ -347,7 +341,7 @@ survey$afectacion_conflicto |>
 
 ## Seguridad social
 
-Consistente con la priorización de esta población, las preguntas sobre protección social en la encuesta evidencian un acceso limitado a mecanismos formales de protección social asociados al trabajo entre las personas beneficiarias en Sivirú. En primer lugar, solo un 2,6% se encuentra cotizando actualmente a un fondo de pensiones y otro 2,6% ya está pensionado, mientras que la gran mayoría (94,7%) no cuenta con cobertura pensional. De forma similar, apenas un 2,6% está afiliado a una Administradora de Riesgos Laborales (ARL), lo que refleja una casi inexistente protección frente a accidentes o enfermedades laborales. En contraste, la afiliación al sistema de salud muestra una mejor cobertura: el 94,7% de las personas beneficiarias está vinculado a alguna entidad promotora de salud, aunque aún persiste un pequeño grupo (5,2%) sin claridad o sin afiliación. La afiliación al sistema de salud es el reflejo de la cobertura del sistema, en particular, en el Régmien Subsidiado en el cual reportan se encuentran afiliados la gran mayoría de beneficiarios. Estos resultados ponen de relieve la vulnerabilidad en términos de seguridad social, especialmente en materia pensional y de riesgos laborales en la comunidad.
+En términos de la situación de afiliación al sistema de protección social de los beneficiarios del proyecto Usaragá, en primer lugar, se observa que el 100% de las personas encuestadas se encuentran afiliadas al sistema de salud a través de una EPS (del Règimen Subsidiado). Sin embargo, la cobertura en otros componentes del sistema es limitada: solo el 11,1% cotiza a pensiones y el mismo porcentaje está afiliado a una Administradora de Riesgos Laborales (ARL), mientras que la gran mayoría no cuenta con estas protecciones. Esta disparidad evidencia un patrón común en estas comunidades rurales y de base comunitaria, donde la afiliación a salud suele tener altos niveles de cobertura por el alcance que tiene el Régimen Subsidiado, pero la vinculación al régimen de pensiones y riesgos laborales es baja, asociada a condiciones de informalidad laboral.
 
 ```{r}
 #| label: salud
@@ -382,7 +376,7 @@ ggplot(survey) +
 
 ## Ocupación
 
-Los datos sobre participación en el mercado laboral muestran que el 60,5% de las personas beneficiarias se encuentra ocupadas, mientras que el 31,6% está en condición de desempleo. Un 5,3% se clasifica como población no activa y un 2,6% como incapacitado permanente. Entre quienes están ocupadas, las actividades más frecuentes corresponden a gastronomía y alimentos (18,2%), la pesca artesanal de viche (18,2%), y el piangüeo (13,6%), seguidas por el comercio y ventas (9,1%) y distintos cultivos agrícolas (caña, coco, entre otros), además de oficios varios, servicios personales y comunitarios, cada uno con menor representación. Finalmente, al indagar por actividades adicionales que generen ingresos, solo el 7,9% desarrolla trabajos complementarios. Estos resultados reflejan la centralidad de actividades tradicionales como la gastronomía, la pesca y la recolección de piangua en la economía local, en un contexto en donde, como se evidenció en la sección de seguridad social, el nivel de formalidad laboral es bajo, lo que se complementa aquí con evidencia de altos niveles de desempleo y la limitada diversificación de ingresos en el territorio.
+En esta sección se presenta la caracterización la participación laboral de las personas encuestadas. En la primera se observa que el 100% de los participantes se encuentran ocupados, lo que refleja una inserción plena en actividades productivas. La segunda gráfica muestra que la ocupación principal se concentra en la agricultura, aunque también se reportan actividades complementarias como agricultura combinada con pesca, pesca independiente y oficios domésticos y de aseo (cada uno con 11,1%). Finalmente, la tercera gráfica señala que un 33,3% de las personas diversifica sus ingresos a través de otros trabajos o negocios, mientras que el 66,7% depende exclusivamente de su actividad principal. Estos resultados evidencian, por una parte, el resultado de los criterios de selección de los beenficiarios del proyecto, pero también la centralidad de la agricultura en la economía local.
 
 ```{r}
 #| label: mcdo_laboral
@@ -417,9 +411,7 @@ ggplot(survey) +
 
 ## Apoyos gubernamentales y no gubernamentales
 
-Una minoría de las personas beneficiarias (26,3%) recibe apoyos de entidades gubernamentales, mientras que el 73,7% no cuenta con este tipo de ayudas. Entre los programas más mencionados figuran el Programa Colombia Mayor (10,5%), Ingreso Solidario o Renta Ciudadana (10,5%), así como otros subsidios (5,3%) y Familias en Acción (2,6%).
-
-De manera similar, el 26,3% reporta haber recibido apoyos de entidades no gubernamentales, frente a un 73,7% que no lo ha hecho. Estos resultados reflejan una cobertura limitada y fragmentada de los programas sociales, donde solo una parte de la población logra acceder a beneficios estatales o de cooperación, lo que pone en evidencia la necesidad de fortalecer las redes de apoyo institucional para mejorar la seguridad económica de los hogares en Sivirú, máxime si se tiene en cuenta las características de vulnerabilidad en varias dimensiones documentadas anteriormente.
+En el proyecto Usaragá ninguno de los participantes recibe ayudas o subsidios de entidades gubernamentales, lo que evidencia una ausencia total de acceso a programas sociales estatales como Colombia Mayor, Ingreso Solidario o Familias en Acción. Del mismo modo, tampoco se registran apoyos provenientes de entidades no gubernamentales. Este hallazgo refleja que la población vinculada al proyecto enfrenta sus condiciones de vida sin respaldo institucional directo, lo que contrasta con otros territorios del Pacífico donde los subsidios son una fuente complementaria de ingresos o de oportunidades o capacidades. La falta de acceso a este tipo de programas resalta la importancia del proyecto como un espacio que busca fortalecer las capacidades productivas y de organización comunitaria, dado que la comunidad no cuenta con apoyos externos para amortiguar su vulnerabilidad económica.
 
 
 ```{r}
@@ -474,9 +466,7 @@ ggplot(survey) +
 
 ## Participación comunitaria
 
-La encuesta a beneficiarios revela un importante nivel de vinculación comunitaria en Sivirú. El 94,7% de las personas beneficiarias manifiesta pertenecer a alguna organización, siendo mayoritarias las organizaciones comunitarias como el consejo comunitario (71,1%), seguidas por asociaciones campesinas o agropecuarias (36,8%) y en menor medida organizaciones culturales o deportivas (13,2%), religiosas (5,3%) y educativas (2,6%). De igual forma, en el último año el 94,7% tuvo contacto con alguna organización, lo que sugiere una vida comunitaria activa, y no solamente una pertenencia pasiva en las organizaciones.
-
-En cuanto al liderazgo, el 31,6% de las personas beneficiarias ejerce roles directivos dentro de organizaciones, principalmente en asociaciones campesinas o agropecuarias (18,4%), así como en organizaciones comunitarias y culturales (7,9% cada una). También se reporta liderazgo en grupos religiosos (2,6%) y educativos (2,6%). Estos resultados evidencian no solo una alta pertenencia organizativa, sino también una participación significativa en el liderazgo comunitario dentro de las beneficiarias, lo que constituye una fortaleza clave para la gestión colectiva y la sostenibilidad de los proyectos en el territorio.
+Las siguientes gráficas del proyecto Usaragá muestran los niveles de participación comunitaria de la población encuestada. La primera evidencia que todas las personas participantes (100 %) pertenecen a alguna organización, lo que refleja un fuerte vínculo comunitario. La mayoría está vinculada a organizaciones comunitarias como los consejos comunitarios, y en un porcentaje relevante (44,4 %) a asociaciones campesinas o agropecuarias. Asimismo, casi la totalidad de los encuestados (88,9 %) tuvo contacto con alguna organización en el último año, lo que indica una participación activa y sostenida en la vida colectiva. Además, más de la mitad (55,6 %) desempeña roles de liderazgo, especialmente en organizaciones comunitarias (33,3 %) y campesinas/agropecuarias (22,2 %). En conjunto, estos hallazgos reflejan que la población de Usaragá no solo está organizada, sino que mantiene una participación activa en instancias comunitarias y agrícolas, con una presencia importante de liderazgos locales, lo que resulta coherente con la definición de la población objetivo del proyecto, que reconoce la centralidad de las organizaciones en la gestión comunitaria y productiva del territorio.
 
 
 ```{r}
@@ -622,4 +612,4 @@ survey$liderazgo_organizaciones |>
 
 ## Síntesis de la caracterización
 
-En síntesis, la caracterización de las personas beneficiarias en Sivirú muestra una población mayoritariamente femenina, afrodescendiente y con fuerte vinculación comunitaria, que combina actividades tradicionales como la gastronomía, el viche y el piangüeo con otros oficios, aunque enfrenta altos niveles de desempleo, baja cobertura en seguridad social y limitadas oportunidades de logro educativo avanzado. Asimismo, más de la mitad ha sufrido afectaciones por el conflicto armado, lo que incrementa su situación de vulnerabilidad. Al mismo tiempo, se trata de una población socialmente activa, que participa en las instancias comunitarias y, en particular, en el consejo comunitario y en procesos de organización y producción agrícola. Estos hallazgos sugieren una alineación de las características de las población con el diseño del proyecto, enfocado en el fortalecimiento de mujeres cabeza de hogar, la generación de ingresos a través de prácticas productivas tradicionales y la consolidación de capacidades organizativas, contribuyendo así a mejorar la seguridad alimentaria, la autonomía económica y la resiliencia comunitaria en un territorio históricamente golpeado por la exclusión y la violencia.
+En síntesis, la población vinculada al proyecto Usaragá se caracteriza por ser homogéneamente afrodescendiente, con niveles educativos concentrados en la básica primaria, alta alfabetización y plena vinculación laboral, principalmente en la agricultura y actividades asociadas. Se trata de una comunidad que no recibe subsidios ni apoyos externos, pero que mantiene una fuerte organización social y liderazgo comunitario, en particular en asociaciones campesinas y consejos comunitarios. Además, gran parte de la población ha sido afectada por el conflicto armado, especialmente mediante el desplazamiento forzado, lo que marca su trayectoria colectiva y refuerza la importancia de la organización como mecanismo de resiliencia. Estos elementos coinciden con la definición de la población objetivo del proyecto, que reconoce a comunidades afrodescendientes rurales, socialmente activas y organizadas en torno a la producción agrícola, como actores centrales para el fortalecimiento de sus capacidades y su proyección territorial.
